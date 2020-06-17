@@ -22,15 +22,15 @@
     <div>
         <fieldset>
                 <legend>Selezionare periodo</legend>
-                <span>Da</span><input type="date" id="datepicker" format="dd-mm-yyyy">
+                <span>Da</span><input type="date" id="datepicker" value="" format="dd-mm-yyyy">
                 <span>A</span><input type="date" id="datepickerA" format="dd-mm-yyyy">
                 &emsp;
-                <button onclick="document.getElementById('id01').style.display='block'">Compila</button>
+                <button onclick="document.getElementById('compilaPeriodo').style.display='block'">Compila</button>
             </fieldset>
-        <div id="id01" class="w3-modal">
+        <div id="compilaPeriodo" class="w3-modal">
                 <div class="w3-modal-content">
                     <div class="w3-container">
-                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <span onclick="document.getElementById('compilaPeriodo').style.display='none'" class="w3-button w3-display-topright">&times;</span>
                         <h1>Inserisci orario della settimana</h1>
                             <table>
                                 <thead>
@@ -55,7 +55,7 @@
                                         <select id="orari"></select>
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari1"></select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -63,10 +63,10 @@
                                         Martedì
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari2"></select>
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari3"></select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -74,10 +74,10 @@
                                         Mercoledì
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari4"></select>
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari5"></select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -85,10 +85,10 @@
                                         Giovedì
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari6"></select>
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari7"></select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -96,10 +96,10 @@
                                         Venerdì
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari8"></select>
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari9"></select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -107,10 +107,10 @@
                                         Sabato
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari10"></select>
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari11"></select>
                                     </td>
                                 </tr>
                                 <tr>
@@ -118,17 +118,17 @@
                                         Domenica
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari12"></select>
                                     </td>
                                     <td>
-                                        <select class="orari"></select>
+                                        <select id="orari13"></select>
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
                             <span class="modale">
                                 <input type="submit" value="Salva" onClick='week()'>&emsp;
-                                <input type="button" value="Annulla" onclick="document.getElementById('id01').style.display='none'">
+                                <input type="button" value="Annulla" onclick="document.getElementById('compilaPeriodo').style.display='none'">
                             </span>
                     </div>
                 </div>
@@ -136,7 +136,7 @@
         <p id="prenotazionePeriodo"></p>
         <div>
             <span>Numero di posti in sala</span>&nbsp;<input type="text" value="">&emsp;
-            <span>Durata turno</span>&nbsp;<input type="text" id="esempio_text_1" />
+            <span>Durata turno</span>&nbsp;<input type="text" id="" />
             <button type="button" id='insert' onclick="insert()">Inserisci</button>
         </div>
         <p id="inserimento"></p>
@@ -145,10 +145,43 @@
 </html>
 
 <script>
+    const elementsList = document.querySelectorAll("#orari, #orari1");
+    const elementsArray = [...elementsList];
+
+    // Now you can use cool array prototypes
+    elementsArray.forEach(element => {
+        console.log(element);
+    });
+
     var array_ora = ['6:00','6:30','7:00','7:30','8:00','8:30', '9:00', '9:30', '10:00', '10:30', '11:00'];
-    var elemets = document.getElementsByClassName('orari');
         orari = document.getElementById('orari');
+        orari1 = document.getElementById('orari1');
+        orari2 = document.getElementById('orari2');
+        orari3 = document.getElementById('orari3');
+        orari4 = document.getElementById('orari4');
+        orari5 = document.getElementById('orari5');
+        orari6 = document.getElementById('orari6');
+        orari7 = document.getElementById('orari7');
+        orari8 = document.getElementById('orari8');
+        orari9 = document.getElementById('orari9');
+        orari10 = document.getElementById('orari10');
+        orari11 = document.getElementById('orari11');
+        orari12 = document.getElementById('orari12');
+        orari13 = document.getElementById('orari13');
     for( hours in array_ora ) {
         orari.add( new Option( array_ora[hours] ) );
+        orari1.add( new Option( array_ora[hours] ) );
+        orari2.add( new Option( array_ora[hours] ) );
+        orari3.add( new Option( array_ora[hours] ) );
+        orari4.add( new Option( array_ora[hours] ) );
+        orari5.add( new Option( array_ora[hours] ) );
+        orari6.add( new Option( array_ora[hours] ) );
+        orari7.add( new Option( array_ora[hours] ) );
+        orari8.add( new Option( array_ora[hours] ) );
+        orari9.add( new Option( array_ora[hours] ) );
+        orari10.add( new Option( array_ora[hours] ) );
+        orari11.add( new Option( array_ora[hours] ) );
+        orari12.add( new Option( array_ora[hours] ) );
+        orari13.add( new Option( array_ora[hours] ) );
     };
 </script>

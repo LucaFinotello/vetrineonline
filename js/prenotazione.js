@@ -1,8 +1,22 @@
 function week() {
-    var weeks, oraInizio, oraFine, text, fLen, i;
+    var weeks, text, fLen, i;
     weeks = ["Lunedì", "Martedì", "Mercoledi", "Giovedi", "Venerdì", "Sabato", "Domenica"];
-    oraInizio = ["7:00"];
-    oraFine = ["10:00"];
+    var oraInizio = document.getElementById('orari');
+    var oraInizio1 = document.getElementById('orari2');
+    var oraInizio2 = document.getElementById('orari4');
+    var oraInizio3 = document.getElementById('orari6');
+    var oraInizio4 = document.getElementById('orari8');
+    var oraInizio5 = document.getElementById('orari10');
+    var oraInizio6 = document.getElementById('orari12');
+    oraInizio= [oraInizio.value, oraInizio1.value, oraInizio2.value, oraInizio3.value, oraInizio4.value, oraInizio5.value, oraInizio6.value,];
+    var oraFine = document.getElementById('orari1');
+    var oraFine1 = document.getElementById('orari3');
+    var oraFine2 = document.getElementById('orari5');
+    var oraFine3 = document.getElementById('orari7');
+    var oraFine4 = document.getElementById('orari9');
+    var oraFine5 = document.getElementById('orari11');
+    var oraFine6 = document.getElementById('orari13');
+    oraFine= [oraFine.value, oraFine1.value, oraFine2.value, oraFine3.value, oraFine4.value, oraFine5.value, oraFine6.value];
     fLen = weeks.length;
 
     text = "<table>\n" +
@@ -23,8 +37,8 @@ function week() {
         "                                   <tr>\n"
     for (i = 0; i < fLen; i++) {
         text += "<td>" + weeks[i] + "</td>\n";
-        text += "<td>" + oraInizio[0] + "</td>\n";
-        text += "<td>" + oraFine[0] + "</td>\n";
+        text += "<td>" + oraInizio[i] + "</td>\n";
+        text += "<td>" + oraFine[i] + "</td>\n";
         text +="</tr>"
     }
     text +="</tbody>"
@@ -66,7 +80,6 @@ function insert() {
 
     var weeks, oraInizio, oraFine, stanza, text, fLen, i;
     var today = new Date();
-    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
     weeks = ["Lunedì", "Martedì", "Mercoledi", "Giovedi", "Venerdì", "Sabato", "Domenica"];
     oraInizio = ["7:00"];
     oraFine = ["10:00"];
