@@ -28,111 +28,111 @@
                 <button onclick="document.getElementById('compilaPeriodo').style.display='block'">Compila</button>
             </fieldset>
         <div id="compilaPeriodo" class="w3-modal">
-                <div class="w3-modal-content">
-                    <div class="w3-container">
-                        <span onclick="document.getElementById('compilaPeriodo').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                        <h1>Inserisci orario della settimana dal  al </h1>
-                            <table>
-                                <thead>
-                                <tr>
-                                    <td>
-                                        Giorno
-                                    </td>
-                                    <td>
-                                        Ora di Inizio
-                                    </td>
-                                    <td>
-                                        Ora di Fine
-                                    </td>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        Lunedì
-                                    </td>
-                                    <td>
-                                        <select id="orari"></select>
-                                    </td>
-                                    <td>
-                                        <select id="orari1"></select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Martedì
-                                    </td>
-                                    <td>
-                                        <select id="orari2"></select>
-                                    </td>
-                                    <td>
-                                        <select id="orari3"></select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Mercoledì
-                                    </td>
-                                    <td>
-                                        <select id="orari4"></select>
-                                    </td>
-                                    <td>
-                                        <select id="orari5"></select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Giovedì
-                                    </td>
-                                    <td>
-                                        <select id="orari6"></select>
-                                    </td>
-                                    <td>
-                                        <select id="orari7"></select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Venerdì
-                                    </td>
-                                    <td>
-                                        <select id="orari8"></select>
-                                    </td>
-                                    <td>
-                                        <select id="orari9"></select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Sabato
-                                    </td>
-                                    <td>
-                                        <select id="orari10"></select>
-                                    </td>
-                                    <td>
-                                        <select id="orari11"></select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Domenica
-                                    </td>
-                                    <td>
-                                        <select id="orari12"></select>
-                                    </td>
-                                    <td>
-                                        <select id="orari13"></select>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <span class="modale">
-                                <input type="submit" value="Salva" onClick='week()'>&emsp;
-                                <input type="button" value="Annulla" onclick="document.getElementById('compilaPeriodo').style.display='none'">
-                            </span>
-                    </div>
+            <div class="w3-modal-content">
+                <div class="w3-container">
+                    <span onclick="document.getElementById('compilaPeriodo').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                    <h1>Inserisci orario della settimana dal  al </h1>
+                        <table>
+                            <thead>
+                            <tr>
+                                <td>
+                                    Giorno
+                                </td>
+                                <td>
+                                    Ora di Inizio
+                                </td>
+                                <td>
+                                    Ora di Fine
+                                </td>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    Lunedì
+                                </td>
+                                <td>
+                                    <select id="orari"></select>
+                                </td>
+                                <td>
+                                    <select id="orari1"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Martedì
+                                </td>
+                                <td>
+                                    <select id="orari2"></select>
+                                </td>
+                                <td>
+                                    <select id="orari3"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Mercoledì
+                                </td>
+                                <td>
+                                    <select id="orari4"></select>
+                                </td>
+                                <td>
+                                    <select id="orari5"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Giovedì
+                                </td>
+                                <td>
+                                    <select id="orari6"></select>
+                                </td>
+                                <td>
+                                    <select id="orari7"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Venerdì
+                                </td>
+                                <td>
+                                    <select id="orari8"></select>
+                                </td>
+                                <td>
+                                    <select id="orari9"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Sabato
+                                </td>
+                                <td>
+                                    <select id="orari10"></select>
+                                </td>
+                                <td>
+                                    <select id="orari11"></select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Domenica
+                                </td>
+                                <td>
+                                    <select id="orari12"></select>
+                                </td>
+                                <td>
+                                    <select id="orari13"></select>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <span class="modale">
+                            <input type="submit" value="Salva" onClick='week()'>&emsp;
+                            <input type="button" value="Annulla" onclick="document.getElementById('compilaPeriodo').style.display='none'">
+                        </span>
                 </div>
             </div>
+        </div>
         <p id="prenotazionePeriodo"></p>
         <div>
             <form name='moduloCalcolaTurni'>

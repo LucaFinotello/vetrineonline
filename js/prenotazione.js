@@ -79,8 +79,6 @@ function calcola() {
 }
 
 function insert() {
-
-
     var weeks, oraInizio, oraFine, stanza, text, fLen, i;
     var today = new Date();
     weeks = ["Lunedì", "Martedì", "Mercoledi", "Giovedi", "Venerdì", "Sabato", "Domenica"];
@@ -88,9 +86,8 @@ function insert() {
     oraFine = ["10:00"];
     stanza = ["12", "26", "31", "6", "34", "27", "46"];
     fLen = weeks.length;
-
     text = "<table>\n" +
-        "                                <thead>\n" +
+    "                                <thead>\n" +
         "                                <tr>\n" +
         "                                    <td>\n" +
         "                                        Giorno\n" +
@@ -108,9 +105,9 @@ function insert() {
         "                                        Modifica\n" +
         "                                    </td>\n" +
         "                                </tr>\n" +
-        "                                </thead>\n" +
-        "                                 <tbody>\n" +
-        "                                   <tr>\n"
+        "                           </thead>\n" +
+"                                   <tbody>\n" +
+"                                       <tr>\n"
     for (i = 0; i < fLen; i++) {
         var giorno = (today.getDate())+i;
         text += "<td>" + giorno +'-'+(today.getMonth()+1)+'-'+today.getFullYear() + "</td>\n";
@@ -127,5 +124,8 @@ function insert() {
 }
 
 function modifica() {
-    alert('da implemetare')
+    var t = Math.floor((screen.height)/2);
+    var l = Math.floor((screen.width)/2);
+    //var stile = "top="+t+", left="+l+", width="+w+", height="+h+", status=no, menubar=no, toolbar=no scrollbars=no";
+    window.open('test.html', '');
 }
