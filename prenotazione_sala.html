@@ -31,7 +31,7 @@
                 <div class="w3-modal-content">
                     <div class="w3-container">
                         <span onclick="document.getElementById('compilaPeriodo').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                        <h1>Inserisci orario della settimana</h1>
+                        <h1>Inserisci orario della settimana dal  al </h1>
                             <table>
                                 <thead>
                                 <tr>
@@ -135,9 +135,11 @@
             </div>
         <p id="prenotazionePeriodo"></p>
         <div>
-            <span>Numero di posti in sala</span>&nbsp;<input type="text" value="">&emsp;
-            <span>Durata turno</span>&nbsp;<input type="text" id="" />
-            <button type="button" id='insert' onclick="insert()">Inserisci</button>
+            <form name='moduloCalcolaTurni'>
+                <span>Numero di posti in sala</span>&nbsp;<input type=”text” name='postiSala' onKeyUp='soloNumeri()'>&emsp;
+                <span>Durata turno</span>&nbsp;<input type=”text” name='durataTurno' onKeyUp='soloNumeri()'>
+                <button type="button" class="click" onclick="calcola()">Calcola</button>
+            </form>
         </div>
         <p id="inserimento"></p>
     </div>

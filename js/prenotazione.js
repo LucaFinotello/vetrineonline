@@ -66,17 +66,20 @@ function move() {
     }
 }
 
+function calcola() {
+    var postiTotali = document.moduloCalcolaTurni.postiSala.value;
+    var turno = document.moduloCalcolaTurni.durataTurno.value;
+    if (postiTotali === '' || turno === '') {
+        alert('Compilare entrambi i valori')
+    } else {
+        testoNumerico = postiTotali / turno;
+        alert ('numero turni: ' + testoNumerico);
+        insert()
+    }
+}
+
 function insert() {
-    /*document.getElementById('btn_aggiungi').onclick = function() {
-        esempio_select_2 = document.getElementById('esempio_select_2');
-        country_val = document.getElementById('esempio_text_1').value;
-        if (country_val != '') {
-            console.log(country_val);
-            document.getElementById('esempio_text_1').value = '';
-        } else {
-            alert('Non hai inserito nessun valore.');
-        }
-    }*/
+
 
     var weeks, oraInizio, oraFine, stanza, text, fLen, i;
     var today = new Date();
