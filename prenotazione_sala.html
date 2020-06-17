@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Vetrineonline</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/prenotazione.js"></script>
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker();
+            $( "#datepickerA" ).datepicker();
+        });
+    </script>
+</head>
+<body>
+    <h1>Prenotazione Sala</h1>
+    <div>
+        <fieldset>
+                <legend>Selezionare periodo</legend>
+                <span>Da</span><input type="date" id="datepicker" format="dd-mm-yyyy">
+                <span>A</span><input type="date" id="datepickerA" format="dd-mm-yyyy">
+                &emsp;
+                <button onclick="document.getElementById('id01').style.display='block'">Compila</button>
+            </fieldset>
+        <div id="id01" class="w3-modal">
+                <div class="w3-modal-content">
+                    <div class="w3-container">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                        <h1>Inserisci orario della settimana</h1>
+                            <table>
+                                <thead>
+                                <tr>
+                                    <td>
+                                        Giorno
+                                    </td>
+                                    <td>
+                                        Ora di Inizio
+                                    </td>
+                                    <td>
+                                        Ora di Fine
+                                    </td>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        Lunedì
+                                    </td>
+                                    <td>
+                                        <select id="orari"></select>
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Martedì
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Mercoledì
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Giovedì
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Venerdì
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Sabato
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Domenica
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                    <td>
+                                        <select class="orari"></select>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <span class="modale">
+                                <input type="submit" value="Salva" onClick='week()'>&emsp;
+                                <input type="button" value="Annulla" onclick="document.getElementById('id01').style.display='none'">
+                            </span>
+                    </div>
+                </div>
+            </div>
+        <p id="prenotazionePeriodo"></p>
+        <div>
+            <span>Numero di posti in sala</span>&nbsp;<input type="text" value="">&emsp;
+            <span>Durata turno</span>&nbsp;<input type="text" id="esempio_text_1" />
+            <button type="button" id='insert' onclick="insert()">Inserisci</button>
+        </div>
+        <p id="inserimento"></p>
+    </div>
+</body>
+</html>
+
+<script>
+    var array_ora = ['6:00','6:30','7:00','7:30','8:00','8:30', '9:00', '9:30', '10:00', '10:30', '11:00'];
+    var elemets = document.getElementsByClassName('orari');
+        orari = document.getElementById('orari');
+    for( hours in array_ora ) {
+        orari.add( new Option( array_ora[hours] ) );
+    };
+</script>
