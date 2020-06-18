@@ -74,8 +74,7 @@ function insert() {
     var m2 = m1 + (60 * 6) + (oraInizio ? 60 : 0);
     oraFine = (parseInt(m2 / 60) % 24).toString()+":"+(m2 % 60).toString();
     var numeroTurni = ((fine - inizio)/m1);
-    alert(m1);
-        fLen = weeks.length;
+    fLen = weeks.length;
     text = "<table>\n" +
     "                                <thead>\n" +
         "                                <tr>\n" +
@@ -87,9 +86,6 @@ function insert() {
         "                                    </td>\n" +
         "                                    <td>\n" +
         "                                        Stanza\n" +
-        "                                    </td>\n" +
-        "                                    <td>\n" +
-        "                                        Prenotato\n" +
         "                                    </td>\n" +
         "                                    <td>\n" +
         "                                        Modifica\n" +
@@ -109,7 +105,6 @@ function insert() {
             {
                 text += "<td>" + document.prenotazione.stanza.value + "</td>\n";
             }
-            text += "<td><div id='myProgress'><div id='myBar'></div></div></td>\n";
             text += "<td> <button id='btn_open_modal' onclick='modifica()'>Modifica</button> </td>\n";
             text +="</tr>"
         }
@@ -134,7 +129,10 @@ function modifica() {
 }
 
 function confirm() {
-    alert('Inserimento dati avvennuto con successo')
+    var data = document.prenotazione.data.value;
+    var turno = document.prenotazione.turno.value;
+    var stanza = document.prenotazione.stanza.value;
+    alert('Dettagli \n\n Prenotato la stanza ' + stanza + ' \n per le ' + turno + '\n in data ' + data)
     window.close()
 }
 
