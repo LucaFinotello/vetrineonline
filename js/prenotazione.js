@@ -125,7 +125,18 @@ function insert() {
 
 function modifica() {
     var t = Math.floor((screen.height)/2);
-    var l = Math.floor((screen.width)/2);
-    //var stile = "top="+t+", left="+l+", width="+w+", height="+h+", status=no, menubar=no, toolbar=no scrollbars=no";
-    window.open('test.html', '');
+    var l = Math.floor((screen.width)/3);
+    var w = Math.floor((screen.width)/3);
+    var h = Math.floor((screen.height)/3);
+    var stile = "top="+t+", left="+l+", width="+w+", height="+h+", status=no, menubar=no, toolbar=no scrollbars=no";
+    window.open('modifica.html', '', stile);
+}
+
+function confirm() {
+    alert('Inserimento dati avvennuto con successo')
+    window.close()
+}
+
+function chiudi() {
+    window.close();
 }

@@ -61,6 +61,24 @@ tr:hover {
     background: #f5f5f5;
 }
 
+.inputBottom {
+    border-bottom: 1px solid #2a2a2a !important;
+    border: 0px;
+    margin-left: 11px;
+    margin-right: 11px;
+}
+
+.prenotazione {
+    margin-left: 22%;
+    margin-right: 15%;
+    margin-bottom: 6%;
+    line-height: 40px;
+}
+
+.button {
+    margin-left: 32%;
+}
+
 .modal {display:none;position:fixed;z-index:1;padding-top:100px;left:0;top:0;width:100%;height:100%;overflow:auto;background-color:rgb(0,0,0);background-color:rgba(0,0,0,0.4);}
 .modal_wrap {background-color:#fefefe;margin:auto;padding:20px;border:1px solid #888;width:80%;}
 .modal_close {color:#aaaaaa;float:right;font-size:28px;font-weight:bold;}

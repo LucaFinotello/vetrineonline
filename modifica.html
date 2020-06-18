@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+    <meta charset="UTF-8">
+    <title>Vetrineonline</title>
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="js/prenotazione.js"></script>
+    <script>
+        const elementsList = document.querySelector("#orari");
+        const elementsArray = [...elementsList];
+
+        // Now you can use cool array prototypes
+        elementsArray.forEach(element => {
+            console.log(element);
+        });
+
+        var array_ora = ['6:00','6:30','7:00','7:30','8:00','8:30', '9:00', '9:30', '10:00', '10:30', '11:00'];
+        orari = document.getElementById('orari');
+        for( hours in array_ora ) {
+            orari.add( new Option( array_ora[hours] ));
+        };
+    </script>
+</head>
+    <body>
+    <h1>Inserisci Prenotazione</h1>
+    <div class="prenotazione">
+        <span>Data </span><input class="inputBottom" type="text" value="15/06/2020"><br>
+        <span>Ora prenotazione </span><select id="orari"></select><br>
+        <span>Numero di stanza </span><input class="inputBottom" type="text" value="">
+    </div>
+    <span class="button">
+        <button onclick="confirm()">Conferma</button>
+        <button type="reset" onclick="chiudi()">Annulla</button>
+    </span>
+    <div id="modal" class="modal">
+        <div class="modal_wrap">
+            <span class="modal_close">×</span>
+            <p id="modal_content">Inserimento dati avvennuto con successo</p>
+        </div>
+    </div>
+</body>
+</html>
