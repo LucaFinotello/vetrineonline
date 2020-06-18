@@ -69,11 +69,13 @@ function move() {
 function calcola() {
     var postiTotali = document.moduloCalcolaTurni.postiSala.value;
     var turno = document.moduloCalcolaTurni.durataTurno.value;
-    if (postiTotali === '' || turno === '') {
-        alert('Compilare entrambi i valori')
+    var data = new Date();
+    var oraInizio = (data.getHours()*3600);
+    var oraFine = oraInizio + (3*3600);
+    if (postiTotali === '') {
+        alert('Dato non inserito')
     } else {
-        testoNumerico = postiTotali / turno;
-        alert ('numero turni: ' + testoNumerico);
+        numeroTurni = (((oraFine-oraInizio)/ turno)/60)
         insert()
     }
 }
@@ -130,6 +132,10 @@ function modifica() {
     var h = Math.floor((screen.height)/3);
     var stile = "top="+t+", left="+l+", width="+w+", height="+h+", status=no, menubar=no, toolbar=no scrollbars=no";
     window.open('modifica.html', '', stile);
+    var postiTotali = document.moduloCalcolaTurni.postiSala.value;
+    var turno = document.moduloCalcolaTurni.durataTurno.value;
+    var testoNumerico = postiTotali / turno;
+    document.getElementsByTagName('P').add(testoNumerico);
 }
 
 function confirm() {
