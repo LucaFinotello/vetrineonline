@@ -68,10 +68,14 @@ function insert() {
     var stanza = undefined;
     weeks = ["Lunedì", "Martedì", "Mercoledi", "Giovedi", "Venerdì", "Sabato", "Domenica"];
     oraInizio = ['7:00'];
+    var inizio = (today.getHours()*60)
+    var fine= ((today.getHours() + 3)*60);
     var m1= parseInt(turno[0],10)*60 + parseInt(turno[1],10);
     var m2 = m1 + (60 * 6) + (oraInizio ? 60 : 0);
     oraFine = (parseInt(m2 / 60) % 24).toString()+":"+(m2 % 60).toString();
-    fLen = weeks.length;
+    var numeroTurni = ((fine - inizio)/m1);
+    alert(m1);
+        fLen = weeks.length;
     text = "<table>\n" +
     "                                <thead>\n" +
         "                                <tr>\n" +
@@ -92,11 +96,11 @@ function insert() {
         "                                    </td>\n" +
         "                                </tr>\n" +
         "                           </thead>\n" +
-"                                   <tbody>\n" +
-"                                       <tr>\n"
+        "                           <tbody>\n" +
+        "                           <tr>\n"
     for (i = 0; i < fLen; i++) {
         var giorno = (today.getDate())+i;
-        for (y=0; y<3; y++) {
+        for (y=0; y<numeroTurni; y++) {
             text += "<td>" + giorno +'-'+(today.getMonth()+1)+'-'+today.getFullYear() + "</td>\n";
             text += "<td>" + oraInizio + " - " + oraFine + "</td>\n";
             if (stanza === undefined) {
