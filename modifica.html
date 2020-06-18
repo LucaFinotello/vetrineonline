@@ -13,12 +13,15 @@
 </head>
     <body>
     <h1>Inserisci Prenotazione</h1>
-    <div class="prenotazione">
-        <span>Data </span><input class="inputBottom" type="text" value="15/06/2020"><br>
-        <span>Ora prenotazione </span><select id="orari"></select><br>
-        <span>Numero di stanza </span><input class="inputBottom" type="text" value="">
-        <p>Numero tavoli disponibili </p>
-    </div>
+    <form name="prenotazione">
+        <div class="prenotazione">
+            <span>Data </span><input class="inputBottom" type="text" value="15/06/2020"><br>
+            <span>Ora prenotazione </span><select id="orari"></select><br>
+            <span>Numero di stanza </span><input name="stanza" class="inputBottom" type="text" value="">
+            <p id="inserimento"></p>
+        </div>
+    </form>
+
     <span class="button">
         <button onclick="confirm()">Conferma</button>
         <button type="reset" onclick="chiudi()">Annulla</button>

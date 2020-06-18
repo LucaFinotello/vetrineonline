@@ -47,25 +47,6 @@ function week() {
     document.getElementById("prenotazionePeriodo").innerHTML = text;
 }
 
-var i = 0;
-function move() {
-    if (i == 0) {
-        i = 1;
-        var elem = document.getElementById("myBar");
-        var width = 1;
-        var id = setInterval(frame, 10);
-        function frame() {
-            if (width >= 100) {
-                clearInterval(id);
-                i = 0;
-            } else {
-                width++;
-                elem.style.width = width + "%";
-            }
-        }
-    }
-}
-
 function calcola() {
     var postiTotali = document.moduloCalcolaTurni.postiSala.value;
     var turno = document.moduloCalcolaTurni.durataTurno.value;
@@ -81,12 +62,15 @@ function calcola() {
 }
 
 function insert() {
-    var weeks, oraInizio, oraFine, stanza, text, fLen, i;
+    var weeks, oraInizio, oraFine, stanza, text, fLen, i, y;
+    var turno = document.moduloCalcolaTurni.durataTurno.value.split(':');
     var today = new Date();
+    var stanza = undefined;
     weeks = ["Lunedì", "Martedì", "Mercoledi", "Giovedi", "Venerdì", "Sabato", "Domenica"];
-    oraInizio = ["7:00"];
-    oraFine = ["10:00"];
-    stanza = ["12", "26", "31", "6", "34", "27", "46"];
+    oraInizio = ['7:00'];
+    var m1= parseInt(turno[0],10)*60 + parseInt(turno[1],10);
+    var m2 = m1 + (60 * 6) + (oraInizio ? 60 : 0);
+    oraFine = (parseInt(m2 / 60) % 24).toString()+":"+(m2 % 60).toString();
     fLen = weeks.length;
     text = "<table>\n" +
     "                                <thead>\n" +
@@ -112,12 +96,19 @@ function insert() {
 "                                       <tr>\n"
     for (i = 0; i < fLen; i++) {
         var giorno = (today.getDate())+i;
-        text += "<td>" + giorno +'-'+(today.getMonth()+1)+'-'+today.getFullYear() + "</td>\n";
-        text += "<td>" + oraInizio[0] + " - " + oraFine[0] + "</td>\n";
-        text += "<td>" + stanza[i] + "</td>\n";
-        text += "<td><div id='myProgress'><div id='myBar'></div></div></td>\n";
-        text += "<td> <button id='btn_open_modal' onclick='modifica()'>Modifica</button> </td>\n";
-        text +="</tr>"
+        for (y=0; y<3; y++) {
+            text += "<td>" + giorno +'-'+(today.getMonth()+1)+'-'+today.getFullYear() + "</td>\n";
+            text += "<td>" + oraInizio + " - " + oraFine + "</td>\n";
+            if (stanza === undefined) {
+                text += "<td>" + '' + "</td>\n";
+            } else
+            {
+                text += "<td>" + document.prenotazione.stanza.value + "</td>\n";
+            }
+            text += "<td><div id='myProgress'><div id='myBar'></div></div></td>\n";
+            text += "<td> <button id='btn_open_modal' onclick='modifica()'>Modifica</button> </td>\n";
+            text +="</tr>"
+        }
     }
     text +="</tbody>"
     text += "</table>";
@@ -131,11 +122,11 @@ function modifica() {
     var w = Math.floor((screen.width)/3);
     var h = Math.floor((screen.height)/3);
     var stile = "top="+t+", left="+l+", width="+w+", height="+h+", status=no, menubar=no, toolbar=no scrollbars=no";
-    window.open('modifica.html', '', stile);
     var postiTotali = document.moduloCalcolaTurni.postiSala.value;
     var turno = document.moduloCalcolaTurni.durataTurno.value;
-    var testoNumerico = postiTotali / turno;
-    document.getElementsByTagName('P').add(testoNumerico);
+    var sala = document.getElementById('postiSala');
+    //document.getElementById("sala").innerHTML = sala;
+    window.open('modifica.html', '', stile);
 }
 
 function confirm() {
@@ -145,4 +136,27 @@ function confirm() {
 
 function chiudi() {
     window.close();
+}
+
+function refresh() {
+    location.reload();
+}
+
+var i = 0;
+function move() {
+    if (i == 0) {
+        i = 1;
+        var elem = document.getElementById("myBar");
+        var width = 1;
+        var id = setInterval(frame, 10);
+        function frame() {
+            if (width >= 100) {
+                clearInterval(id);
+                i = 0;
+            } else {
+                width++;
+                elem.style.width = width + "%";
+            }
+        }
+    }
 }
