@@ -62,7 +62,7 @@ function calcola() {
 }
 
 function insert() {
-    var weeks, oraInizio, oraFine, stanza, text, fLen, i, y;
+    var weeks, oraInizio, oraFine, text, fLen, i, y;
     var turno = document.moduloCalcolaTurni.durataTurno.value.split(':');
     var today = new Date();
     var stanza = undefined;
@@ -103,9 +103,9 @@ function insert() {
                 text += "<td>" + '' + "</td>\n";
             } else
             {
-                text += "<td>" + document.prenotazione.stanza.value + "</td>\n";
+                text += "<?php<td> $riga['stanza']</td>\n?>";
             }
-            text += "<td> <button id='btn_open_modal' onclick='modifica()'>Modifica</button> </td>\n";
+            text += "<td> <button id='btn_open_modal' onclick='modifica()'>Inserisci</button> </td>\n";
             text +="</tr>"
         }
     }
@@ -126,14 +126,6 @@ function modifica() {
     var sala = document.getElementById('postiSala');
     //document.getElementById("sala").innerHTML = sala;
     window.open('modifica.html', '', stile);
-}
-
-function confirm() {
-    var data = document.prenotazione.data.value;
-    var turno = document.prenotazione.turno.value;
-    var stanza = document.prenotazione.stanza.value;
-    alert('Dettagli \n\n Prenotato la stanza ' + stanza + ' \n per le ' + turno + '\n in data ' + data)
-    window.close()
 }
 
 function chiudi() {

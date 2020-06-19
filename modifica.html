@@ -13,24 +13,16 @@
 </head>
     <body>
     <h1>Inserisci Prenotazione</h1>
-    <form name="prenotazione">
+    <form action="prenotazioneColazione.php" method="POST">
         <div class="prenotazione">
-            <span>Data </span><input  name="data" class="inputBottom" type="text" value="15/06/2020" name="data"><br>
-            <span>Ora prenotazione </span><input name="turno" class="inputBottom" type="text" value="7:00 - 7:30"></select><br>
-            <span>Numero di stanza </span><input name="stanza" class="inputBottom" type="text" value="">
-            <p id="inserimento"></p>
+            <span class="capo">Data: <input class="inputBottom" name="giorno" type="text" onclick="this.value = new Date();"></span><br>
+            <span class="capo">Turno: <input class="inputBottom" name="turno" type="text" value=""></span><br>
+            <span class="capo">Stanza: <input class="inputBottom" name="stanza" type="text" value=""></span><br><br>
+            <span class="button">
+                <button class="click" type="submit" value="Inserisci" name="Invio">Inserisci</button>
+                <button class="click" type="reset" value="Annulla" name="Annulla" onclick="chiudi()">Annulla</button>
+            </span>
         </div>
     </form>
-
-    <span class="button">
-        <button onclick="confirm()">Conferma</button>
-        <button type="reset" onclick="chiudi()">Annulla</button>
-    </span>
-    <div id="modal" class="modal">
-        <div class="modal_wrap">
-            <span class="modal_close">×</span>
-            <p id="modal_content">Inserimento dati avvennuto con successo</p>
-        </div>
-    </div>
 </body>
 </html>
