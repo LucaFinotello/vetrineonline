@@ -133,7 +133,7 @@ function modifica() {
     var turno = document.moduloCalcolaTurni.durataTurno.value;
     var sala = document.getElementById('postiSala');
     //document.getElementById("sala").innerHTML = sala;
-    window.open('modifica.html', '', stile);
+    window.open('modifica.php', '', stile);
 }
 
 function chiudi() {
