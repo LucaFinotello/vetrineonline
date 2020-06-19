@@ -30,7 +30,7 @@ include_once('mysql-fix.php');
             else
             {
                 echo "Colazione prenotata con successo!" . "<br>".
-                    "<a href=''>Visualizza </a>";
+                    "<button class='click' onclick='chiudi()'>Chiudi</button>";
             }
             ?>
 </body>

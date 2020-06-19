@@ -62,7 +62,7 @@ function calcola() {
 }
 
 function insert() {
-    var weeks, oraInizio, oraFine, text, fLen, i, y;
+    var weeks, oraInizio, oraFine, text, fLen, i, y, z;
     var turno = document.moduloCalcolaTurni.durataTurno.value.split(':');
     var today = new Date();
     var stanza = undefined;
@@ -103,10 +103,18 @@ function insert() {
                 text += "<td>" + '' + "</td>\n";
             } else
             {
-                text += "<?php<td> $riga['stanza']</td>\n?>";
+                text += "<td><?php $riga['stanza']?></td>\n?>";
             }
             text += "<td> <button id='btn_open_modal' onclick='modifica()'>Inserisci</button> </td>\n";
             text +="</tr>"
+            oraInizio = oraFine;
+            inizio = (today.getHours()*60)
+            fine= ((today.getHours() + 3)*60);
+            m1= parseInt(turno[0],10)*60 + parseInt(turno[1],10);
+            m2 = m1 + (60 * 6) + (oraInizio ? 60 : 0);
+            oraFine = (parseInt(m2 / 60) % 24).toString()+":"+(m2 % 60).toString();
+            numeroTurni = ((fine - inizio)/m1);
+
         }
     }
     text +="</tbody>"
