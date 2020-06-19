@@ -1,0 +1,5 @@
+ $strsql = "insert into orari (giorno2, oraInizio2, oraFine2) values ('$giorno2', '$oraInizio2', '$oraFine2')";
+        $strsql = "insert into orari (giorno3, oraInizio3, oraFine3) values ('$giorno3', '$oraInizio3', '$oraFine3')";
+        $strsql = "insert into orari (giorno4, oraInizio4, oraFine4) values ('$giorno4', '$oraInizio4', '$oraFine4')";
+        $strsql = "insert into orari (giorno5, oraInizio5, oraFine5) values ('$giorno5', '$oraInizio5', '$oraFine5')";
+        $strsql = "insert into orari (giorno6, oraInizio6, oraFine6) values ('$giorno6', '$oraInizio6', '$oraFine6')";

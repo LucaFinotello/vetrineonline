@@ -18,185 +18,215 @@
     </script>
 </head>
 <body>
-    <h1>Prenotazione Sala</h1>
-    <div>
-        <fieldset>
-                <legend>Selezionare periodo</legend>
-                <span>Da</span><input type="date" id="datepicker" value="" format="dd-mm-yyyy">
-                <span>A</span><input type="date" id="datepickerA" format="dd-mm-yyyy">
-                &emsp;
-                <button onclick="document.getElementById('compilaPeriodo').style.display='block'">Compila</button>
-            </fieldset>
-        <div id="compilaPeriodo" class="w3-modal">
-            <div class="w3-modal-content">
-                <div class="w3-container">
-                    <span onclick="document.getElementById('compilaPeriodo').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-                    <h1>Inserisci orario della settimana dal  al </h1>
-                        <table>
-                            <thead>
+<h1>Prenotazione Sala</h1>
+<div>
+    <fieldset>
+        <legend>Selezionare periodo</legend>
+        <span>Da</span><input type="date" id="datepicker" value="" format="dd-mm-yyyy">
+        <span>A</span><input type="date" id="datepickerA" format="dd-mm-yyyy">
+        &emsp;
+        <button onclick="document.getElementById('compilaPeriodo').style.display='block'">Compila</button>
+    </fieldset>
+    <div id="compilaPeriodo" class="w3-modal">
+        <div class="w3-modal-content">
+            <div class="w3-container">
+                <span onclick="document.getElementById('compilaPeriodo').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+                <h1>Inserisci orario della settimana dal  al </h1>
+                <form action="prenotazione_sala.php" method="POST">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>
+                                Giorno
+                            </td>
+                            <td>
+                                Ora di Inizio
+                            </td>
+                            <td>
+                                Ora di Fine
+                            </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                            <td>
+                                <input class="inputBottom" name="giorno" type="text" value="Lunedi">
+                            </td>
+                            <td>
+                                <select name="oraInizio">
+                                    <option value="7:00">5:00</option>
+                                    <option value="7:30">5:30</option>
+                                    <option value="8:00">6:00</option>
+                                    <option value="8:00">6:30</option>
+                                    <option value="7:00">7:00</option>
+                                    <option value="7:30">7:30</option>
+                                    <option value="8:00">8:00</option>
+                                    <option value="7:00">8:30</option>
+                                    <option value="7:30">9:00</option>
+                                    <option value="8:00">9:30</option>
+                                    <option value="7:00">10:00</option>
+                                    <option value="7:30">10:30</option>
+                                    <option value="8:00">11:00</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select name="oraFine">
+                                    <option value="7:00">5:00</option>
+                                    <option value="7:30">5:30</option>
+                                    <option value="8:00">6:00</option>
+                                    <option value="8:00">6:30</option>
+                                    <option value="7:00">7:00</option>
+                                    <option value="7:30">7:30</option>
+                                    <option value="8:00">8:00</option>
+                                    <option value="7:00">8:30</option>
+                                    <option value="7:30">9:00</option>
+                                    <option value="8:00">9:30</option>
+                                    <option value="7:00">10:00</option>
+                                    <option value="7:30">10:30</option>
+                                    <option value="8:00">11:00</option>
+                                </select>
+                            </td>
                             <tr>
                                 <td>
-                                    Giorno
+                                    <input class="inputBottom" name="giorno1" type="text" value="Martedi">
                                 </td>
                                 <td>
-                                    Ora di Inizio
+                                    <select name="oraInizio1">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
                                 </td>
                                 <td>
-                                    Ora di Fine
-                                </td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    Lunedì
-                                </td>
-                                <td>
-                                    <select id="orari"></select>
-                                </td>
-                                <td>
-                                    <select id="orari1"></select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Martedì
-                                </td>
-                                <td>
-                                    <select id="orari2"></select>
-                                </td>
-                                <td>
-                                    <select id="orari3"></select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Mercoledì
-                                </td>
-                                <td>
-                                    <select id="orari4"></select>
-                                </td>
-                                <td>
-                                    <select id="orari5"></select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Giovedì
-                                </td>
-                                <td>
-                                    <select id="orari6"></select>
-                                </td>
-                                <td>
-                                    <select id="orari7"></select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Venerdì
-                                </td>
-                                <td>
-                                    <select id="orari8"></select>
-                                </td>
-                                <td>
-                                    <select id="orari9"></select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Sabato
-                                </td>
-                                <td>
-                                    <select id="orari10"></select>
-                                </td>
-                                <td>
-                                    <select id="orari11"></select>
+                                    <select name="oraFine1">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
-                                    Domenica
+                                    <input class="inputBottom" name="giorno2" type="text" value="Mercoledi">
                                 </td>
                                 <td>
-                                    <select id="orari12"></select>
+                                    <select name="oraInizio2">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
                                 </td>
                                 <td>
-                                    <select id="orari13"></select>
+                                    <select name="oraFine2">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
                                 </td>
                             </tr>
-                            </tbody>
-                        </table>
-                        <span class="modale">
-                            <input type="submit" value="Salva" onClick='week()'>&emsp;
-                            <input type="button" value="Annulla" onclick="document.getElementById('compilaPeriodo').style.display='none'">
-                        </span>
-                </div>
+                            <tr>
+                                <td>
+                                    <input class="inputBottom" name="giorno3" type="text" value="Giovedi">
+                                </td>
+                                <td>
+                                    <select name="oraInizio3">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="oraFine3">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="inputBottom" name="giorno4" type="text" value="Venerdi">
+                                </td>
+                                <td>
+                                    <select name="oraInizio4">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="oraFine4">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="inputBottom" name="giorno5" type="text" value="Sabato">
+                                </td>
+                                <td>
+                                    <select name="oraInizio5">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="oraFine5">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input class="inputBottom" name="giorno6" type="text" value="Domenica">
+                                </td>
+                                <td>
+                                    <select name="oraInizio6">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <select name="oraFine6">
+                                        <option value="7:00">7:00</option>
+                                        <option value="7:30">7:30</option>
+                                        <option value="8:00">8:00</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <span class="modale">
+                        <input type="submit" value="Salva">&emsp;
+                        <input type="button" value="Annulla" onclick="document.getElementById('compilaPeriodo').style.display='none'">
+                    </span>
+                </form>
             </div>
         </div>
-        <p id="prenotazionePeriodo"></p>
-        <div>
-            <form name='moduloCalcolaTurni'>
-                <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom" type=”number” name='postiSala'>&emsp;
-                <span>Durata turno</span>&nbsp;<select id="durataTurno"></select>
-                <button type="button" class="click" onclick="calcola()">Calcola</button>
-                <button type="button" class="click" onclick="refresh()">Annulla</button>
-            </form>
-        </div>
-        <p id="inserimento"></p>
     </div>
+    <p id="prenotazionePeriodo"></p>
+    <div>
+        <form name='moduloCalcolaTurni'>
+            <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom" type=”number” name='postiSala'>&emsp;
+            <span>Durata turno</span>&nbsp;<select id="durataTurno"></select>
+            <button type="button" class="click" onclick="calcola()">Calcola</button>
+            <button type="button" class="click" onclick="refresh()">Annulla</button>
+        </form>
+    </div>
+    <p id="inserimento"></p>
+</div>
 </body>
 </html>
 <script>
-    const elementsList = document.querySelectorAll("#orari");
     const elementsturni = document.querySelector("#durataTurno");
-    const elementsArray = [...elementsList];
     const turniArray = [...elementsturni];
-
-    // Now you can use cool array prototypes
-    elementsArray.forEach(element => {
-        console.log(element);
-    });
-
-    var array_ora = ['0:00','0:15','0:30','0:45','1:00','1:15','1:30','1:45','2:00','2:15','2:30',
-                     '2:45','3:00','3:15','3:30','3:45','4:00','4:15','4:30','4:45','5:00','5:15',
-                     '5:30','5:45','6:00','6:15','6:30','6:45','7:00','7:15','7:30','7:45','8:00',
-                     '8:15','8:30','8:45','9:00','9:15','9:30','9:45','10:00','10:15','10:30','10:45',
-                     '11:00','11:15','11:30','11:45','12:00','12:15','12:30','12:45','13:00','13:15','13:30',
-                     '13:45','14:00','14:15','14:30','14:45','15:00','15:15','15:30','15:45','16:00','16:15',
-                     '16:30','16:45','17:00','17:15','17:30','17:45','18:00','18:15','18:30','18:45','19:00',
-                     '19:15','19:30','19:45','20:00','20:15','20:30','20:45','21:00','21:15','21:30','21:45',
-                     '22:00','22:15','22:30','22:45','23:00','23:15','23:30','23:45'
-    ];
-        orari = document.getElementById('orari');
-        orari1 = document.getElementById('orari1');
-        orari2 = document.getElementById('orari2');
-        orari3 = document.getElementById('orari3');
-        orari4 = document.getElementById('orari4');
-        orari5 = document.getElementById('orari5');
-        orari6 = document.getElementById('orari6');
-        orari7 = document.getElementById('orari7');
-        orari8 = document.getElementById('orari8');
-        orari9 = document.getElementById('orari9');
-        orari10 = document.getElementById('orari10');
-        orari11 = document.getElementById('orari11');
-        orari12 = document.getElementById('orari12');
-        orari13 = document.getElementById('orari13');
-    for( hours in array_ora ) {
-        orari.add( new Option( array_ora[hours] ) );
-        orari1.add( new Option( array_ora[hours] ) );
-        orari2.add( new Option( array_ora[hours] ) );
-        orari3.add( new Option( array_ora[hours] ) );
-        orari4.add( new Option( array_ora[hours] ) );
-        orari5.add( new Option( array_ora[hours] ) );
-        orari6.add( new Option( array_ora[hours] ) );
-        orari7.add( new Option( array_ora[hours] ) );
-        orari8.add( new Option( array_ora[hours] ) );
-        orari9.add( new Option( array_ora[hours] ) );
-        orari10.add( new Option( array_ora[hours] ) );
-        orari11.add( new Option( array_ora[hours] ) );
-        orari12.add( new Option( array_ora[hours] ) );
-        orari13.add( new Option( array_ora[hours] ) );
-    };
 
     // Now you can use cool array prototypes
     turniArray.forEach(element => {

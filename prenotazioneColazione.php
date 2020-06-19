@@ -17,25 +17,21 @@ include_once('mysql-fix.php');
     <script type="text/javascript" src="js/prenotazione.js"></script>
 </head>
 <body>
-<div id="main">
-    <div id="contenuto">
-        <?php
-        $giorno = $_POST["giorno"];
-        $turno = $_POST["turno"];
-        $stanza = $_POST["stanza"];
-        $strsql = "insert into prenotazione (giorno, turno, stanza) values ('$giorno', '$turno', '$stanza')";
-        $risultato = mysqli_query($conn, $strsql);
-        if (! $risultato)
-        {
-            echo "Errore nel comando SQL" . "<br>";
-        }
-        else
-        {
-            echo "Colazione prenotata con successo!" . "<br>".
-                "<a href=''>Visualizza </a>";
-        }
-        ?>
-    </div>
-</div>
+    <?php
+            $giorno = $_POST["giorno"];
+            $turno = $_POST["turno"];
+            $stanza = $_POST["stanza"];
+            $strsql = "insert into prenotazione (giorno, turno, stanza) values ('$giorno', '$turno', '$stanza')";
+            $risultato = mysqli_query($conn, $strsql);
+            if (! $risultato)
+            {
+                echo "Errore nel comando SQL" . "<br>";
+            }
+            else
+            {
+                echo "Colazione prenotata con successo!" . "<br>".
+                    "<a href=''>Visualizza </a>";
+            }
+            ?>
 </body>
 </html>

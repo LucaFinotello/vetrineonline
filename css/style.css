@@ -58,10 +58,6 @@ th {
     height: 50px;
 }
 
-tr:hover {
-    background: #f5f5f5;
-}
-
 .inputBottom {
     border-bottom: 1px solid #2a2a2a !important;
     border: 0px;
