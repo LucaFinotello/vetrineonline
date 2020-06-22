@@ -311,7 +311,9 @@ include_once('mysql-fix.php');
                 </tbody>
             </table>
             <button type="submit" class="click" value="Salva">Salva</button>
-            <button type="reset" class="click" value="Annulla"><a href="prenotazione_sala.php">Annulla</a></button>
+            <button type="reset" class="click" value="Annulla">
+                <a href="prenotazione_sala.php" style="color: #000000;text-decoration: none;">Annulla</a>
+            </button>
         </form>
         <?php
     }

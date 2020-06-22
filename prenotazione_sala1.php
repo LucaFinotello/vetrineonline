@@ -386,6 +386,7 @@
             </form>
         </div>
         <?php
+        $postiSala = $_POST["postiSala"];
         $strsql = "select * from prenotazione ";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
@@ -404,6 +405,7 @@
                 <thead>
                 <tr>
                     <td>Giorno</td>
+                    <td>postisala</td>
                     <td>Turno</td>
                     <td>Stanza</td>
                     <td>Inserisci</td>
@@ -416,9 +418,10 @@
                     echo ("<tr>");
                     echo "<form action='modifica.php' method='POST'>";
                     echo "<td>".$riga["giorno"]."</td>";
+                    echo "<td>".$riga["postiSala"]."</td>";
                     echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
                     echo "<td>".$riga["stanza"]."</td>";
-                    echo "<td> <button type='submit' class='click' value='calcola'>Calcola</button> </td>";
+                    echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
                     echo "</form>";
                     echo ("</tr>");
                     $riga = mysqli_fetch_array($risultato);
@@ -428,7 +431,6 @@
             </table>
             <?php }
         ?>
-        <!--<p id="inserimento"></p>-->
     </div>
 </body>
 </html>
