@@ -31,11 +31,19 @@ include_once('mysql-fix.php');
     <p></p>
     <div>
         <div>
-            <form name='moduloCalcolaTurni' action="prenotazione_sala1.php" method="post">
-                <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom" type=”number” name='postiSala'>&emsp;
-                <span>Durata turno</span>&nbsp;<select id="durataTurno"></select>
+            <form action="calcola.php" method="POST">
+                <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom" type="text" name="postiSala" value="">&emsp;
+                <span>Durata turno</span>&nbsp;
+                <select name="durataTurno">
+                    <option value="0:15">0:15</option>
+                    <option value="0:30">0:30</option>
+                    <option value="0:45">0:45</option>
+                    <option value="1:00">1:00</option>
+                    <option value="1:15">1:15</option>
+                    <option value="1:30">1:30</option>
+                </select>
                 <button type="submit" class="click" value="calcola">Calcola</button>
-                <button type="button" class="click" onclick="refresh()">Annulla</button>
+                <button type="reset" class="click" onclick="refresh()">Annulla</button>
             </form>
         </div>
         <?php

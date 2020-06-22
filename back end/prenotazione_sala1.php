@@ -30,9 +30,21 @@
         </form>
         <p></p>
         <?php
-        $giorno = $_POST["giorno"];
-        $oraInizio = $_POST["oraInizio"];
-        $oraFine = $_POST["oraFine"];
+        $giorno = $_POST['giorno'];
+        $oraInizio = $_POST['oraInizio'];
+        $oraFine = $_POST['oraFine'];
+        //$giorno = array ($_POST["giorno"], $_POST["giorno1"], $_POST["giorno2"], $_POST["giorno3"], $_POST["giorno4"], $_POST["giorno5"], $_POST["giorno6"]);
+        //$oraInizio = array($_POST["oraInizio"],$_POST["oraInizio1"],$_POST["oraInizio2"],$_POST["oraInizio3"],$_POST["oraInizio4"],$_POST["oraInizio5"],$_POST["oraInizio6"]);
+        //$oraFine = array($_POST["oraFine"], $_POST["oraFine2"], $_POST["oraFine2"], $_POST["oraFine3"],$_POST["oraFine4"], $_POST["oraFine5"], $_POST["oraFine6"]);
+        //array_push($giorno, '');
+        //if (is_array($giorno)){
+           // foreach ($giorno as $days) {
+        //       $day = mysqli_real_escape_string($conn, $giorno[$days][1]);
+        //        $query = "insert into orari(giorno)
+        //        values ('$day')";
+        //        $risultato= mysqli_query($conn, $query);
+        //    }
+        //}
         $strsql = "insert into orari (giorno, oraInizio, oraFine) values ('$giorno', '$oraInizio', '$oraFine')";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
@@ -41,7 +53,6 @@
         }
         else
         {
-
         $strsql = "select * from orari where giorno!= '' ";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
@@ -69,9 +80,9 @@
                 while ($riga)
                 {
                     echo ("<tr>");
-                    echo "<td>".$riga["giorno"]."</td>";
-                    echo "<td>".$riga["oraInizio"]."</td>";
-                    echo "<td>".$riga["oraFine"]."</td>";
+                    echo "<td>".$riga['giorno']."</td>";
+                    echo "<td>".$riga['oraInizio']."</td>";
+                    echo "<td>".$riga['oraFine']."</td>";
                     echo ("</tr>");
                     $riga = mysqli_fetch_array($risultato);
                 }
@@ -81,11 +92,28 @@
         <?php
         }
         ?>
+        <form name="ricercaOrari" action="ricercaOrari.php" method="post">
+            <fieldset>
+                <legend>Selezione Date</legend>
+                <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
+                <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
+                &emsp;
+                <button type="submit" class="click" value="compila">Compila</button>
+            </fieldset>
+        </form>
         <p></p>
         <div>
-            <form name='moduloCalcolaTurni' action="prenotazione_sala1.php" method="post">
+            <form action="calcola.php" method="POST">
                 <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom" type=”number” name='postiSala'>&emsp;
-                <span>Durata turno</span>&nbsp;<select id="durataTurno"></select>
+                <span>Durata turno</span>&nbsp;
+                <select name="durataTurno">
+                    <option value="0:15">0:15</option>
+                    <option value="0:30">0:30</option>
+                    <option value="0:45">0:45</option>
+                    <option value="1:00">1:00</option>
+                    <option value="1:15">1:15</option>
+                    <option value="1:30">1:30</option>
+                </select>
                 <button type="submit" class="click" value="calcola">Calcola</button>
                 <button type="button" class="click" onclick="refresh()">Annulla</button>
             </form>
