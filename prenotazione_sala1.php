@@ -26,12 +26,12 @@
     <h1>Prenotazione Sala</h1>
     <div>
         <fieldset>
-                <legend>Selezionare periodo</legend>
-                <span>Da</span><input type="date" id="datepicker" value="" format="dd-mm-yyyy">
-                <span>A</span><input type="date" id="datepickerA" format="dd-mm-yyyy">
-                &emsp;
-                <button onclick="document.getElementById('compilaPeriodo').style.display='block'">Compila</button>
-            </fieldset>
+            <legend>Selezionare periodo</legend>
+            <span>Da</span><input type="date" id="datepicker" value="" format="dd-mm-yyyy">
+            <span>A</span><input type="date" id="datepickerA" format="dd-mm-yyyy">
+            &emsp;
+            <button onclick="document.getElementById('compilaPeriodo').style.display='block'">Compila</button>
+        </fieldset>
         <div id="compilaPeriodo" class="w3-modal">
             <div class="w3-modal-content">
                 <div class="w3-container">
@@ -337,17 +337,6 @@
             </div>
         </div>
         <?php
-        $giorno = $_POST["giorno"];
-        $oraInizio = $_POST["oraInizio"];
-        $oraFine = $_POST["oraFine"];
-        $strsql = "insert into orari (giorno,oraInizio, oraFine) values ('$giorno', '$oraInizio', '$oraFine')";
-        $risultato = mysqli_query ($conn, $strsql);
-        if (! $risultato)
-        {
-            echo "Errore nel comando SQL" . "<br>";
-        }
-        else
-        {
         $strsql = "select * from orari where giorno!= '' ";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
@@ -384,10 +373,10 @@
                 ?>
                 </tbody>
             </table>
-        <?php }
+        <?php
         }
         ?>
-        <!--<p id="prenotazionePeriodo"></p>-->
+        <p></p>
         <div>
             <form name='moduloCalcolaTurni' action="prenotazione_sala1.php" method="post">
                 <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom" type=”number” name='postiSala'>&emsp;
@@ -429,7 +418,7 @@
                     echo "<td>".$riga["giorno"]."</td>";
                     echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
                     echo "<td>".$riga["stanza"]."</td>";
-                    echo "<td> <button id='btn_open_modal' onclick='modifica()'>Inserisci</button> </td>";
+                    echo "<td> <button type='submit' class='click' value='calcola'>Calcola</button> </td>";
                     echo "</form>";
                     echo ("</tr>");
                     $riga = mysqli_fetch_array($risultato);

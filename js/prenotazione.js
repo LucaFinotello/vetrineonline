@@ -129,11 +129,7 @@ function modifica() {
     var w = Math.floor((screen.width)/3);
     var h = Math.floor((screen.height)/3);
     var stile = "top="+t+", left="+l+", width="+w+", height="+h+", status=no, menubar=no, toolbar=no scrollbars=no";
-    var postiTotali = document.moduloCalcolaTurni.postiSala.value;
-    var turno = document.moduloCalcolaTurni.durataTurno.value;
-    var sala = document.getElementById('postiSala');
-    //document.getElementById("sala").innerHTML = sala;
-    window.open('modifica.php', '', stile);
+    window.open('gestione orari.php', '', stile);
 }
 
 function chiudi() {

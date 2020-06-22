@@ -18,17 +18,6 @@ include_once('mysql-fix.php');
 </head>
     <body>
     <h1>Inserisci Prenotazione</h1>
-    <!--<form action="prenotazioneColazione.php" method="POST">
-        <div class="prenotazione">
-            <span class="capo">Data: <input class="inputBottom" name="giorno" type="text" onclick="this.value = new Date();"></span><br>
-            <span class="capo">Turno: <input class="inputBottom" name="turno" type="text" value=""></span><br>
-            <span class="capo">Stanza: <input class="inputBottom" name="stanza" type="text" value=""></span><br><br>
-            <span class="button">
-                <button class="click" type="submit" value="Inserisci" name="Invio">Inserisci</button>
-                <button class="click" type="reset" value="Annulla" name="Annulla" onclick="chiudi()">Annulla</button>
-            </span>
-        </div>
-    </form>-->
     <?php
         $turno = $_POST["turno"];
         $strsql = "select * from prenotazione where turno = '$turno'";
@@ -51,7 +40,7 @@ include_once('mysql-fix.php');
             Turno: <input class="inputBottom" name="turno" type="text" value="<?php echo $riga["turno"]?>"><br>
             Stanza: <input class="inputBottom" name="stanza" type="text" value="<?php echo $riga["stanza"]?>"><br><br>
             <button type="submit" class="click" value="Invia" name="Invio">Prenota</button>
-            <button type="reset" class="click">Annulla</button>
+            <button type="reset" class="click"><a href="prenotazione_sala.php">Annulla</a></button>
         </div>
     </form>
     <?php
