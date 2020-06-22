@@ -21,6 +21,11 @@
         ?>
         <h1>Inserisci orario settimanale dal <?php echo $dataInizio?> al <?php echo $datafine?></h1>
         <form action="prenotazione_sala1.php" method="POST" >
+            <select name="identificatore">
+                <option value="Colazione">Colazione</option>
+                <option value="Pranzo">Pranzo</option>
+                <option value="Cena">Cena</option>
+            </select>
             <table>
                 <thead>
                 <tr>

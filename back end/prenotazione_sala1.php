@@ -30,6 +30,7 @@
         </form>
         <p></p>
         <?php
+        $identificatore= $_POST ['identificatore'];
         $giorno = $_POST['giorno'];
         $oraInizio = $_POST['oraInizio'];
         $oraFine = $_POST['oraFine'];
@@ -45,7 +46,7 @@
         //        $risultato= mysqli_query($conn, $query);
         //    }
         //}
-        $strsql = "insert into orari (giorno, oraInizio, oraFine) values ('$giorno', '$oraInizio', '$oraFine')";
+        $strsql = "insert into orari (giorno, oraInizio, oraFine, identificazione) values ('$giorno', '$oraInizio', '$oraFine', '$identificatore')";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -67,10 +68,21 @@
         else
         {
             ?>
+            <form name="ricercaOrari" action="ricercaOrari.php" method="post">
+                <fieldset>
+                    <legend>Selezione Date</legend>
+                    <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
+                    <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
+                    <span>Identificazione</span><input class="inputBottom" type="text" name="identificazione" value="">
+                    &emsp;
+                    <button type="submit" class="click" value="cerca">Cerca</button>
+                </fieldset>
+            </form>
             <table>
                 <thead>
                     <tr>
                         <td>Giorno</td>
+                        <td>Fascia</td>
                         <td>Ora Inizio</td>
                         <td>Ora Fine</td>
                     </tr>
@@ -81,6 +93,7 @@
                 {
                     echo ("<tr>");
                     echo "<td>".$riga['giorno']."</td>";
+                    echo "<td>".$riga['identificazione']."</td>";
                     echo "<td>".$riga['oraInizio']."</td>";
                     echo "<td>".$riga['oraFine']."</td>";
                     echo ("</tr>");
@@ -92,15 +105,6 @@
         <?php
         }
         ?>
-        <form name="ricercaOrari" action="ricercaOrari.php" method="post">
-            <fieldset>
-                <legend>Selezione Date</legend>
-                <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
-                <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
-                &emsp;
-                <button type="submit" class="click" value="compila">Compila</button>
-            </fieldset>
-        </form>
         <p></p>
         <div>
             <form action="calcola.php" method="POST">

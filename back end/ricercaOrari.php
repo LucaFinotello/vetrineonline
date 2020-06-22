@@ -30,6 +30,7 @@ include_once('mysql-fix.php');
     </form>
     <p></p>
     <?php
+    $identificatore= $_POST ['identificatore'];
     $giorno = $_POST['giorno'];
     $oraInizio = $_POST['oraInizio'];
     $oraFine = $_POST['oraFine'];
@@ -45,7 +46,7 @@ include_once('mysql-fix.php');
     //        $risultato= mysqli_query($conn, $query);
     //    }
     //}
-    $strsql = "insert into orari (giorno, oraInizio, oraFine) values ('$giorno', '$oraInizio', '$oraFine')";
+    $strsql = "insert into orari (giorno, oraInizio, oraFine, identificazione) values ('$giorno', '$oraInizio', '$oraFine', '$identificatore')";
     $risultato = mysqli_query($conn, $strsql);
     if (! $risultato)
     {
@@ -67,20 +68,48 @@ include_once('mysql-fix.php');
         else
         {
             ?>
+            <form name="ricercaOrari" action="ricercaOrari.php" method="post">
+                <fieldset>
+                    <legend>Selezione Date</legend>
+                    <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
+                    <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
+                    <span>Identificazione</span><input class="inputBottom" type="text" name="identificazione" value="">
+                    &emsp;
+                    <button type="submit" class="click" value="cerca">Cerca</button>
+                </fieldset>
+            </form>
             <table>
-                <thead>
-                <tr>
-                    <td>Giorno</td>
-                    <td>Ora Inizio</td>
-                    <td>Ora Fine</td>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
+            <thead>
+            <tr>
+                <td>Giorno</td>
+                <td>Fascia</td>
+                <td>Ora Inizio</td>
+                <td>Ora Fine</td>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            $dataInizio = $_POST['dataInizio'];
+            $dataFine = $_POST['dataFine'];
+            $identificazione = $_POST['identificazione'];
+            $strsql = "select * from orari where identificazione='$identificazione'";
+            $risultato = mysqli_query($conn, $strsql);
+            if (! $risultato)
+            {
+                echo "Errore nel comando SQL" . "<br>";
+            }
+            $riga = mysqli_fetch_array($risultato);
+            if (! $riga)
+            {
+                echo "Nessuna corrispondenza dalla ricerca";
+            }
+            else
+            {
                 while ($riga)
                 {
                     echo ("<tr>");
                     echo "<td>".$riga['giorno']."</td>";
+                    echo "<td>".$riga['identificazione']."</td>";
                     echo "<td>".$riga['oraInizio']."</td>";
                     echo "<td>".$riga['oraFine']."</td>";
                     echo ("</tr>");
@@ -92,18 +121,9 @@ include_once('mysql-fix.php');
             <?php
         }
         ?>
-        <form name="ricercaOrari" action="ricercaOrari.php" method="post">
-            <fieldset>
-                <legend>Selezione Date</legend>
-                <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
-                <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
-                &emsp;
-                <button type="submit" class="click" value="compila">Compila</button>
-            </fieldset>
-        </form>
         <p></p>
         <div>
-            <form name='moduloCalcolaTurni' action="calcola.php" method="post">
+            <form action="calcola.php" method="POST">
                 <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom" type=”number” name='postiSala'>&emsp;
                 <span>Durata turno</span>&nbsp;
                 <select name="durataTurno">
@@ -119,78 +139,52 @@ include_once('mysql-fix.php');
             </form>
         </div>
         <?php
-        $giorno = date('j-m-Y');
-        $postiSala= $_POST['postiSala'];
-        $durataTurno = $_POST['durataTurno'];
-        $turno = $durataTurno;
-        $strsql = "insert into prenotazione (giorno, turno, postiSala) value ('$giorno','$turno', '$postiSala')";
+        $strsql = "select * from prenotazione ";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
             echo "Errore nel comando SQL" . "<br>";
         }
+        $riga = mysqli_fetch_array($risultato);
+        if (! $riga)
+        {
+            echo "";
+        }
         else
         {
-            $strsql = "select * from prenotazione ";
-            $risultato = mysqli_query($conn, $strsql);
-            if (! $risultato)
-            {
-                echo "Errore nel comando SQL" . "<br>";
-            }
-            $riga = mysqli_fetch_array($risultato);
-            if (! $riga)
-            {
-                echo "";
-            }
-            else
-            {
+            ?>
+            <table style="margin-top: 10px; margin-bottom:10px">
+                <thead>
+                <tr>
+                    <td>Giorno</td>
+                    <td>postisala</td>
+                    <td>Turno</td>
+                    <td>Stanza</td>
+                    <td>Inserisci</td>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                while ($riga)
+                {
+                    echo ("<tr>");
+                    echo "<form action='modifica.php' method='POST'>";
+                    echo "<td>".$riga["giorno"]."</td>";
+                    echo "<td>".$riga["postiSala"]."</td>";
+                    echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
+                    echo "<td>".$riga["stanza"]."</td>";
+                    echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
+                    echo "</form>";
+                    echo ("</tr>");
+                    $riga = mysqli_fetch_array($risultato);
+                }
                 ?>
-                <table style="margin-top: 10px; margin-bottom:10px">
-                    <thead>
-                    <tr>
-                        <td>Giorno</td>
-                        <td>Turno</td>
-                        <td>Stanza</td>
-                        <td>Inserisci</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php
-                    while ($riga)
-                    {
-                        echo ("<tr>");
-                        echo "<form action='modifica.php' method='POST'>";
-                        echo "<td>".$riga["giorno"]."</td>";
-                        echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
-                        echo "<td>".$riga["stanza"]."</td>";
-                        echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
-                        echo "</form>";
-                        echo ("</tr>");
-                        $riga = mysqli_fetch_array($risultato);
-                    }
-                    ?>
-                    </tbody>
-                </table>
-            <?php }
+                </tbody>
+            </table>
+        <?php }
         }
     }
-        ?>
+    ?>
 </div>
 </body>
 </html>
-<script>
-    const elementsturni = document.querySelector("#durataTurno");
-    const turniArray = [...elementsturni];
-
-    // Now you can use cool array prototypes
-    turniArray.forEach(element => {
-        console.log(element);
-    });
-
-    var array_turno= ['0:15','0:30','0:45','1:00','1:15','1:30'
-    ];
-    turni = document.getElementById('durataTurno');
-    for( turno in array_turno ) {
-        turni.add( new Option( array_turno[turno] ));
-    };
-</script>
