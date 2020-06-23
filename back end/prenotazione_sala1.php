@@ -38,9 +38,8 @@
         $datafine = $_POST["dataFine"];
         $codiceStruttura = 'H001';
 
-        $data = new DateTime('NOW');
-        //$data = DateTime::createFromFormat('m-d-Y H:i:s', $dataInizio);
-        $ymd_data = $data->format('Y-m-d H:i:s');
+        $data = date("d-m-Y", strtotime($dataInizio));
+        
 
         //echo "Data e ora di oggi: ".$ymd_data."<br>";
 
