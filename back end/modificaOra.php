@@ -16,6 +16,8 @@ include_once('mysql-fix.php');
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="js/prenotazione.js"></script>
+        <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+        <script type="text/javascript" src="DataTables/datatables.min.js"></script>
     </head>
     <body>
         <?php
@@ -66,7 +68,7 @@ include_once('mysql-fix.php');
                     <button type="submit" class="click" value="compila">Compila</button>
                 </fieldset>
             </form>
-        <table>
+        <table id="example" class="display">
             <thead>
             <tr>
                 <td>Giorno</td>
@@ -160,3 +162,10 @@ include_once('mysql-fix.php');
         ?>
     </body>
 </html>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "pagingType": "full_numbers"
+        } );
+    } );
+</script>

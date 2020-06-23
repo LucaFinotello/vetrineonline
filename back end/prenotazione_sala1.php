@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="js/prenotazione.js"></script>
+    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
 </head>
 <body>
     <h1>Prenotazione Sala</h1>
@@ -32,7 +34,7 @@
         <p></p>
         <?php
         $identificatore= $_POST ['identificatore'];
-        $giorno = $_POST['giorno'];
+        //$giorno = $_POST['giorno'];
         $oraInizio = $_POST['oraInizio'];
         $oraFine = $_POST['oraFine'];
         $dataInizio = $_POST["dataInizio"];
@@ -49,7 +51,7 @@
         $date = mktime($mese, $giorno, $anno);
         for ($i = 0; $i < 30; $i++) {
             $giorno = strftime('%A, %e %B %Y', $date + $i * 86400);
-            $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraInizio',
+            $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraFine',
                         identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
             $risultato = mysqli_query($conn, $strsql);
         }
@@ -84,7 +86,7 @@
                     <button type="submit" class="click" value="cerca">Cerca</button>
                 </fieldset>
             </form>
-            <table>
+            <table id="example" class="display">
                 <thead>
                     <tr>
                         <td>Giorno</td>
@@ -181,3 +183,10 @@
     </div>
 </body>
 </html>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "pagingType": "full_numbers"
+        } );
+    } );
+</script>

@@ -16,13 +16,15 @@ include_once('mysql-fix.php');
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="js/prenotazione.js"></script>
+        <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+        <script type="text/javascript" src="DataTables/datatables.min.js"></script>
     </head>
     <body>
         <?php
             $giorno = $_POST["giorno"];
             $turno = $_POST["turno"];
             $stanza = $_POST["stanza"];
-            $strsql = "update prenotazione set stanza='$stanza' where turno = '$turno'";
+            $strsql = "update prenotazione set turno='$turno', stanza='$stanza' where giorno = '$giorno'";
             $risultato = mysqli_query($conn, $strsql);
             if (!$risultato)
               {
@@ -59,12 +61,14 @@ include_once('mysql-fix.php');
         else
         {
             ?>
-        <table>
+        <table id="example" class="display">
             <thead>
             <tr>
                 <td>Giorno</td>
+                <td>Fascia</td>
                 <td>Ora Inizio</td>
                 <td>Ora Fine</td>
+                <td>Modifica</td>
             </tr>
             </thead>
             <tbody>
@@ -72,9 +76,13 @@ include_once('mysql-fix.php');
             while ($riga)
             {
                 echo ("<tr>");
-                echo "<td>".$riga['giorno']."</td>";
+                echo "<form action='modificaOrari.php' method='post'>";
+                echo "<td><input style='text-align: center; border: none; background: #f7f7f7' class='Bordernone' name='giorno' value='".$riga['giorno']."'/></td>";
+                echo "<td>".$riga['identificazione']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
+                echo "<td><button type='submit' class='click'>Modifica</button>";
+                echo "</form>";
                 echo ("</tr>");
                 $riga = mysqli_fetch_array($risultato);
             }
@@ -156,3 +164,10 @@ include_once('mysql-fix.php');
         ?>
     </body>
 </html>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "pagingType": "full_numbers"
+        } );
+    } );
+</script>

@@ -17,7 +17,6 @@ include_once('mysql-fix.php');
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="js/prenotazione.js"></script>
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
-
     <script type="text/javascript" src="DataTables/datatables.min.js"></script>
 </head>
 <body>
