@@ -13,6 +13,7 @@ include_once('mysql-fix.php');
     <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="js/prenotazione.js"></script>
 </head>
@@ -53,7 +54,7 @@ include_once('mysql-fix.php');
                 <button type="submit" class="click" value="cerca">Cerca</button>
             </fieldset>
         </form>
-        <table>
+        <table id="example" class="display">
             <thead>
             <tr>
                 <td>Giorno</td>
@@ -148,3 +149,10 @@ include_once('mysql-fix.php');
     </div>
 </body>
 </html>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            "pagingType": "full_numbers"
+        } );
+    } );
+</script>
