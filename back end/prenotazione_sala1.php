@@ -1,5 +1,6 @@
 <?php
     session_start();
+        setlocale(LC_TIME, 'italian'); // it_IT
     include("db_con.php");
     include_once('mysql-fix.php');
 ?>
@@ -39,31 +40,17 @@
         $codiceStruttura = 'H001';
 
         $data = date("d-m-Y", strtotime($dataInizio));
-        
 
-        //echo "Data e ora di oggi: ".$ymd_data."<br>";
-
-        $data_oggi = substr($ymd_data, 0, strlen($ymd_data)-9);//togliamo igli ultimi 9 caratteri e otteniamo solo il giorno
+        $data_oggi = substr($data, 0, strlen($data));//togliamo igli ultimi 9 caratteri e otteniamo solo il giorno
         list($anno, $mese, $giorno) = explode("-",$data_oggi);
-        /*echo "Anno ==> ".$anno."<br>";
-        echo "Mese ==> ".$mese."<br>";
-        echo "Giorno ==> ".$giorno."<br>";*/
-
-        $orario_oggi = substr($ymd_data, 10); //togliamo i primi 10 caratteri e otteniamo solo l'orario
-        list($ora, $minuti, $secondi) = explode(":",$orario_oggi);
-        /*echo "Ora ==> ".$ora."<br>";
-        echo "Minuti ==> ".$minuti."<br>";
-        echo "Secondi ==> ".$secondi."<br>";
-        echo "Timestamp data di oggi: ";
-        echo mktime($ora, $minuti, $secondi, $mese, $giorno, $anno)."<br>";*/
 
 
-        setlocale(LC_TIME, 'italian'); // it_IT
-        $date = mktime($ora, $minuti, $secondi, $mese, $giorno, $anno);
+        $date = mktime($mese, $giorno, $anno);
         for ($i = 0; $i < 4; $i++) {
             /*print(strftime('%A, %e %B %Y', $date + $i * 86400) . '<br>');*/
             $giorno = strftime('%A, %e %B %Y', $date + $i * 86400);
-            $strsql = "insert into orari (giorno, oraInizio, oraFine, identificazione, codiceStruttura) values ('$giorno', '$oraInizio', '$oraFine', '$identificatore', '$codiceStruttura')";
+            $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraInizio',
+                        identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
             $risultato = mysqli_query($conn, $strsql);
         }
 
