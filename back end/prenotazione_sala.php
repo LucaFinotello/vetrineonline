@@ -69,7 +69,7 @@ include_once('mysql-fix.php');
             {
                 echo "<tr>";
                 echo "<form action='modificaOrari.php' method='post'>";
-                echo "<td><input name='giorno' value='".$riga['giorno']."'/></td>";
+                echo "<td><input style='text-align: center; border: none; background: #f7f7f7' name='giorno' value='".$riga['giorno']."'/></td>";
                 echo "<td>".$riga['identificazione']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
