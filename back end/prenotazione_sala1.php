@@ -19,7 +19,7 @@
 <body>
     <h1>Prenotazione Sala</h1>
     <div>
-        <form name="gestioneOrari" action="gestione orari.php" method="post">
+        <form name="gestioneOrari" action="gestioneOrari.php" method="post">
             <fieldset>
                 <legend>Selezionare periodo</legend>
                 <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
@@ -65,13 +65,9 @@
             /*print(strftime('%A, %e %B %Y', $date + $i * 86400) . '<br>');*/
             $giorno = strftime('%A, %e %B %Y', $date + $i * 86400);
             $strsql = "insert into orari (giorno, oraInizio, oraFine, identificazione, codiceStruttura) values ('$giorno', '$oraInizio', '$oraFine', '$identificatore', '$codiceStruttura')";
-
+            $risultato = mysqli_query($conn, $strsql);
         }
 
-
-        //$strsql = "insert into orari (giorno, oraInizio, oraFine, identificazione) values ('$giorno', '$oraInizio', '$oraFine', '$identificatore')";
-        //$strsql = "insert into orari (giorno, oraInizio, oraFine, identificazione) values ('$giorno', '$oraInizio', '$oraFine', '$identificatore')";
-        $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
             echo "Errore nel comando SQL" . "<br>";
