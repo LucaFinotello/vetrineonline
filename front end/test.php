@@ -32,14 +32,7 @@ include_once('mysql-fix.php');
                   echo $turno. "<br>";
                   echo $stanza. "<br>";
               } else {
-                echo "<div>
-    <form action='turno.php' method='POST'>
-        <fieldset>
-            <legend>Inserisci giorno</legend>
-            Giorno: <input class='inputBottom' type='date' name='giorno' type='text' format='dd-mm-yyyy' value=''/>
-            <button class='click' type='submit' name='invia' value='vai'>Vai </button>
-        </fieldset>
-    </form>";
+                echo "<input type='text' id='myInput' onkeyup='myFunction()' placeholder='Cerca per giorno...'>";
         $strsql = "select * from prenotazione";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
@@ -54,16 +47,13 @@ include_once('mysql-fix.php');
         else
         {
             ?>
-            <table style="margin-top: 10px; margin-bottom: 10px;">
-                <thead>
-                <tr>
-                    <td>Giorno</td>
-                    <td>Turno</td>
-                    <td>Stanza</td>
-                    <td>Inserisci</td>
+            <table id="myTable">
+                <tr class="header">
+                    <th>Giorno</th>
+                    <th>Turno</th>
+                    <th>Stanza</th>
+                    <th>Modifica</th>
                 </tr>
-                </thead>
-                <tbody>
                 <?php
                 while ($riga)
                 {
@@ -78,11 +68,9 @@ include_once('mysql-fix.php');
                     $riga = mysqli_fetch_array($risultato);
                 }
                 ?>
-                </tbody>
             </table>
         <?php }
             }
         ?>
-    </div>
     </body>
 </html>

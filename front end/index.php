@@ -17,73 +17,71 @@ include_once('mysql-fix.php');
 </head>
 <body>
 <h1>Prenota il tuo turno</h1>
-<div>
-    <form action="turno.php" method="POST">
-        <fieldset>
-            <legend>Inserisci giorno</legend>
-            Giorno: <input class="inputBottom" type="date" name="giorno" type="text" format="dd-mm-yyyy" value=""/>
-            <button class="click" type="submit" name="invia" value="vai">Vai </button>
-        </fieldset>
-    </form>
-    <?php
-        $strsql = "select * from prenotazione";
-        $risultato = mysqli_query($conn, $strsql);
-        if (! $risultato)
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca per giorno...">
+<?php
+$strsql = "select * from prenotazione";
+$risultato = mysqli_query($conn, $strsql);
+if (! $risultato)
+{
+    echo "Errore nel comando SQL" . "<br>";
+}
+$riga = mysqli_fetch_array($risultato);
+if (! $riga)
+{
+    echo "La data non corrisponde";
+}
+else
+{
+?>
+<table id="myTable">
+    <tr class="header">
+        <th>Giorno</th>
+        <th>Turno</th>
+        <th>Stanza</th>
+        <th>Modifica</th>
+    </tr>
+        <?php
+        while ($riga)
         {
-            echo "Errore nel comando SQL" . "<br>";
+            echo ("<tr>");
+            echo "<form action='modifica.php' method='POST'>";
+            echo "<td>".$riga["giorno"]."</td>";
+            echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
+            echo "<td>".$riga["stanza"]."</td>";
+            echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
+            echo "</form>";
+            echo ("</tr>");
+            $riga = mysqli_fetch_array($risultato);
         }
-        $riga = mysqli_fetch_array($risultato);
-        if (! $riga)
-        {
-            echo "La data non corrisponde";
-        }
-        else
-        {
-            ?>
-            <table style="margin-top: 10px; margin-bottom: 10px;">
-                <thead>
-                <tr>
-                    <td>Giorno</td>
-                    <td>Turno</td>
-                    <td>Stanza</td>
-                    <td>Inserisci</td>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                while ($riga)
-                {
-                    echo ("<tr>");
-                    echo "<form action='modifica.php' method='POST'>";
-                    echo "<td>".$riga["giorno"]."</td>";
-                    echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
-                    echo "<td>".$riga["stanza"]."</td>";
-                    echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
-                    echo "</form>";
-                    echo ("</tr>");
-                    $riga = mysqli_fetch_array($risultato);
-                }
-                ?>
-                </tbody>
-            </table>
+        ?>
+        </tbody>
+    </table>
         <?php }
         ?>
-    </div>
+
 </body>
 </html>
+
 <script>
-    const elementsturni = document.querySelector("#durataTurno");
-    const turniArray = [...elementsturni];
+    function myFunction() {
+        // Declare variables
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("myTable");
+        tr = table.getElementsByTagName("tr");
 
-    // Now you can use cool array prototypes
-    turniArray.forEach(element => {
-        console.log(element);
-    });
-
-    var array_turno= ['0:15','0:30','0:45','1:00','1:15','1:30'
-    ];
-    turni = document.getElementById('durataTurno');
-    for( turno in array_turno ) {
-        turni.add( new Option( array_turno[turno] ));
-    };
+        // Loop through all table rows, and hide those who don't match the search query
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
 </script>
