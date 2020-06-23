@@ -40,14 +40,14 @@
         $codiceStruttura = 'H001';
 
         $data = date("d-m-Y", strtotime($dataInizio));
+        $datafine = date("d-m-Y", strtotime($datafine));
 
-        $data_oggi = substr($data, 0, strlen($data));//togliamo igli ultimi 9 caratteri e otteniamo solo il giorno
+        $data_oggi = substr($data, 0, strlen($data));
         list($anno, $mese, $giorno) = explode("-",$data_oggi);
 
 
         $date = mktime($mese, $giorno, $anno);
-        for ($i = 0; $i < 4; $i++) {
-            /*print(strftime('%A, %e %B %Y', $date + $i * 86400) . '<br>');*/
+        for ($i = 0; $i < 30; $i++) {
             $giorno = strftime('%A, %e %B %Y', $date + $i * 86400);
             $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraInizio',
                         identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
@@ -60,7 +60,7 @@
         }
         else
         {
-        $strsql = "select * from orari where giorno!= '' ";
+        $strsql = "select * from orari ";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -91,6 +91,7 @@
                         <td>Fascia</td>
                         <td>Ora Inizio</td>
                         <td>Ora Fine</td>
+                        <td>Modifica</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,10 +99,13 @@
                 while ($riga)
                 {
                     echo ("<tr>");
-                    echo "<td>".$riga['giorno']."</td>";
+                    echo "<form action='modificaOrari.php' method='post'>";
+                    echo "<td><input style='text-align: center; border: none; background: #f7f7f7' name='giorno' value='".$riga['giorno']."'/></td>";
                     echo "<td>".$riga['identificazione']."</td>";
                     echo "<td>".$riga['oraInizio']."</td>";
                     echo "<td>".$riga['oraFine']."</td>";
+                    echo "<td><button type='submit' class='click'>Modifica</button>";
+                    echo "</form>";
                     echo ("</tr>");
                     $riga = mysqli_fetch_array($risultato);
                 }
@@ -177,19 +181,3 @@
     </div>
 </body>
 </html>
-<script>
-    const elementsturni = document.querySelector("#durataTurno");
-    const turniArray = [...elementsturni];
-
-    // Now you can use cool array prototypes
-    turniArray.forEach(element => {
-        console.log(element);
-    });
-
-    var array_turno= ['0:15','0:30','0:45','1:00','1:15','1:30'
-    ];
-    turni = document.getElementById('durataTurno');
-    for( turno in array_turno ) {
-        turni.add( new Option( array_turno[turno] ));
-    };
-</script>

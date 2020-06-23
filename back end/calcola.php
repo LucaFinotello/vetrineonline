@@ -30,7 +30,7 @@ include_once('mysql-fix.php');
     </form>
     <p></p>
     <?php
-        $strsql = "select * from orari where giorno!= '' ";
+        $strsql = "select * from orari";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -100,7 +100,7 @@ include_once('mysql-fix.php');
         $postiSala= $_POST['postiSala'];
         $durataTurno = $_POST['durataTurno'];
         $turno = $durataTurno;
-        $strsql = "insert into prenotazione (giorno, turno, postiSala) value ('$giorno','$turno', '$postiSala')";
+        $strsql = "insert into prenotazione set giorno='$giorno', turno='$turno', postiSala='$postiSala'";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
