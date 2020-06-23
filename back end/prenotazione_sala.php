@@ -28,6 +28,58 @@ include_once('mysql-fix.php');
             <button type="submit" class="click" value="compila">Compila</button>
         </fieldset>
     </form>
+    <?php
+    $strsql = "select * from orari where codiceStruttura='H001'";
+    $risultato = mysqli_query($conn, $strsql);
+    if (! $risultato)
+    {
+    echo "Errore nel comando SQL" . "<br>";
+    }
+    $riga = mysqli_fetch_array($risultato);
+    if (! $riga)
+    {
+    echo "";
+        }
+        else
+        {
+        ?>
+        <form name="ricercaOrari" action="ricercaOrari.php" method="post">
+            <fieldset>
+                <legend>Selezione Date</legend>
+                <span>Da</span><input type="text" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy" placeholder="gg/mm/aaaa">
+                <span>A</span><input type="text" id="datepickerA" name="dataFine" format="dd-mm-yyyy" placeholder="gg/mm/aaaa">
+                <span>Identificazione</span><input class="inputBottom" type="text" name="identificazione" value="" placeholder="Colazione">
+                &emsp;
+                <button type="submit" class="click" value="cerca">Cerca</button>
+            </fieldset>
+        </form>
+        <table>
+            <thead>
+            <tr>
+                <td>Giorno</td>
+                <td>Fascia</td>
+                <td>Ora Inizio</td>
+                <td>Ora Fine</td>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            while ($riga)
+            {
+                echo ("<tr>");
+                echo "<td>".$riga['giorno']."</td>";
+                echo "<td>".$riga['identificazione']."</td>";
+                echo "<td>".$riga['oraInizio']."</td>";
+                echo "<td>".$riga['oraFine']."</td>";
+                echo ("</tr>");
+                $riga = mysqli_fetch_array($risultato);
+            }
+            ?>
+            </tbody>
+        </table>
+        <?php
+        }
+        ?>
     <p></p>
     <div>
         <div>
@@ -89,23 +141,6 @@ include_once('mysql-fix.php');
         </table>
         <?php }
         ?>
-        <!--<p id="inserimento"></p>-->
     </div>
 </body>
 </html>
-<script>
-    const elementsturni = document.querySelector("#durataTurno");
-    const turniArray = [...elementsturni];
-
-    // Now you can use cool array prototypes
-    turniArray.forEach(element => {
-        console.log(element);
-    });
-
-    var array_turno= ['0:15','0:30','0:45','1:00','1:15','1:30'
-    ];
-    turni = document.getElementById('durataTurno');
-    for( turno in array_turno ) {
-        turni.add( new Option( array_turno[turno] ));
-    };
-</script>

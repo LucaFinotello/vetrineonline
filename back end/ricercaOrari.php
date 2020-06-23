@@ -47,9 +47,9 @@ include_once('mysql-fix.php');
             <form name="ricercaOrari" action="ricercaOrari.php" method="post">
                 <fieldset>
                     <legend>Selezione Date</legend>
-                    <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
-                    <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
-                    <span>Identificazione</span><input class="inputBottom" type="text" name="identificazione" value="">
+                    <span>Da</span><input type="text" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy" placeholder="gg/mm/aaaa">
+                    <span>A</span><input type="text" id="datepickerA" name="dataFine" format="dd-mm-yyyy" placeholder="gg/mm/aaaa">
+                    <span>Identificazione</span><input class="inputBottom" type="text" name="identificazione" value="" placeholder="Colazione">
                     &emsp;
                     <button type="submit" class="click" value="cerca">Cerca</button>
                 </fieldset>
@@ -68,7 +68,7 @@ include_once('mysql-fix.php');
             $dataInizio = $_POST['dataInizio'];
             $dataFine = $_POST['dataFine'];
             $identificazione = $_POST['identificazione'];
-            $strsql = "select * from orari where identificazione='$identificazione'";
+            $strsql = "select * from orari where (codiceStruttura='H001' and identificazione='$identificazione')";
             $risultato = mysqli_query($conn, $strsql);
             if (! $risultato)
             {

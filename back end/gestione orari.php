@@ -18,9 +18,12 @@
             include_once('mysql-fix.php');
             $dataInizio = $_POST["dataInizio"];
             $datafine = $_POST["dataFine"];
+            $codiceStruttura= 'H001';
         ?>
         <h1>Inserisci orario settimanale dal <?php echo $dataInizio?> al <?php echo $datafine?></h1>
         <form action="prenotazione_sala1.php" method="POST" >
+            <input type="date" name="dataInizio" value="<?php echo $dataInizio?>"/>
+            <input type="date" name="dataFine" value="<?php echo $datafine?>"/>
             <select name="identificatore">
                 <option value="Colazione">Colazione</option>
                 <option value="Pranzo">Pranzo</option>
