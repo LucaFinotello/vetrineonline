@@ -30,29 +30,6 @@ include_once('mysql-fix.php');
     </form>
     <p></p>
     <?php
-    $giorno = $_POST['giorno'];
-    $oraInizio = $_POST['oraInizio'];
-    $oraFine = $_POST['oraFine'];
-    //$giorno = array ($_POST["giorno"], $_POST["giorno1"], $_POST["giorno2"], $_POST["giorno3"], $_POST["giorno4"], $_POST["giorno5"], $_POST["giorno6"]);
-    //$oraInizio = array($_POST["oraInizio"],$_POST["oraInizio1"],$_POST["oraInizio2"],$_POST["oraInizio3"],$_POST["oraInizio4"],$_POST["oraInizio5"],$_POST["oraInizio6"]);
-    //$oraFine = array($_POST["oraFine"], $_POST["oraFine2"], $_POST["oraFine2"], $_POST["oraFine3"],$_POST["oraFine4"], $_POST["oraFine5"], $_POST["oraFine6"]);
-    //array_push($giorno, '');
-    //if (is_array($giorno)){
-    // foreach ($giorno as $days) {
-    //       $day = mysqli_real_escape_string($conn, $giorno[$days][1]);
-    //        $query = "insert into orari(giorno)
-    //        values ('$day')";
-    //        $risultato= mysqli_query($conn, $query);
-    //    }
-    //}
-    $strsql = "insert into orari (giorno, oraInizio, oraFine) values ('$giorno', '$oraInizio', '$oraFine')";
-    $risultato = mysqli_query($conn, $strsql);
-    if (! $risultato)
-    {
-        echo "Errore nel comando SQL" . "<br>";
-    }
-    else
-    {
         $strsql = "select * from orari where giorno!= '' ";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
@@ -172,25 +149,8 @@ include_once('mysql-fix.php');
                     </tbody>
                 </table>
             <?php }
-        }
     }
         ?>
 </div>
 </body>
 </html>
-<script>
-    const elementsturni = document.querySelector("#durataTurno");
-    const turniArray = [...elementsturni];
-
-    // Now you can use cool array prototypes
-    turniArray.forEach(element => {
-        console.log(element);
-    });
-
-    var array_turno= ['0:15','0:30','0:45','1:00','1:15','1:30'
-    ];
-    turni = document.getElementById('durataTurno');
-    for( turno in array_turno ) {
-        turni.add( new Option( array_turno[turno] ));
-    };
-</script>
