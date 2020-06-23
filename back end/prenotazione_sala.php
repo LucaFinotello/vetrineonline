@@ -60,18 +60,22 @@ include_once('mysql-fix.php');
                 <td>Fascia</td>
                 <td>Ora Inizio</td>
                 <td>Ora Fine</td>
+                <td>Modifica</td>
             </tr>
             </thead>
             <tbody>
             <?php
             while ($riga)
             {
-                echo ("<tr>");
-                echo "<td>".$riga['giorno']."</td>";
+                echo "<tr>";
+                echo "<form action='modificaOrari.php' method='post'>";
+                echo "<td><input name='giorno' value='".$riga['giorno']."'/></td>";
                 echo "<td>".$riga['identificazione']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
-                echo ("</tr>");
+                echo "<td><button type='submit' class='click'>Modifica</button>";
+                echo "</form>";
+                echo "</tr>";
                 $riga = mysqli_fetch_array($risultato);
             }
             ?>
@@ -127,15 +131,15 @@ include_once('mysql-fix.php');
                 while ($riga)
                 {
                     echo ("<tr>");
-            echo "<form action='modifica.php' method='POST'>";
-                echo "<td>".$riga["giorno"]."</td>";
-                echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
-                echo "<td>".$riga["stanza"]."</td>";
-                echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
-                echo "</form>";
-            echo ("</tr>");
-            $riga = mysqli_fetch_array($risultato);
-            }
+                    echo "<form action='modifica.php' method='POST'>";
+                    echo "<td>".$riga["giorno"]."</td>";
+                    echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'/></td>";
+                    echo "<td>".$riga["stanza"]."</td>";
+                    echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
+                    echo "</form>";
+                    echo ("</tr>");
+                    $riga = mysqli_fetch_array($risultato);
+                }
             ?>
             </tbody>
         </table>
