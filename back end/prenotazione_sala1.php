@@ -139,7 +139,7 @@
             {
             ?>
             <p></p><br>
-            <table>
+            <table id="turni" class="display">
                 <thead>
                 <tr>
                     <td>Giorno</td>
@@ -177,6 +177,11 @@
 <script>
     $(document).ready(function() {
         $('#example').DataTable( {
+            "pagingType": "full_numbers"
+        } );
+    } );
+    $(document).ready(function() {
+        $('#turni').DataTable( {
             "pagingType": "full_numbers"
         } );
     } );
