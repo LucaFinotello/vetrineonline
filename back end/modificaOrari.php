@@ -29,7 +29,7 @@ if (! $risultato)
 $riga = mysqli_fetch_array($risultato);
 if (! $riga)
 {
-    echo "slot errato" . "<br>";
+    echo "Si è verificato un problema al caricamento dello slot. Riprovare piu tardi. :)" . "<br>";
 }
 else
 {

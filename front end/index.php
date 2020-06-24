@@ -46,7 +46,7 @@ else
             echo ("<tr>");
             echo "<form action='modifica.php' method='POST'>";
             echo "<td>".$riga["giorno"]."</td>";
-            echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
+            echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
             echo "<td>".$riga["stanza"]."</td>";
             echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
             echo "</form>";

@@ -1,10 +1,11 @@
 <?php
 session_start();
+setlocale(LC_TIME, 'italian'); // it_IT
 include("db_con.php");
 include_once('mysql-fix.php');
 ?>
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Vetrineonline</title>
@@ -136,7 +137,7 @@ include_once('mysql-fix.php');
                     echo ("<tr>");
                     echo "<form action='modifica.php' method='POST'>";
                     echo "<td>".$riga["giorno"]."</td>";
-                    echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'/></td>";
+                    echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                     echo "<td>".$riga["stanza"]."</td>";
                     echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
                     echo "</form>";
