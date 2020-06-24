@@ -136,7 +136,7 @@ include_once('mysql-fix.php');
         $date = mktime($mese, $giorno, $anno);
         for ($i = 0; $i < 7; $i++) {
             $giorno = strftime('%A, %e %B %Y', $date + $i * 86400);
-            $strsql = "insert into prenotazione set giorno='$giorno', turno='$turno', postiSala='$postiSala'";
+            $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala'";
             $risultato = mysqli_query($conn, $strsql);
         }
 
@@ -177,7 +177,7 @@ include_once('mysql-fix.php');
                         echo ("<tr>");
                         echo "<form action='modifica.php' method='POST'>";
                         echo "<td>".$riga["giorno"]."</td>";
-                        echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
+                        echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                         echo "<td>".$riga["stanza"]."</td>";
                         echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
                         echo "</form>";
