@@ -47,16 +47,7 @@ include_once('mysql-fix.php');
         else
         {
         ?>
-        <form name="ricercaOrari" action="ricercaOrari.php" method="post">
-            <fieldset>
-                <legend>Selezione Date</legend>
-                <span>Da</span><input type="text" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy" placeholder="gg/mm/aaaa">
-                <span>A</span><input type="text" id="datepickerA" name="dataFine" format="dd-mm-yyyy" placeholder="gg/mm/aaaa">
-                <span>Identificazione</span><input class="inputBottom" type="text" name="identificazione" value="" placeholder="Colazione">
-                &emsp;
-                <button type="submit" class="click" value="cerca">Cerca</button>
-            </fieldset>
-        </form>
+        <br>
         <table id="example" class="display">
             <thead>
             <tr>
@@ -73,7 +64,7 @@ include_once('mysql-fix.php');
             {
                 echo "<tr>";
                 echo "<form action='modificaOrari.php' method='post'>";
-                echo "<td><input style='text-align: center; border: none; background: #f7f7f7' name='giorno' value='".$riga['giorno']."'/></td>";
+                echo "<td><input class='inputTable' name='giorno' value='".$riga['giorno']."'/></td>";
                 echo "<td>".$riga['identificazione']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
@@ -121,7 +112,8 @@ include_once('mysql-fix.php');
         else
         {
         ?>
-        <table style="margin-top: 10px; margin-bottom: 10px;">
+        <p></p><br>
+        <table>
             <thead>
             <tr>
                 <td>Giorno</td>
@@ -137,7 +129,7 @@ include_once('mysql-fix.php');
                     echo ("<tr>");
                     echo "<form action='modifica.php' method='POST'>";
                     echo "<td>".$riga["giorno"]."</td>";
-                    echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
+                    echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                     echo "<td>".$riga["stanza"]."</td>";
                     echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
                     echo "</form>";

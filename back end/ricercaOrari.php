@@ -129,7 +129,8 @@ include_once('mysql-fix.php');
         else
         {
             ?>
-            <table style="margin-top: 10px; margin-bottom:10px">
+            <p></p><br>
+            <table>
                 <thead>
                 <tr>
                     <td>Giorno</td>
@@ -147,7 +148,7 @@ include_once('mysql-fix.php');
                     echo "<form action='modifica.php' method='POST'>";
                     echo "<td>".$riga["giorno"]."</td>";
                     echo "<td>".$riga["postiSala"]."</td>";
-                    echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
+                    echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
                     echo "<td>".$riga["stanza"]."</td>";
                     echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
                     echo "</form>";

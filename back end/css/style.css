@@ -72,3 +72,9 @@ input.inputPrenotazione {
     text-align: center;
     border: none;
 }
+
+.inputTable {
+    text-align: center!important;
+    border: none !important;
+    background: transparent!important;
+}

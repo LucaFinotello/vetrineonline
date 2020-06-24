@@ -1,6 +1,6 @@
 <?php
     session_start();
-        setlocale(LC_TIME, 'italian'); // it_IT
+    setlocale(LC_TIME, 'italian'); // it_IT
     include("db_con.php");
     include_once('mysql-fix.php');
 ?>
@@ -49,7 +49,7 @@
 
         $date = mktime($mese, $giorno, $anno);
         for ($i = 0; $i < 30; $i++) {
-            $giorno = strftime('%A, %e %B %Y', $date + $i * 86400);
+            $giorno = strftime('%e/%m/%Y', $date + $i * 86400);
             $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraFine',
                         identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
             $risultato = mysqli_query($conn, $strsql);
@@ -75,16 +75,6 @@
         else
         {
             ?>
-            <form name="ricercaOrari" action="ricercaOrari.php" method="post">
-                <fieldset>
-                    <legend>Selezione Date</legend>
-                    <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
-                    <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
-                    <span>Identificazione</span><input class="inputBottom" type="text" name="identificazione" value="">
-                    &emsp;
-                    <button type="submit" class="click" value="cerca">Cerca</button>
-                </fieldset>
-            </form>
             <table id="example" class="display">
                 <thead>
                     <tr>
@@ -101,7 +91,7 @@
                 {
                     echo ("<tr>");
                     echo "<form action='modificaOrari.php' method='post'>";
-                    echo "<td><input style='text-align: center; border: none; background: #f7f7f7' name='giorno' value='".$riga['giorno']."'/></td>";
+                    echo "<td><input class='inputTable' name='giorno' value='".$riga['giorno']."'/></td>";
                     echo "<td>".$riga['identificazione']."</td>";
                     echo "<td>".$riga['oraInizio']."</td>";
                     echo "<td>".$riga['oraFine']."</td>";
@@ -148,7 +138,8 @@
             else
             {
             ?>
-            <table style="margin-top: 10px; margin-bottom:10px">
+            <p></p><br>
+            <table>
                 <thead>
                 <tr>
                     <td>Giorno</td>
@@ -166,7 +157,7 @@
                     echo "<form action='modifica.php' method='POST'>";
                     echo "<td>".$riga["giorno"]."</td>";
                     echo "<td>".$riga["postiSala"]."</td>";
-                    echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
+                    echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
                     echo "<td>".$riga["stanza"]."</td>";
                     echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
                     echo "</form>";
