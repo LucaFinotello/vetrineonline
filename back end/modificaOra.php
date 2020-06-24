@@ -59,15 +59,6 @@ include_once('mysql-fix.php');
         else
         {
             ?>
-            <form name="ricercaOrari" action="ricercaOrari.php" method="post">
-                <fieldset>
-                    <legend>Selezione Date</legend>
-                    <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
-                    <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
-                    &emsp;
-                    <button type="submit" class="click" value="compila">Compila</button>
-                </fieldset>
-            </form>
         <table id="example" class="display">
             <thead>
             <tr>
@@ -132,7 +123,7 @@ include_once('mysql-fix.php');
         {
         ?>
         <p></p><br>
-        <table>
+        <table id="turni" class="display">
             <thead>
             <tr>
                 <td>Giorno</td>
@@ -166,6 +157,11 @@ include_once('mysql-fix.php');
 <script>
     $(document).ready(function() {
         $('#example').DataTable( {
+            "pagingType": "full_numbers"
+        } );
+    } );
+    $(document).ready(function() {
+        $('#turni').DataTable( {
             "pagingType": "full_numbers"
         } );
     } );

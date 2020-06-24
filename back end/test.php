@@ -133,7 +133,7 @@ include_once('mysql-fix.php');
         else
         {
         ?>
-        <table id="example" class="display">
+        <table id="turni" class="display">
             <thead>
             <tr>
                 <td>Giorno</td>
@@ -168,6 +168,11 @@ include_once('mysql-fix.php');
 <script>
     $(document).ready(function() {
         $('#example').DataTable( {
+            "pagingType": "full_numbers"
+        } );
+    } );
+    $(document).ready(function() {
+        $('#turni').DataTable( {
             "pagingType": "full_numbers"
         } );
     } );
