@@ -46,15 +46,19 @@ include_once('mysql-fix.php');
             {
                 ?>
                 <br>
-                <form action="ricercaOrari.php" method="post">
-                    Data: <input type="text" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-                    Data: <input type="text" name="dataFine" value="" placeholder="gg/mm/aaaa">
-                    Fascia: <input type="text" name="fascia" value="" placeholder="Colazione">
-                    &emsp;<button class="click" type="submit">Cerca</button>
-                    <button class="click">
-                        <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
-                    </button>
-                </form>
+                <fieldset>
+                    <label>Cerca</label>
+                    <form action="ricercaOrari.php" method="post">
+                        Data: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                        Data: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+                        Fascia: <input type="text" class="inputBottom" name="fascia" value="" placeholder="Colazione">
+                        &emsp;<button class="click" type="submit">Cerca</button>
+                        <button class="click">
+                            <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                        </button>
+                    </form>
+                </fieldset>
+                <br>
                 <table id="example" class="display">
                 <thead>
                 <tr>
