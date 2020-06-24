@@ -12,7 +12,7 @@ body{
     width:95%;
     display:table;
     margin:0 auto;
-    margin-top:2%;
+    margin-top:1%;
 }
 
 #menu{
@@ -100,6 +100,6 @@ input.inputPrenotazione {
     background: transparent!important;
 }
 
-div#example_filter {
+div#example_filter, div#example_filter {
     display: none;
 }
