@@ -201,7 +201,7 @@
         list($anno, $mese, $giorno) = explode("-",$data_oggi);
 
         $date = mktime($mese, $giorno, $anno);
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 2; $i++) {
             $giorno = strftime('%e/%m/%Y', $date + $i * 86400);
             $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraFine',
                         identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
@@ -282,7 +282,23 @@
         $riga = mysqli_fetch_array($risultato);
         if (! $riga)
         {
-        echo "";
+        echo "<p></p><br>
+                           <table id='turni' class='display'>
+                        <thead>
+                        <tr>
+                            <td>Giorno</td>
+                            <td>Turno</td>
+                            <td>Stanza</td>
+                            <td>Inserisci</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <td colspan='4'>Ops!!! Nessun dato inserito</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        <p></p><br>";
             }
             else
             {

@@ -306,7 +306,23 @@ include_once('mysql-fix.php');
             $riga = mysqli_fetch_array($risultato);
             if (! $riga)
             {
-                echo "";
+                echo "<p></p><br>
+                           <table id='turni' class='display'>
+                        <thead>
+                        <tr>
+                            <td>Giorno</td>
+                            <td>Turno</td>
+                            <td>Stanza</td>
+                            <td>Inserisci</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        <td colspan='4'>Ops!!! Nessun dato inserito</td>
+                        </tr>
+                        </tbody>
+                        </table>
+                        <p></p><br>";
             }
             else
             {
