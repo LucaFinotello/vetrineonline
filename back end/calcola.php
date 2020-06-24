@@ -120,10 +120,26 @@ include_once('mysql-fix.php');
         $postiSala= $_POST['postiSala'];
         $durataTurno = $_POST['durataTurno'];
         $giorno = $riga['giorno'];
-        $turno= $riga['oraInizio'];
+        $oraInizio = $riga['oraInizio'];
+        $oraFine = $riga['oraFine'];
 
-        $strsql = "insert into prenotazione set giorno='$giorno', turno='$turno', postiSala='$postiSala'";
-        $risultato = mysqli_query($conn, $strsql);
+
+        $data = date("d-m-Y", strtotime($giorno));
+        $oraInizio = date("H:i", strtotime($oraInizio));
+        $oraFine = date("H:i", strtotime($oraFine));
+        $durataTurno = date("H:i", strtotime($durataTurno));
+        $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
+
+        $data_oggi = substr($data, 0, strlen($data));
+        list($anno, $mese, $giorno) = explode("-",$data_oggi);
+
+        $date = mktime($mese, $giorno, $anno);
+        for ($i = 0; $i < 7; $i++) {
+            $giorno = strftime('%A, %e %B %Y', $date + $i * 86400);
+            $strsql = "insert into prenotazione set giorno='$giorno', turno='$turno', postiSala='$postiSala'";
+            $risultato = mysqli_query($conn, $strsql);
+        }
+
         if (! $risultato)
         {
             echo "Errore nel comando SQL" . "<br>";
@@ -144,7 +160,8 @@ include_once('mysql-fix.php');
             else
             {
                 ?>
-                <table style="margin-top: 10px; margin-bottom:10px">
+                <p></p>
+                <table id="example" class="display">
                     <thead>
                     <tr>
                         <td>Giorno</td>
@@ -170,8 +187,9 @@ include_once('mysql-fix.php');
                     ?>
                     </tbody>
                 </table>
+                <p></p><br>
             <?php }
-    }
+             }
         }
         ?>
 </div>

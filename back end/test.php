@@ -133,7 +133,7 @@ include_once('mysql-fix.php');
         else
         {
         ?>
-        <table style="margin-top: 10px; margin-bottom:10px">
+        <table id="example" class="display">
             <thead>
             <tr>
                 <td>Giorno</td>
@@ -159,6 +159,7 @@ include_once('mysql-fix.php');
             ?>
             </tbody>
         </table>
+            <p></p><br>
         <?php }
             }
         ?>

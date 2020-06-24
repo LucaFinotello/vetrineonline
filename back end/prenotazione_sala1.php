@@ -34,7 +34,6 @@
         <p></p>
         <?php
         $identificatore= $_POST ['identificatore'];
-        //$giorno = $_POST['giorno'];
         $oraInizio = $_POST['oraInizio'];
         $oraFine = $_POST['oraFine'];
         $dataInizio = $_POST["dataInizio"];
@@ -177,6 +176,7 @@
                 ?>
                 </tbody>
             </table>
+                <p></p><br>
             <?php }
         }
         ?>
