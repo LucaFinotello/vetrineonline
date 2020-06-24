@@ -24,7 +24,7 @@ include_once('mysql-fix.php');
             $giorno = $_POST["giorno"];
             $turno = $_POST["turno"];
             $stanza = $_POST["stanza"];
-            $strsql = "update prenotazione set turno='$turno', stanza='$stanza' where giorno = '$giorno'";
+            $strsql = "update prenotazione set stanza='$stanza' where turno = substr('$turno', 9)";
             $risultato = mysqli_query($conn, $strsql);
             if (!$risultato)
               {
@@ -128,7 +128,7 @@ include_once('mysql-fix.php');
         $riga = mysqli_fetch_array($risultato);
         if (! $riga)
         {
-            echo "";
+            echo "<p></p><br>";
         }
         else
         {
@@ -149,7 +149,7 @@ include_once('mysql-fix.php');
                 echo ("<tr>");
                 echo "<form action='modifica.php' method='POST'>";
                 echo "<td>".$riga["giorno"]."</td>";
-                echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
+                echo "<td><input style='text-align: center; border: none' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                 echo "<td>".$riga["stanza"]."</td>";
                 echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
                 echo "</form>";

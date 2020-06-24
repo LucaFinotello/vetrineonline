@@ -20,7 +20,7 @@ include_once('mysql-fix.php');
     <h1>Inserisci Prenotazione</h1>
     <?php
         $turno = $_POST["turno"];
-        $strsql = "select * from prenotazione where turno = '$turno'";
+        $strsql = "select * from prenotazione where turno = substr('$turno', 9)";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
           {
@@ -29,7 +29,6 @@ include_once('mysql-fix.php');
     $riga = mysqli_fetch_array($risultato);
     if (! $riga)
     {
-
     echo "Turno assente" . "<br>";
     }
     else
@@ -37,8 +36,8 @@ include_once('mysql-fix.php');
     ?>
     <form action="test.php" method="POST" >
         <div class="prenotazione">
-            Data: <input class="inputBottom" name="giorno" type="text" value="<?php echo $riga["giorno"]?>"><br>
-            Turno: <input class="inputBottom" name="turno" type="text" value="<?php echo $riga["turno"]?>"><br>
+            Data: <input class="inputBottom" name="giorno" type="text" readonly value="<?php echo $riga["giorno"]?>"><br>
+            Turno: <input class="inputBottom" name="turno" type="text" readonly value="<?php echo $riga["turnoInizio"]?> - <?php echo $riga["turno"]?>"><br>
             Stanza: <input class="inputBottom" name="stanza" type="text" value="<?php echo $riga["stanza"]?>"><br><br>
             <p>
                 Numeri tavoli disponibili <?php echo $riga["postiSala"]?>
