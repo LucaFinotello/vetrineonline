@@ -135,9 +135,17 @@ include_once('mysql-fix.php');
 
         $date = mktime($mese, $giorno, $anno);
         for ($i = 0; $i < 7; $i++) {
-            $giorno = strftime('%A, %e %B %Y', $date + $i * 86400);
-            $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala'";
-            $risultato = mysqli_query($conn, $strsql);
+            if($turno>=$oraFine) {
+               continue;
+            }else{
+                for ($y =$oraInizio; $y<$oraFine; $y=$turno) {
+                    $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
+                    $giorno = strftime('%A, %e %B %Y', $date + $i * 86400);
+                    $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala'";
+                    $risultato = mysqli_query($conn, $strsql);
+                    $oraInizio= $turno;
+                }
+            }
         }
 
         if (! $risultato)

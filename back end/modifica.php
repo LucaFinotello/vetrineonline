@@ -29,6 +29,7 @@ include_once('mysql-fix.php');
     $riga = mysqli_fetch_array($risultato);
     if (! $riga)
     {
+
     echo "Turno assente" . "<br>";
     }
     else
