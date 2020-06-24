@@ -45,7 +45,7 @@
 
         $data_oggi = substr($data, 0, strlen($data));
         list($anno, $mese, $giorno) = explode("-",$data_oggi);
-
+        echo $data_oggi;
 
         $date = mktime($mese, $giorno, $anno);
         for ($i = 0; $i < 30; $i++) {

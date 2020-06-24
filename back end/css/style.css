@@ -1,11 +1,19 @@
 *{
-    font-family: Relaway;
+    padding: 0em;
+    margin: 0em;
+
 }
 
 body{
-    margin-left: 5%;
-    margin-right: 5%;
+    font-family: Relaway;
     background: #f7f7f7;
+}
+
+#main{
+    width:90%;
+    display:table;
+    margin:0 auto;
+    margin-top:2%;
 }
 
 h1 {
@@ -77,4 +85,8 @@ input.inputPrenotazione {
     text-align: center!important;
     border: none !important;
     background: transparent!important;
+}
+
+div#example_filter {
+    display: none;
 }
