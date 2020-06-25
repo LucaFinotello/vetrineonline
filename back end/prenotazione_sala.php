@@ -233,7 +233,7 @@ include_once('mysql-fix.php');
                     </form>
                 </fieldset>
                 <br>
-                <table id="example" class="display">
+                <table>
                     <thead>
                     <tr>
                         <td>Giorno</td>
@@ -244,6 +244,10 @@ include_once('mysql-fix.php');
                     </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td colspan="5">
+                            <div class="divinterno">
+                                <table class="table-int">
                     <?php
                     while ($riga)
                     {
@@ -259,6 +263,10 @@ include_once('mysql-fix.php');
                         $riga = mysqli_fetch_array($risultato);
                     }
                     ?>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <?php

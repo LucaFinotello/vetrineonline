@@ -201,7 +201,7 @@
         list($anno, $mese, $giorno) = explode("-",$data_oggi);
 
         $date = mktime($mese, $giorno, $anno);
-        for ($i = 0; $i < 2; $i++) {
+        for ($i = 0; $i < 30; $i++) {
             $giorno = strftime('%e/%m/%Y', $date + $i * 86400);
             $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraFine',
                         identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
