@@ -215,7 +215,7 @@ include_once('mysql-fix.php');
                 </form>
             </fieldset>
             <br>
-            <table id="example" class="display">
+            <table>
                 <thead>
                 <tr>
                     <td>Giorno</td>
@@ -226,6 +226,10 @@ include_once('mysql-fix.php');
                 </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td colspan="5">
+                        <div class="divinterno">
+                            <table class="table-int">
                 <?php
                 while ($riga)
                 {
@@ -241,6 +245,10 @@ include_once('mysql-fix.php');
                     $riga = mysqli_fetch_array($risultato);
                 }
                 ?>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
                 </tbody>
             </table>
             <?php
@@ -276,8 +284,7 @@ include_once('mysql-fix.php');
             $durataTurno = date("H:i", strtotime($durataTurno));
             $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
 
-        $data_oggi = substr($data, $dataInizio, strlen($data));
-        echo $data_oggi;
+        $data_oggi = substr($data, 0, strlen($data));
         list($anno, $mese, $giorno) = explode("-",$data_oggi);
 
         $date = mktime($mese, $giorno, $anno);
@@ -285,12 +292,14 @@ include_once('mysql-fix.php');
             if($turno>=$oraFine) {
                "turno inserito";
             }else{
-                for ($y =$oraInizio; $y<$oraFine; $y=$turno) {
-                    $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
-                    //$giorno = strftime('%e/%m/%Y', $date + $i * 86400);
-                    $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala'";
-                    $risultato = mysqli_query($conn, $strsql);
-                    $oraInizio= $turno;
+                for ($i = 0; $i < 7; $i++) {
+                    for ($y = $oraInizio; $y < $oraFine; $y = $turno) {
+                        $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
+                        $giorno = strftime('%e/%m/%Y', $date + $i * 86400);
+                        $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala'";
+                        $risultato = mysqli_query($conn, $strsql);
+                        $oraInizio = $turno;
+                    }
                 }
             }
         }
@@ -332,7 +341,22 @@ include_once('mysql-fix.php');
             {
                 ?>
                 <p></p>
-                <table id="turni" class="display">
+                <fieldset>
+                    <legend>Cerca turno</legend>
+                    <form action="ricercaOrari.php" method="post">
+                        Giorno: <input type="text" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
+                        <!--Etichetta: <select name="fascia">
+                            <option value="colazione">Colazione</option>
+                            <option value="pranzo">Pranzo</option>
+                            <option value="cena">Cena</option>
+                        </select>-->
+                        &emsp;<button class="click" type="submit">Cerca</button>
+                        <button class="click">
+                            <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                        </button>
+                    </form>
+                </fieldset>
+                <table>
                     <thead>
                     <tr>
                         <td>Giorno</td>
@@ -342,6 +366,10 @@ include_once('mysql-fix.php');
                     </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td colspan="4">
+                            <div class="divinterno">
+                                <table class="table-int">
                     <?php
                     while ($riga)
                     {
@@ -356,6 +384,10 @@ include_once('mysql-fix.php');
                         $riga = mysqli_fetch_array($risultato);
                     }
                     ?>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <p></p><br>
