@@ -191,7 +191,9 @@ include_once('mysql-fix.php');
             $turno = $_POST["turno"];
             $stanza = $_POST["stanza"];
             $disponibilita= $_POST["disponibilita"];
-            $disponibilita -= 1;
+            $postiSala = $_POST["disponibilita"];
+            $num=count(explode(" ", $stanza));
+            $disponibilita = ($postiSala - $num);
             $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where turno = substr('$turno', 9)";
             $risultato = mysqli_query($conn, $strsql);
             if (!$risultato)
