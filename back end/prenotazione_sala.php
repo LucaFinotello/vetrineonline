@@ -199,7 +199,7 @@ include_once('mysql-fix.php');
             $riga = mysqli_fetch_array($risultato);
             if (! $riga)
             {
-                echo "<br><table id=\"example\" class=\"display\">
+                echo "<br><table>
                     <thead>
                     <tr>
                         <td>Giorno</td>
@@ -221,11 +221,15 @@ include_once('mysql-fix.php');
                 ?>
                 <br>
                 <fieldset>
-                    <label>Cerca</label>
+                    <legend>Cerca periodo</legend>
                     <form action="ricercaOrari.php" method="post">
-                        Data: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-                        Data: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
-                        Fascia: <input type="text" class="inputBottom" name="fascia" value="" placeholder="Colazione">
+                        Da: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                        A: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+                        Etichetta: <select name="fascia">
+                            <option value="colazione">Colazione</option>
+                            <option value="pranzo">Pranzo</option>
+                            <option value="cena">Cena</option>
+                        </select>
                         &emsp;<button class="click" type="submit">Cerca</button>
                         <button class="click">
                             <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
@@ -285,7 +289,7 @@ include_once('mysql-fix.php');
                 if (! $riga)
                 {
                     echo "<p></p><br>
-                           <table id=\"turni\" class=\"display\">
+                           <table>
                         <thead>
                         <tr>
                             <td>Giorno</td>
@@ -307,16 +311,35 @@ include_once('mysql-fix.php');
                 {
                     ?>
                     <p></p><br>
-                    <table id="turni" class="display">
+                    <fieldset>
+                        <legend>Cerca turno</legend>
+                        <form action="ricercaOrari.php" method="post">
+                            Giorno: <input type="text" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
+                            Etichetta: <select name="fascia">
+                                <option value="colazione">Colazione</option>
+                                <option value="pranzo">Pranzo</option>
+                                <option value="cena">Cena</option>
+                            </select>
+                            &emsp;<button class="click" type="submit">Cerca</button>
+                            <button class="click">
+                                <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                            </button>
+                        </form>
+                    </fieldset>
+                    <table>
                         <thead>
                         <tr>
-                            <td>Giorno</td>
-                            <td>Turno</td>
-                            <td>Stanza</td>
-                            <td>Inserisci</td>
+                            <th>Giorno</th>
+                            <th>Turno</th>
+                            <th>Stanza</th>
+                            <th>Inserisci</th>
                         </tr>
                         </thead>
                         <tbody>
+                        <tr>
+                            <td colspan="4">
+                                <div class="divinterno">
+                                    <table class="table-int">
                         <?php
                         while ($riga)
                         {
@@ -331,6 +354,10 @@ include_once('mysql-fix.php');
                             $riga = mysqli_fetch_array($risultato);
                         }
                         ?>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                     <p></p><br>
