@@ -250,7 +250,8 @@ include_once('mysql-fix.php');
                 $dataInizio = $_POST['dataInizio'];
                 $dataFine = $_POST['dataFine'];
                 $fascia = $_POST['fascia'];
-                $strsql = "select * from orari where giorno='$dataInizio' or (giorno>='$dataInizio' and giorno<='$dataFine') or identificazione= '$fascia'";
+                $strsql = "select * from orari where giorno='$dataInizio' or identificazione= '$fascia' or 
+                (giorno='$dataInizio' and identificazione= '$fascia') or (giorno>='$dataInizio' and giorno<='$dataFine')";
                 $risultato = mysqli_query($conn, $strsql);
                 if (! $risultato)
                 {
