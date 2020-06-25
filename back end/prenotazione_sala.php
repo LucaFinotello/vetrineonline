@@ -189,7 +189,6 @@ include_once('mysql-fix.php');
         </form>
     </div>
     <div id="contenuto">
-        <div>
             <?php
             $strsql = "select * from orari where codiceStruttura='H001'";
             $risultato = mysqli_query($conn, $strsql);
@@ -365,7 +364,6 @@ include_once('mysql-fix.php');
                 <?php }
                 ?>
             </div>
-        </div>
     </div>
 </body>
 </html>

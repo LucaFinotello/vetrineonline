@@ -22,7 +22,8 @@
 <body>
     <h1>Prenotazione Sala</h1>
     <div id="menu">
-        <form name="gestioneOrari" action="prenotazione_sala1.php" method="post">
+        <h1>Impostazioni</h1>
+        <form name="gestioneOrari" action="prenotazione_sala1.php" method="post" class="setting">
             <fieldset>
                 <legend>Selezionare periodo</legend>
                 <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy"><br>
@@ -196,14 +197,14 @@
 
         $data = date("d-m-Y", strtotime($dataInizio));
         $datafine = date("d-m-Y", strtotime($datafine));
-
         $data_oggi = substr($data, 0, strlen($data));
+        $intervallo= $datafine - $data;
         list($anno, $mese, $giorno) = explode("-",$data_oggi);
 
-        $date = mktime($mese, $giorno, $anno);
-        for ($i = 0; $i < 30; $i++) {
-            $giorno = strftime('%e/%m/%Y', $date + $i * 86400);
-            $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraFine',
+        //$date = mktime($mese, $giorno, $anno);
+        //echo $date;
+        for ($i = 0; $i < $intervallo; $i++) {
+            $strsql = "insert into orari SET giorno='$data_oggi', oraInizio= '$oraInizio', oraFine= '$oraFine',
                         identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
             $risultato = mysqli_query($conn, $strsql);
         }
