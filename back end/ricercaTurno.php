@@ -1,11 +1,10 @@
 <?php
 session_start();
-setlocale(LC_TIME, 'italian'); // it_IT
 include("db_con.php");
 include_once('mysql-fix.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <title>Vetrineonline</title>
@@ -14,22 +13,19 @@ include_once('mysql-fix.php');
     <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript" src="js/prenotazione.js"></script>
-    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
-    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
 </head>
 <body>
 <div id="main">
     <h1>Prenotazione Sala</h1>
     <div id="menu">
         <h1>Impostazioni</h1>
-        <form name="gestioneOrari" action="prenotazione_sala1.php" method="post" class='setting'>
+        <form name="gestioneOrari" action="prenotazione_sala1.php" method="post" class="setting">
             <fieldset>
                 <legend>Selezionare periodo</legend>
-                <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy"><br>
-                <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy"><br>
+                <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
+                <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
                 <span>Fascia</span>
                 <select name="identificatore">
                     <option value="Colazione">Colazione</option>
@@ -189,18 +185,17 @@ include_once('mysql-fix.php');
         </form>
     </div>
     <div id="contenuto">
-        <div>
-            <?php
-            $strsql = "select * from orari where codiceStruttura='H001'";
-            $risultato = mysqli_query($conn, $strsql);
-            if (! $risultato)
-            {
-                echo "Errore nel comando SQL" . "<br>";
-            }
-            $riga = mysqli_fetch_array($risultato);
-            if (! $riga)
-            {
-                echo "<br><table>
+        <?php
+        $strsql = "select * from orari";
+        $risultato = mysqli_query($conn, $strsql);
+        if (! $risultato)
+        {
+            echo "Errore nel comando SQL" . "<br>";
+        }
+        $riga = mysqli_fetch_array($risultato);
+        if (! $riga)
+        {
+            echo "<br><table>
                     <thead>
                     <tr>
                         <td>Giorno</td>
@@ -216,80 +211,78 @@ include_once('mysql-fix.php');
                         </tr>
                     </tbody>
                     </table>";
-            }
-            else
-            {
+        }
+        else
+        {
+            ?>
+            <br>
+            <fieldset>
+                <legend>Cerca periodo</legend>
+                <form action="ricercaOrari.php" method="post">
+                    Da: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                    A: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+                    Etichetta: <select name="fascia">
+                        <option value="colazione">Colazione</option>
+                        <option value="pranzo">Pranzo</option>
+                        <option value="cena">Cena</option>
+                    </select>
+                    &emsp;<button class="click" type="submit">Cerca</button>
+                    <button class="click">
+                        <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                    </button>
+                </form>
+            </fieldset>
+            <table>
+            <thead>
+            <tr>
+                <td>Giorno</td>
+                <td>Fascia</td>
+                <td>Ora Inizio</td>
+                <td>Ora Fine</td>
+                <td>Modifica</td>
+            </tr>
+            </thead>
+            <tbody>
+        <tr>
+            <td colspan="5">
+            <div class="divinterno">
+            <table class="table-int">
+            <?php
+                while ($riga)
+                {
+                    echo ("<tr>");
+                    echo "<form action='modificaOrari.php' method='post'>";
+                    echo "<td><input class='inputTable' name='giorno' value='".$riga['giorno']."'/></td>";
+                    echo "<td>".$riga['identificazione']."</td>";
+                    echo "<td>".$riga['oraInizio']."</td>";
+                    echo "<td>".$riga['oraFine']."</td>";
+                    echo "<td><button type='submit' class='click'>Modifica</button>";
+                    echo "</form>";
+                    echo ("</tr>");
+                    $riga = mysqli_fetch_array($risultato);
+                }
                 ?>
-                <br>
-                <fieldset>
-                    <legend>Cerca periodo</legend>
-                    <form action="ricercaOrari.php" method="post">
-                        Da: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-                        A: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
-                        Etichetta: <select name="fascia">
-                            <option value="colazione">Colazione</option>
-                            <option value="pranzo">Pranzo</option>
-                            <option value="cena">Cena</option>
-                        </select>
-                        &emsp;<button class="click" type="submit">Cerca</button>
-                        <button class="click">
-                            <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
-                        </button>
-                    </form>
-                </fieldset>
-                <br>
-                <table>
-                    <thead>
-                    <tr>
-                        <td>Giorno</td>
-                        <td>Fascia</td>
-                        <td>Ora Inizio</td>
-                        <td>Ora Fine</td>
-                        <td>Modifica</td>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td colspan="5">
-                            <div class="divinterno">
-                                <table class="table-int">
-                    <?php
-                    while ($riga)
-                    {
-                        echo "<tr>";
-                        echo "<form action='modificaOrari.php' method='post'>";
-                        echo "<td><input class='inputTable' name='giorno' value='".$riga['giorno']."'/></td>";
-                        echo "<td>".$riga['identificazione']."</td>";
-                        echo "<td>".$riga['oraInizio']."</td>";
-                        echo "<td>".$riga['oraFine']."</td>";
-                        echo "<td><button type='submit' class='click'>Modifica</button>";
-                        echo "</form>";
-                        echo "</tr>";
-                        $riga = mysqli_fetch_array($risultato);
-                    }
-                    ?>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
+                </table>
+                </div>
+                </td>
+                </tr>
+                </tbody>
                 </table>
                 <?php
             }
             ?>
             <p></p>
-            <div>
-                <?php
-                $strsql = "select * from prenotazione ";
-                $risultato = mysqli_query($conn, $strsql);
-                if (! $risultato)
-                {
-                    echo "Errore nel comando SQL" . "<br>";
-                }
-                $riga = mysqli_fetch_array($risultato);
-                if (! $riga)
-                {
-                    echo "<p></p><br>
+            <?php
+            $strsql = "select * from prenotazione ";
+            $risultato = mysqli_query($conn, $strsql);
+            if (! $risultato)
+            {
+                echo "Errore nel comando SQL" . "<br>";
+            }
+            $riga = mysqli_fetch_array($risultato);
+            if (! $riga)
+            {
+                echo "<p></p><br>
                            <table>
                         <thead>
                         <tr>
@@ -305,67 +298,78 @@ include_once('mysql-fix.php');
                         </tr>
                         </tbody>
                         </table>
-                        <p></p><br>
-                          ";
+                        <p></p><br>";
+            }
+            else
+            {
+                ?>
+                <p></p><br>
+                <fieldset>
+                    <legend>Cerca turno</legend>
+                    <form action="ricercaOrari.php" method="post">
+                        Giorno: <input type="text" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
+                        <!--Etichetta: <select name="fascia">
+                            <option value="colazione">Colazione</option>
+                            <option value="pranzo">Pranzo</option>
+                            <option value="cena">Cena</option>
+                        </select>-->
+                        &emsp;<button class="click" type="submit">Cerca</button>
+                        <button class="click">
+                            <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                        </button>
+                    </form>
+                </fieldset>
+                <table>
+                    <thead>
+                    <tr>
+                        <td>Giorno</td>
+                        <td>Turno</td>
+                        <td>Stanza</td>
+                        <td>Inserisci</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="4">
+                            <div class="divinterno">
+                                <table class="table-int">
+                                    <?php
+                                    $giorno= $_POST['data'];
+                $strsql = "select * from prenotazione where giorno='$giorno'";
+                $risultato = mysqli_query($conn, $strsql);
+                if (! $risultato)
+                {
+                    echo "Errore nel comando SQL" . "<br>";
+                }
+                $riga = mysqli_fetch_array($risultato);
+                if (! $riga)
+                {
+                    echo "Nessuna corrispondenza dalla ricerca";
                 }
                 else
                 {
-                    ?>
-                    <p></p><br>
-                    <fieldset>
-                        <legend>Cerca turno</legend>
-                        <form action="ricercaturno.php" method="post">
-                            Giorno: <input type="text" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
-                            <!--Etichetta: <select name="fascia">
-                                <option value="colazione">Colazione</option>
-                                <option value="pranzo">Pranzo</option>
-                                <option value="cena">Cena</option>
-                            </select>-->
-                            &emsp;<button class="click" type="submit">Cerca</button>
-                            <button class="click">
-                                <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
-                            </button>
-                        </form>
-                    </fieldset>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Giorno</th>
-                            <th>Turno</th>
-                            <th>Stanza</th>
-                            <th>Inserisci</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td colspan="4">
-                                <div class="divinterno">
-                                    <table class="table-int">
-                        <?php
-                        while ($riga)
-                        {
-                            echo ("<tr>");
-                            echo "<form action='modifica.php' method='POST'>";
-                            echo "<td>".$riga["giorno"]."</td>";
-                            echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
-                            echo "<td>".$riga["stanza"]."</td>";
-                            echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
-                            echo "</form>";
-                            echo ("</tr>");
-                            $riga = mysqli_fetch_array($risultato);
-                        }
-                        ?>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p></p><br>
-                <?php }
-                ?>
-            </div>
-        </div>
+                                    while ($riga)
+                                    {
+                                        echo ("<tr>");
+                                        echo "<form action='modifica.php' method='POST'>";
+                                        echo "<td>".$riga["giorno"]."</td>";
+                                        echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
+                                        echo "<td>".$riga["stanza"]."</td>";
+                                        echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
+                                        echo "</form>";
+                                        echo ("</tr>");
+                                        $riga = mysqli_fetch_array($risultato);
+                                    }
+                                    ?>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            <?php }
+        }
+        ?>
     </div>
 </body>
 </html>

@@ -20,7 +20,8 @@ include_once('mysql-fix.php');
     <div id="main">
         <h1>Prenotazione Sala</h1>
         <div id="menu">
-            <form name="gestioneOrari" action="prenotazione_sala1.php" method="post">
+            <h1>Impostazioni</h1>
+            <form name="gestioneOrari" action="prenotazione_sala1.php" method="post" class="setting">
                 <fieldset>
                     <legend>Selezionare periodo</legend>
                     <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
@@ -322,13 +323,13 @@ include_once('mysql-fix.php');
                     <p></p><br>
                     <fieldset>
                         <legend>Cerca turno</legend>
-                        <form action="ricercaOrari.php" method="post">
+                        <form action="ricercaturno.php" method="post">
                             Giorno: <input type="text" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
-                            Etichetta: <select name="fascia">
+                            <!--Etichetta: <select name="fascia">
                                 <option value="colazione">Colazione</option>
                                 <option value="pranzo">Pranzo</option>
                                 <option value="cena">Cena</option>
-                            </select>
+                            </select>-->
                             &emsp;<button class="click" type="submit">Cerca</button>
                             <button class="click">
                                 <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
@@ -339,7 +340,6 @@ include_once('mysql-fix.php');
                         <thead>
                         <tr>
                             <td>Giorno</td>
-                            <td>postisala</td>
                             <td>Turno</td>
                             <td>Stanza</td>
                             <td>Inserisci</td>
@@ -356,7 +356,6 @@ include_once('mysql-fix.php');
                             echo ("<tr>");
                             echo "<form action='modifica.php' method='POST'>";
                             echo "<td>".$riga["giorno"]."</td>";
-                            echo "<td>".$riga["postiSala"]."</td>";
                             echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                             echo "<td>".$riga["stanza"]."</td>";
                             echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
