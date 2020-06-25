@@ -369,15 +369,3 @@ include_once('mysql-fix.php');
     </div>
 </body>
 </html>
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable( {
-            "pagingType": "full_numbers"
-        } );
-    } );
-    $(document).ready(function() {
-        $('#turni').DataTable( {
-            "pagingType": "full_numbers"
-        } );
-    } );
-</script>
