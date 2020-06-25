@@ -356,7 +356,7 @@ include_once('mysql-fix.php');
                             echo "<form action='modifica.php' method='POST'>";
                             echo "<td>".$riga["giorno"]."</td>";
                             echo "<td>".$riga["postiSala"]."</td>";
-                            echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'/></td>";
+                            echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                             echo "<td>".$riga["stanza"]."</td>";
                             echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
                             echo "</form>";
