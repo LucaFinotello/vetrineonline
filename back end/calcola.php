@@ -269,30 +269,28 @@ include_once('mysql-fix.php');
             $oraInizio = $riga['oraInizio'];
             $oraFine = $riga['oraFine'];
 
-            $data = date("d-m-Y", strtotime($giorno));
+            $query_tabella = "SELECT * FROM orari";
+            $tabella = mysqli_query($conn, $query_tabella) or die(mysql_error());
+            $row_tabella = mysql_fetch_assoc($tabella);
+            $totalRows_tabella = mysql_num_rows($tabella);
+            echo $totalRows_tabella;
+
+
+            echo date('d/m/Y', $giorno);
+
             $oraInizio = date("H:i", strtotime($oraInizio));
             $oraFine = date("H:i", strtotime($oraFine));
             $durataTurno = date("H:i", strtotime($durataTurno));
             $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
 
-        $data_oggi = substr($data, 0, strlen($data));
-        list($anno, $mese, $giorno) = explode("-",$data_oggi);
-
-        $date = mktime($mese, $giorno, $anno);
-        for ($i = 0; $i < 7; $i++) {
-            if($turno>=$oraFine) {
-                continue;
-            }else{
-                for ($y =$oraInizio; $y<$oraFine; $y=$turno) {
-                    $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
-                    $giorno = strftime('%e/%m/%Y', $date + $i * 86400);
-                    $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala'";
-                    $risultato = mysqli_query($conn, $strsql);
-                    $oraInizio= $turno;
-                }
-            }
+        for ($i = 0; $i < $totalRows_tabella; $i++) {
+                $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
+                $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala'";
+                $risultato = mysqli_query($conn, $strsql);
+                $oraInizio = $turno;
+                $giorno +=86400;
+                echo $giorno;
         }
-
 
         if (! $risultato)
         {
@@ -346,7 +344,7 @@ include_once('mysql-fix.php');
                     {
                         echo ("<tr>");
                         echo "<form action='modifica.php' method='POST'>";
-                        echo "<td>".$riga["giorno"]."</td>";
+                        echo "<td>".date('d/m/Y', $riga["giorno"])."</td>";
                         echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                         echo "<td>".$riga["stanza"]."</td>";
                         echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";

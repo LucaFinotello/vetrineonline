@@ -314,7 +314,7 @@ include_once('mysql-fix.php');
                     <fieldset>
                         <legend>Cerca turno</legend>
                         <form action="ricercaturno.php" method="post">
-                            Giorno: <input type="text" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
+                            Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
                             <!--Etichetta: <select name="fascia">
                                 <option value="colazione">Colazione</option>
                                 <option value="pranzo">Pranzo</option>
