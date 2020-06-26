@@ -223,7 +223,7 @@ include_once('mysql-fix.php');
                 <fieldset>
                     <legend>Cerca periodo</legend>
                     <form action="ricercaOrari.php" method="post">
-                        Da: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                        Da: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
                         A: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
                         Etichetta: <select name="fascia">
                             <option value="colazione">Colazione</option>

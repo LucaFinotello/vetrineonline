@@ -219,7 +219,7 @@ include_once('mysql-fix.php');
                 <fieldset>
                     <legend>Cerca periodo</legend>
                     <form action="ricercaOrari.php" method="post">
-                        Da: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                        Da: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
                         A: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
                         Etichetta: <select name="fascia">
                             <option value="colazione">Colazione</option>
@@ -248,11 +248,10 @@ include_once('mysql-fix.php');
                         <div class="divinterno">
                             <table class="table-int">
                 <?php
-                $dataInizio = $_POST['dataInizio'];
-                $dataFine = $_POST['dataFine'];
+                $dataInizio = strtotime($_POST['dataInizio']);
+                $dataFine = strtotime($_POST['dataFine']);
                 $fascia = $_POST['fascia'];
-                $strsql = "select * from orari where giorno='$dataInizio' or identificazione= '$fascia' or 
-                (giorno='$dataInizio' and identificazione= '$fascia') or (giorno>='$dataInizio' and giorno<='$dataFine')";
+                $strsql = "select * from orari where giorno='$dataInizio'";
                 $risultato = mysqli_query($conn, $strsql);
                 if (! $risultato)
                 {
@@ -261,7 +260,7 @@ include_once('mysql-fix.php');
                 $riga = mysqli_fetch_array($risultato);
                 if (! $riga)
                 {
-                    echo "Nessuna corrispondenza dalla ricerca";
+                    echo "Nessun risultato trovato per ". date('d/m/Y', $dataInizio);
                 }
                 else
                 {
@@ -269,7 +268,7 @@ include_once('mysql-fix.php');
                     {
                         echo ("<tr>");
                         echo "<form action='modificaOrari.php' method='post'>";
-                        echo "<td><input class='inputTable' name='giorno' value='".$riga['giorno']."'/></td>";
+                        echo "<td><input class='inputTable' name='giorno' value='".date("d/m/Y",$riga['giorno'])."'/></td>";
                         echo "<td>".$riga['identificazione']."</td>";
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";
