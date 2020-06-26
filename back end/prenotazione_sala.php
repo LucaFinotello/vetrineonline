@@ -224,7 +224,7 @@ include_once('mysql-fix.php');
                     <legend>Cerca periodo</legend>
                     <form action="ricercaOrari.php" method="post">
                         Da: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-                        A: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+                        A: <input type="date" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
                         Etichetta: <select name="fascia">
                             <option value="colazione">Colazione</option>
                             <option value="pranzo">Pranzo</option>
@@ -257,7 +257,7 @@ include_once('mysql-fix.php');
                     {
                         echo "<tr>";
                         echo "<form action='modificaOrari.php' method='post'>";
-                        echo "<td><input class='inputTable' name='giorno' value='".date("d/m/Y",$riga['giorno'])."'/></td>";
+                        echo "<td><input class='inputTable' name='giorno' value='".$riga['giorno']."'/></td>";
                         echo "<td>".$riga['identificazione']."</td>";
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";
@@ -321,9 +321,6 @@ include_once('mysql-fix.php');
                                 <option value="cena">Cena</option>
                             </select>-->
                             &emsp;<button class="click" type="submit">Cerca</button>
-                            <button class="click">
-                                <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
-                            </button>
                         </form>
                     </fieldset>
                     <table>
@@ -345,7 +342,7 @@ include_once('mysql-fix.php');
                         {
                             echo ("<tr>");
                             echo "<form action='modifica.php' method='POST'>";
-                            echo "<td>".$riga["giorno"]."</td>";
+                            echo "<td>".date('d/m/Y', $riga["giorno"])."</td>";
                             echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                             echo "<td>".$riga["stanza"]."</td>";
                             echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";

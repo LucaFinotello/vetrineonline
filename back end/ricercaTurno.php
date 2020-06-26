@@ -313,7 +313,7 @@ include_once('mysql-fix.php');
                             <option value="pranzo">Pranzo</option>
                             <option value="cena">Cena</option>
                         </select>-->
-                        &emsp;<button class="click" type="submit">Cerca</button>
+                        &emsp;
                         <button class="click">
                             <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
                         </button>
@@ -352,7 +352,7 @@ include_once('mysql-fix.php');
                                     {
                                         echo ("<tr>");
                                         echo "<form action='modifica.php' method='POST'>";
-                                        echo "<td>".$riga["giorno"]."</td>";
+                                        echo "<td>".date('d/m/Y', $riga["giorno"] )."</td>";
                                         echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                                         echo "<td>".$riga["stanza"]."</td>";
                                         echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";

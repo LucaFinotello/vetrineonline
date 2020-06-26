@@ -22,7 +22,8 @@ include_once('mysql-fix.php');
     <body>
     <h1>Prenotazione Sala</h1>
     <div id="menu">
-        <form name="gestioneOrari" action="prenotazione_sala1.php" method="post">
+        <h1>Impostazioni</h1>
+        <form name="gestioneOrari" action="prenotazione_sala1.php" method="post" class="setting">
             <fieldset>
                 <legend>Selezionare periodo</legend>
                 <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
@@ -99,7 +100,7 @@ include_once('mysql-fix.php');
                     <option value="23:15">23:15</option>
                     <option value="23:30">23:30</option>
                 </select><br>
-                <spa>Ora Fine</spa>
+                <span>Ora Fine</span>
                 <select name="oraFine">
                     <option value="5:00">5:00</option>
                     <option value="5:30">5:30</option>
@@ -220,9 +221,13 @@ include_once('mysql-fix.php');
             <fieldset>
                 <legend>Cerca</legend>
                 <form action="ricercaOrari.php" method="post">
-                    Data: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-                    Data: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
-                    Fascia: <input type="text" class="inputBottom" name="fascia" value="" placeholder="Colazione">
+                    Data: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                    Data: <input type="date" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+                    Etichetta: <select name="fascia">
+                        <option value="colazione">Colazione</option>
+                        <option value="pranzo">Pranzo</option>
+                        <option value="cena">Cena</option>
+                    </select>
                     &emsp;<button class="click" type="submit">Cerca</button>
                     <button class="click">
                         <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
@@ -240,12 +245,16 @@ include_once('mysql-fix.php');
             </tr>
             </thead>
             <tbody>
+            <tr>
+                <td colspan="5">
+                    <div class="divinterno">
+                        <table class="table-int">
             <?php
             while ($riga)
             {
                 echo ("<tr>");
                 echo "<form action='modificaOrari.php' method='post'>";
-                echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".$riga['giorno']."'/></td>";
+                echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
                 echo "<td>".$riga['identificazione']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
@@ -255,6 +264,10 @@ include_once('mysql-fix.php');
                 $riga = mysqli_fetch_array($risultato);
             }
             ?>
+                        </table>
+                    </div>
+                </td>
+            </tr>
             </tbody>
         </table>
         <?php
@@ -289,7 +302,23 @@ include_once('mysql-fix.php');
         else
         {
         ?>
-        <table id="turni" class="display">
+            <p></p><br>
+            <fieldset>
+                <legend>Cerca turno</legend>
+                <form action="ricercaturno.php" method="post">
+                    Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
+                    <!--Etichetta: <select name="fascia">
+                        <option value="colazione">Colazione</option>
+                        <option value="pranzo">Pranzo</option>
+                        <option value="cena">Cena</option>
+                    </select>-->
+                    &emsp;<button class="click" type="submit">Cerca</button>
+                    <button class="click">
+                        <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                    </button>
+                </form>
+            </fieldset>
+        <table>
             <thead>
             <tr>
                 <td>Giorno</td>
@@ -299,12 +328,15 @@ include_once('mysql-fix.php');
             </tr>
             </thead>
             <tbody>
+            <td colspan="4">
+                <div class="divinterno">
+                    <table class="table-int">
             <?php
             while ($riga)
             {
                 echo ("<tr>");
                 echo "<form action='modifica.php' method='POST'>";
-                echo "<td>".$riga["giorno"]."</td>";
+                echo "<td>".date('d/m/Y',$riga["giorno"])."</td>";
                 echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                 echo "<td>".$riga["stanza"]."</td>";
                 echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
@@ -313,6 +345,10 @@ include_once('mysql-fix.php');
                 $riga = mysqli_fetch_array($risultato);
             }
             ?>
+                    </table>
+                </div>
+            </td>
+            </tr>
             </tbody>
         </table>
             <p></p><br>
@@ -321,15 +357,3 @@ include_once('mysql-fix.php');
         ?>
     </body>
 </html>
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable( {
-            "pagingType": "full_numbers"
-        } );
-    } );
-    $(document).ready(function() {
-        $('#turni').DataTable( {
-            "pagingType": "full_numbers"
-        } );
-    } );
-</script>

@@ -232,8 +232,8 @@ include_once('mysql-fix.php');
             <fieldset>
                 <legend>Cerca</legend>
                 <form action="ricercaOrari.php" method="post">
-                    Da: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-                    A: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+                    Da: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                    A: <input type="date" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
                     Etichetta: <select name="fascia">
                         <option value="colazione">Colazione</option>
                         <option value="pranzo">Pranzo</option>
@@ -320,7 +320,7 @@ include_once('mysql-fix.php');
             <fieldset>
                 <legend>Cerca turno</legend>
                 <form action="ricercaOrari.php" method="post">
-                    Giorno: <input type="text" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
+                    Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
                     Etichetta: <select name="fascia">
                         <option value="colazione">Colazione</option>
                         <option value="pranzo">Pranzo</option>
@@ -351,7 +351,7 @@ include_once('mysql-fix.php');
             {
                 echo ("<tr>");
                 echo "<form action='modifica.php' method='POST'>";
-                echo "<td>".$riga["giorno"]."</td>";
+                echo "<td>".date('d/m/Y',$riga["giorno"])."</td>";
                 echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'/></td>";
                 echo "<td>".$riga["stanza"]."</td>";
                 echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
