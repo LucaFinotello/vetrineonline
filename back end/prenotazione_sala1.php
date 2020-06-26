@@ -195,19 +195,18 @@
         $datafine = $_POST["dataFine"];
         $codiceStruttura = 'H001';
 
-        $data = date("d-m-Y", strtotime($dataInizio));
-        $datafine = date("d-m-Y", strtotime($datafine));
-        $data_oggi = substr($data, 0, strlen($data));
+        $oggi= strtotime($_POST['dataInizio']);
+        $dataTermine= strtotime($_POST['dataFine']);
 
-        list($anno, $mese, $giorno) = explode("-",$data_oggi);
 
-        $date = mktime($mese, $giorno, $anno);
-        //echo $date;
-        for ($i = 0; $i < 2; $i++) {
-            $giorno = strftime('%e/%m/%Y', $date + $i * 86400);
+        for ($i = $oggi; $i < $dataTermine; $i=$i+86400) {
+            //echo date("d/m/Y",$i)."<br>";
+            $giorno=$i;
+            //echo date("d/m/Y",$giorno)."<br>";
             $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraFine',
                         identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
             $risultato = mysqli_query($conn, $strsql);
+
         }
 
         if (! $risultato)
@@ -281,7 +280,7 @@
                 {
                     echo ("<tr>");
                     echo "<form action='modificaOrari.php' method='post'>";
-                    echo "<td><input class='inputTable' name='giorno' value='".$riga['giorno']."'/></td>";
+                    echo "<td><input class='inputTable' name='giorno' value='".date("d/m/Y",$riga['giorno'])."'/></td>";
                     echo "<td>".$riga['identificazione']."</td>";
                     echo "<td>".$riga['oraInizio']."</td>";
                     echo "<td>".$riga['oraFine']."</td>";
@@ -352,7 +351,6 @@
                 <thead>
                 <tr>
                     <td>Giorno</td>
-                    <td>postisala</td>
                     <td>Turno</td>
                     <td>Stanza</td>
                     <td>Inserisci</td>
@@ -369,7 +367,6 @@
                     echo ("<tr>");
                     echo "<form action='modifica.php' method='POST'>";
                     echo "<td>".$riga["giorno"]."</td>";
-                    echo "<td>".$riga["postiSala"]."</td>";
                     echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                     echo "<td>".$riga["stanza"]."</td>";
                     echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";

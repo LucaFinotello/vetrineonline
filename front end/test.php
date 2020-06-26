@@ -20,11 +20,15 @@ include_once('mysql-fix.php');
     <body>
     <h1>Prenota il tuo turno</h1>
         <?php
-            $giorno = $_POST["giorno"];
-            $turno = $_POST["turno"];
-            $stanza = $_POST["stanza"];
-            $strsql = "update prenotazione set stanza='$stanza' where turno = '$turno'";
-            $risultato = mysqli_query($conn, $strsql);
+        $giorno = $_POST["giorno"];
+        $turno = $_POST["turno"];
+        $stanza = $_POST["stanza"];
+        $disponibilita= $_POST["disponibilita"];
+        $postiSala = $_POST["disponibilita"];
+        $num=count(explode(" ", $stanza));
+        $disponibilita = ($postiSala - $num);
+        $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where turno = substr('$turno', 9)";
+        $risultato = mysqli_query($conn, $strsql);
             if (!$risultato)
               {
                echo "Errore nel comando SQL" . "<br>";
@@ -60,7 +64,7 @@ include_once('mysql-fix.php');
                     echo ("<tr>");
                     echo "<form action='modifica.php' method='POST'>";
                     echo "<td>".$riga["giorno"]."</td>";
-                    echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
+                    echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'/></td>";
                     echo "<td>".$riga["stanza"]."</td>";
                     echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
                     echo "<form>";

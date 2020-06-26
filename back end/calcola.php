@@ -22,8 +22,7 @@ include_once('mysql-fix.php');
 <div id="main">
     <h1>Prenotazione Sala</h1>
     <div id="menu">
-        <h1>Impostazioni</h1>
-        <form name="gestioneOrari" action="prenotazione_sala1.php" method="post" class="setting">
+        <form name="gestioneOrari" action="prenotazione_sala1.php" method="post">
             <fieldset>
                 <legend>Selezionare periodo</legend>
                 <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
@@ -215,7 +214,7 @@ include_once('mysql-fix.php');
                 </form>
             </fieldset>
             <br>
-            <table>
+            <table id="example" class="display">
                 <thead>
                 <tr>
                     <td>Giorno</td>
@@ -226,10 +225,6 @@ include_once('mysql-fix.php');
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td colspan="5">
-                        <div class="divinterno">
-                            <table class="table-int">
                 <?php
                 while ($riga)
                 {
@@ -245,10 +240,6 @@ include_once('mysql-fix.php');
                     $riga = mysqli_fetch_array($risultato);
                 }
                 ?>
-                            </table>
-                        </div>
-                    </td>
-                </tr>
                 </tbody>
             </table>
             <?php
@@ -274,11 +265,11 @@ include_once('mysql-fix.php');
             $durataTurno = $_POST['durataTurno'];
 
             // valori presi dal select di orari
-            $dataInizio = $riga['dataInizio'];
+            $giorno = $riga['giorno'];
             $oraInizio = $riga['oraInizio'];
             $oraFine = $riga['oraFine'];
 
-            $data = date("d-m-Y", strtotime($dataInizio));
+            $data = date("d-m-Y", strtotime($giorno));
             $oraInizio = date("H:i", strtotime($oraInizio));
             $oraFine = date("H:i", strtotime($oraFine));
             $durataTurno = date("H:i", strtotime($durataTurno));
@@ -290,19 +281,18 @@ include_once('mysql-fix.php');
         $date = mktime($mese, $giorno, $anno);
         for ($i = 0; $i < 7; $i++) {
             if($turno>=$oraFine) {
-               "turno inserito";
+                continue;
             }else{
-                for ($i = 0; $i < 7; $i++) {
-                    for ($y = $oraInizio; $y < $oraFine; $y = $turno) {
-                        $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
-                        $giorno = strftime('%e/%m/%Y', $date + $i * 86400);
-                        $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala'";
-                        $risultato = mysqli_query($conn, $strsql);
-                        $oraInizio = $turno;
-                    }
+                for ($y =$oraInizio; $y<$oraFine; $y=$turno) {
+                    $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
+                    $giorno = strftime('%e/%m/%Y', $date + $i * 86400);
+                    $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala'";
+                    $risultato = mysqli_query($conn, $strsql);
+                    $oraInizio= $turno;
                 }
             }
         }
+
 
         if (! $risultato)
         {
@@ -341,22 +331,7 @@ include_once('mysql-fix.php');
             {
                 ?>
                 <p></p>
-                <fieldset>
-                    <legend>Cerca turno</legend>
-                    <form action="ricercaOrari.php" method="post">
-                        Giorno: <input type="text" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
-                        <!--Etichetta: <select name="fascia">
-                            <option value="colazione">Colazione</option>
-                            <option value="pranzo">Pranzo</option>
-                            <option value="cena">Cena</option>
-                        </select>-->
-                        &emsp;<button class="click" type="submit">Cerca</button>
-                        <button class="click">
-                            <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
-                        </button>
-                    </form>
-                </fieldset>
-                <table>
+                <table id="turni" class="display">
                     <thead>
                     <tr>
                         <td>Giorno</td>
@@ -366,10 +341,6 @@ include_once('mysql-fix.php');
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td colspan="4">
-                            <div class="divinterno">
-                                <table class="table-int">
                     <?php
                     while ($riga)
                     {
@@ -384,10 +355,6 @@ include_once('mysql-fix.php');
                         $riga = mysqli_fetch_array($risultato);
                     }
                     ?>
-                                </table>
-                            </div>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
                 <p></p><br>
