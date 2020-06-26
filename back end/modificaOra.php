@@ -323,11 +323,11 @@ include_once('mysql-fix.php');
                 <legend>Cerca turno</legend>
                 <form action="ricercaOrari.php" method="post">
                     Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
-                    Etichetta: <select name="fascia">
+                    <!--Etichetta: <select name="fascia">
                         <option value="colazione">Colazione</option>
                         <option value="pranzo">Pranzo</option>
                         <option value="cena">Cena</option>
-                    </select>
+                    </select>-->
                     &emsp;<button class="click" type="submit">Cerca</button>
                     <button class="click">
                         <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
@@ -373,15 +373,3 @@ include_once('mysql-fix.php');
         ?>
     </body>
 </html>
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable( {
-            "pagingType": "full_numbers"
-        } );
-    } );
-    $(document).ready(function() {
-        $('#turni').DataTable( {
-            "pagingType": "full_numbers"
-        } );
-    } );
-</script>
