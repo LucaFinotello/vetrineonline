@@ -211,7 +211,7 @@
         }
         else
         {
-        $strsql = "select * from orari order by giorno";
+        $strsql = "select * from orari where codiceStruttura = '$codiceStruttura' order by giorno";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -243,8 +243,8 @@
             <fieldset>
                 <legend>Cerca periodo</legend>
                 <form action="ricercaOrari.php" method="post">
-                    Da: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-                    A: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+                    Da: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                    A: <input type="date" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
                     Etichetta: <select name="fascia">
                         <option value="colazione">Colazione</option>
                         <option value="pranzo">Pranzo</option>
@@ -256,7 +256,7 @@
                     </button>
                 </form>
             </fieldset>
-            <table>
+            <table class="table-ext">
                 <thead>
                     <tr>
                         <td>Giorno</td>
@@ -297,7 +297,7 @@
         ?>
         <p></p>
         <?php
-        $strsql = "select * from prenotazione order by giorno";
+        $strsql = "select * from prenotazione  where codiceStruttura= '$codiceStruttura' order by giorno";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -331,12 +331,12 @@
                 <fieldset>
                     <legend>Cerca turno</legend>
                     <form action="ricercaOrari.php" method="post">
-                        Giorno: <input type="text" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
-                        Etichetta: <select name="fascia">
-                            <option value="colazione">Colazione</option>
-                            <option value="pranzo">Pranzo</option>
-                            <option value="cena">Cena</option>
-                        </select>
+                        Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
+                        <!--Etichetta: <select name="fascia">
+                               <option value="colazione">Colazione</option>
+                               <option value="pranzo">Pranzo</option>
+                               <option value="cena">Cena</option>
+                           </select>-->
                         &emsp;<button class="click" type="submit">Cerca</button>
                         <button class="click">
                             <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
