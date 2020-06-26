@@ -19,7 +19,7 @@ include_once('mysql-fix.php');
 <body>
 <h1>Modifica orario</h1>
 <?php
-$giorno = $_POST["giorno"];
+$giorno = strtotime($_POST["giorno"]);
 $strsql = "select * from orari where giorno = '$giorno'";
 $risultato = mysqli_query($conn, $strsql);
 if (! $risultato)

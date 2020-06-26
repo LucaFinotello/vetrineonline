@@ -187,7 +187,7 @@ include_once('mysql-fix.php');
     </div>
     <div id="contenuto">
     <?php
-        $strsql = "select * from orari";
+        $strsql = "select * from orari where codiceStruttura='$codiceStruttura' order by giorno";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -230,7 +230,7 @@ include_once('mysql-fix.php');
                 {
                     echo ("<tr>");
                     echo "<form action='modificaOrari.php' method='post'>";
-                    echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".$riga['giorno']."'/></td>";
+                    echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
                     echo "<td>".$riga['identificazione']."</td>";
                     echo "<td>".$riga['oraInizio']."</td>";
                     echo "<td>".$riga['oraFine']."</td>";
@@ -273,10 +273,10 @@ include_once('mysql-fix.php');
             $tabella = mysqli_query($conn, $query_tabella) or die(mysql_error());
             $row_tabella = mysql_fetch_assoc($tabella);
             $totalRows_tabella = mysql_num_rows($tabella);
-            echo $totalRows_tabella;
+            //echo $totalRows_tabella;
 
 
-            echo date('d/m/Y', $giorno);
+            //echo date('d/m/Y', $giorno);
 
             $oraInizio = date("H:i", strtotime($oraInizio));
             $oraFine = date("H:i", strtotime($oraFine));
@@ -285,11 +285,12 @@ include_once('mysql-fix.php');
 
         for ($i = 0; $i < $totalRows_tabella; $i++) {
                 $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
-                $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala'";
+                $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala',
+                codiceStruttura='$codiceStruttura'";
                 $risultato = mysqli_query($conn, $strsql);
                 $oraInizio = $turno;
                 $giorno +=86400;
-                echo $giorno;
+                //echo $giorno;
         }
 
         if (! $risultato)
@@ -298,7 +299,7 @@ include_once('mysql-fix.php');
         }
         else
         {
-            $strsql = "select * from prenotazione ";
+            $strsql = "select * from prenotazione where codiceStruttura = '$codiceStruttura' order by giorno";
             $risultato = mysqli_query($conn, $strsql);
             if (! $risultato)
             {
@@ -363,15 +364,3 @@ include_once('mysql-fix.php');
 </div>
 </body>
 </html>
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable( {
-            "pagingType": "full_numbers"
-        } );
-    } );
-    $(document).ready(function() {
-        $('#turni').DataTable( {
-            "pagingType": "full_numbers"
-        } );
-    } );
-</script>

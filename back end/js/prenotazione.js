@@ -129,7 +129,10 @@ function modifica() {
     var w = Math.floor((screen.width)/3);
     var h = Math.floor((screen.height)/3);
     var stile = "top="+t+", left="+l+", width="+w+", height="+h+", status=no, menubar=no, toolbar=no scrollbars=no";
-    window.open('gestioneOrari.php', '', stile);
+    window.open('modificaOrari.php', '', stile);
+    document.myform.giorno.value;
+    return true;
+
 }
 
 function chiudi() {

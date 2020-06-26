@@ -191,31 +191,27 @@
         $identificatore= $_POST ['identificatore'];
         $oraInizio = $_POST['oraInizio'];
         $oraFine = $_POST['oraFine'];
-        $dataInizio = $_POST["dataInizio"];
-        $datafine = $_POST["dataFine"];
-        $codiceStruttura = 'H001';
+        $dataInizio = strtotime($_POST["dataInizio"]);
+        $datafine = strtotime($_POST["dataFine"]);
 
         $oggi= strtotime($_POST['dataInizio']);
         $dataTermine= strtotime($_POST['dataFine']);
 
 
         for ($i = $oggi; $i < $dataTermine; $i=$i+86400) {
-            //echo date("d/m/Y",$i)."<br>";
             $giorno=$i;
-            //echo date("d/m/Y",$giorno)."<br>";
             $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraFine',
                         identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
             $risultato = mysqli_query($conn, $strsql);
-
         }
 
-        if (! $risultato)
+        if (!$risultato)
         {
             echo "Errore nel comando SQL" . "<br>";
         }
         else
         {
-        $strsql = "select * from orari ";
+        $strsql = "select * from orari order by giorno";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -301,7 +297,7 @@
         ?>
         <p></p>
         <?php
-        $strsql = "select * from prenotazione ";
+        $strsql = "select * from prenotazione order by giorno";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -366,7 +362,7 @@
                 {
                     echo ("<tr>");
                     echo "<form action='modifica.php' method='POST'>";
-                    echo "<td>".$riga["giorno"]."</td>";
+                    echo "<td>".date('d/m/Y', $riga["giorno"])."</td>";
                     echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                     echo "<td>".$riga["stanza"]."</td>";
                     echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
