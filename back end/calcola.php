@@ -202,11 +202,15 @@ include_once('mysql-fix.php');
         {
             ?>
             <fieldset>
-                <legend>Cerca</legend>
+                <legend>Cerca periodo</legend>
                 <form action="ricercaOrari.php" method="post">
-                    Data: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-                    Data: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
-                    Fascia: <input type="text" class="inputBottom" name="fascia" value="" placeholder="Colazione">
+                    Da: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                    A: <input type="date" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+                    Etichetta: <select name="fascia">
+                        <option value="colazione">Colazione</option>
+                        <option value="pranzo">Pranzo</option>
+                        <option value="cena">Cena</option>
+                    </select>
                     &emsp;<button class="click" type="submit">Cerca</button>
                     <button class="click">
                         <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
@@ -225,6 +229,9 @@ include_once('mysql-fix.php');
                 </tr>
                 </thead>
                 <tbody>
+                <td colspan="5">
+                    <div class="divinterno">
+                        <table class="table-int">
                 <?php
                 while ($riga)
                 {
@@ -240,6 +247,10 @@ include_once('mysql-fix.php');
                     $riga = mysqli_fetch_array($risultato);
                 }
                 ?>
+            </table>
+    </div>
+    </td>
+    </tr>
                 </tbody>
             </table>
             <?php
@@ -271,8 +282,8 @@ include_once('mysql-fix.php');
 
             $query_tabella = "SELECT * FROM orari";
             $tabella = mysqli_query($conn, $query_tabella) or die(mysql_error());
-            $row_tabella = mysql_fetch_assoc($tabella);
-            $totalRows_tabella = mysql_num_rows($tabella);
+            $row_tabella = mysqli_fetch_assoc($tabella);
+            $totalRows_tabella = mysqli_num_rows($tabella);
             //echo $totalRows_tabella;
 
 
@@ -330,7 +341,19 @@ include_once('mysql-fix.php');
             {
                 ?>
                 <p></p>
-                <table id="turni" class="display">
+                <fieldset>
+                    <legend>Cerca turno</legend>
+                    <form action="ricercaTurno.php" method="post">
+                        Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
+                        <!--Etichetta: <select name="fascia">
+                            <option value="colazione">Colazione</option>
+                            <option value="pranzo">Pranzo</option>
+                            <option value="cena">Cena</option>
+                        </select>-->
+                        &emsp;<button class="click" type="submit">Cerca</button>
+                    </form>
+                </fieldset>
+                <table>
                     <thead>
                     <tr>
                         <td>Giorno</td>
@@ -340,6 +363,10 @@ include_once('mysql-fix.php');
                     </tr>
                     </thead>
                     <tbody>
+                    <tr>
+                        <td colspan="4">
+                            <div class="divinterno">
+                                <table class="table-int">
                     <?php
                     while ($riga)
                     {
@@ -354,6 +381,10 @@ include_once('mysql-fix.php');
                         $riga = mysqli_fetch_array($risultato);
                     }
                     ?>
+                                </table>
+                            </div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
                 <p></p><br>

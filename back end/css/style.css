@@ -134,3 +134,7 @@ div#example_filter, div#turni_filter {
 .setting{
     line-height: 32px;
 }
+
+.centra {
+    text-align: center !important;
+}
