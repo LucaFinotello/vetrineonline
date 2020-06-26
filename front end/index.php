@@ -19,7 +19,7 @@ include_once('mysql-fix.php');
 <h1>Prenota il tuo turno</h1>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca per giorno...">
 <?php
-$strsql = "select * from prenotazione";
+$strsql = "select * from prenotazione where codiceStruttura= '$codiceStruttura' order by giorno";
 $risultato = mysqli_query($conn, $strsql);
 if (! $risultato)
 {
@@ -45,7 +45,8 @@ else
         {
             echo ("<tr>");
             echo "<form action='modifica.php' method='POST'>";
-            echo "<td>".$riga["giorno"]."</td>";
+            echo  "<input type='text' name='id' value='".$riga["id"]."' hidden/>";
+            echo "<td>".date('d/m/Y', $riga["giorno"])."</td>";
             echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
             echo "<td>".$riga["stanza"]."</td>";
             echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";

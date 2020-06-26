@@ -18,8 +18,9 @@ include_once('mysql-fix.php');
     <body>
     <h1>Inserisci Prenotazione</h1>
     <?php
+        $id = $_POST["id"];
         $turno = $_POST["turno"];
-        $strsql = "select * from prenotazione where turno = substr('$turno', 9)";
+        $strsql = "select * from prenotazione where codiceStruttura='$codiceStruttura' and id = '$id'";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
           {
@@ -35,7 +36,7 @@ include_once('mysql-fix.php');
     ?>
     <form action="test.php" method="POST" >
         <div class="prenotazione">
-            Data: <input class="inputBottom" name="giorno" type="text" value="<?php echo $riga["giorno"]?>"><br>
+            Data: <input class="inputBottom" name="giorno" type="text" value="<?php echo date('d/m/Y',$riga["giorno"])?>"><br>
             Turno: <input class="inputBottom" name="turno" type="text" readonly value="<?php echo $riga["turnoInizio"]?> - <?php echo $riga["turno"]?>"><br>
             Stanza: <input class="inputBottom" name="stanza" type="text" value="<?php echo substr($riga["stanza"], 2)?>"><br><br>
             <input class="inputBottom" name="disponibilita" type="text" value="<?php echo $riga["disponibilita"]?>" hidden>
