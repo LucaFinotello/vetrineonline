@@ -257,7 +257,8 @@ include_once('mysql-fix.php');
                     {
                         echo "<tr>";
                         echo "<form action='modificaOrari.php' method='post'>";
-                        echo "<td><input class='inputTable' name='giorno' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
+                        echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
+                        echo "<td><input class='inputTable' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
                         echo "<td>".$riga['identificazione']."</td>";
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";

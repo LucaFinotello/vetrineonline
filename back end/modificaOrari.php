@@ -19,8 +19,8 @@ include_once('mysql-fix.php');
 <body>
 <h1>Modifica orario</h1>
 <?php
-$giorno = strtotime($_POST["giorno"]);
-$strsql = "select * from orari where giorno = '$giorno'";
+$id = $_POST["id"];
+$strsql = "select * from orari where id = '$id'";
 $risultato = mysqli_query($conn, $strsql);
 if (! $risultato)
 {
@@ -36,7 +36,8 @@ else
     ?>
     <form action="modificaOra.php" method="POST" >
         <div class="prenotazione">
-            Data: <input class="inputBottom" name="giorno" type="text" value="<?php echo $riga["giorno"]?>"><br>
+            <input class="inputBottom" name="id" type="text" value="<?php echo $riga["id"]?>" hidden/>
+            Data: <input class="inputBottom" name="giorno" type="text" value="<?php echo date('d/m/Y', $riga["giorno"])?>"/><br>
             Fascia: <select name="identificatore">
                 <option value="Colazione">Colazione</option>
                 <option value="Pranzo">Pranzo</option>

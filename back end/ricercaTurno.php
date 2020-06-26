@@ -186,7 +186,7 @@ include_once('mysql-fix.php');
     </div>
     <div id="contenuto">
         <?php
-        $strsql = "select * from orari";
+        $strsql = "select * from orari where codiceStruttura = '$codiceStruttura'";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -219,8 +219,8 @@ include_once('mysql-fix.php');
             <fieldset>
                 <legend>Cerca periodo</legend>
                 <form action="ricercaOrari.php" method="post">
-                    Da: <input type="text" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-                    A: <input type="text" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+                    Da: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
+                    A: <input type="date" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
                     Etichetta: <select name="fascia">
                         <option value="colazione">Colazione</option>
                         <option value="pranzo">Pranzo</option>
@@ -252,7 +252,8 @@ include_once('mysql-fix.php');
                 {
                     echo ("<tr>");
                     echo "<form action='modificaOrari.php' method='post'>";
-                    echo "<td><input class='inputTable' name='giorno' value='".$riga['giorno']."'/></td>";
+                    echo "<td><input class='inputTable' name='giorno' value='".date("d/m/Y",$riga['giorno'])."'/></td>";
+                    echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                     echo "<td>".$riga['identificazione']."</td>";
                     echo "<td>".$riga['oraInizio']."</td>";
                     echo "<td>".$riga['oraFine']."</td>";
@@ -273,7 +274,7 @@ include_once('mysql-fix.php');
             ?>
             <p></p>
             <?php
-            $strsql = "select * from prenotazione ";
+            $strsql = "select * from prenotazione where codiceStruttura= '$codiceStruttura'";
             $risultato = mysqli_query($conn, $strsql);
             if (! $risultato)
             {
@@ -335,7 +336,7 @@ include_once('mysql-fix.php');
                                 <table class="table-int">
                                     <?php
                                     $giorno= strtotime($_POST['data']);
-                $strsql = "select * from prenotazione where giorno='$giorno'";
+                $strsql = "select * from prenotazione where giorno='$giorno' and codiceStruttura= '$codiceStruttura'";
                 $risultato = mysqli_query($conn, $strsql);
                 if (! $risultato)
                 {

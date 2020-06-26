@@ -189,11 +189,12 @@ include_once('mysql-fix.php');
         </div>
         <div id="contenuto">
         <?php
+            $id = $_POST["id"];
             $giorno = $_POST["giorno"];
             $fascia = $_POST["identificatore"];
             $oraInizio = $_POST["oraInizio"];
             $oraFine = $_POST["oraFine"];
-            $strsql = "update orari set identificazione='$fascia', oraInizio='$oraInizio', oraFine='$oraFine'  where giorno = '$giorno'";
+            $strsql = "update orari set identificazione='$fascia', oraInizio='$oraInizio', oraFine='$oraFine'  where id = '$id'";
             $risultato = mysqli_query($conn, $strsql);
             if (!$risultato)
               {
@@ -266,7 +267,8 @@ include_once('mysql-fix.php');
             {
                 echo ("<tr>");
                 echo "<form action='modificaOrari.php' method='post'>";
-                echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".$riga['giorno']."'/></td>";
+                echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
+                echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                 echo "<td>".$riga['identificazione']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
