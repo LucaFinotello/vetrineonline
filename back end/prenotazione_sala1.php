@@ -166,7 +166,7 @@
                     <option value="23:15">23:15</option>
                     <option value="23:30">23:30</option>
                 </select>
-                &emsp;
+                &emsp;<br><br>
                 <button type="submit" class="click" value="compila">Compila</button>
             </fieldset>
         </form>
@@ -181,9 +181,8 @@
                 <option value="1:00">1:00</option>
                 <option value="1:15">1:15</option>
                 <option value="1:30">1:30</option>
-            </select>
+            </select><br><br>
             <button type="submit" class="click" value="calcola">Calcola</button>
-            <button type="reset" class="click" onclick="refresh()">Annulla</button>
         </form>
     </div>
     <div id="contenuto">

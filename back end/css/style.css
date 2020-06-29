@@ -17,7 +17,7 @@ body{
 
 #menu{
     float:left;
-    width:15%;
+    width:20%;
 }
 
 #contenuto{
@@ -137,4 +137,48 @@ div#example_filter, div#turni_filter {
 
 .centra {
     text-align: center !important;
+}
+
+@media only screen and (max-width: 1024px) {
+     #menu {
+         width: 25% !important;
+     }
+
+    #contenuto {
+        width: 75% !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    #contenuto {
+        width: 65% !important;
+        padding: 0 !important;
+    }
+
+    .inputTable {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+}
+
+@media only screen and (max-width: 414px) {
+    #menu {
+        width: 100% !important;
+        float: none !important;
+    }
+
+    #contenuto {
+        width: 100% !important;
+        float: none !important;
+    }
+
+    .inputTable {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        text-align: left!important;
+    }
 }
