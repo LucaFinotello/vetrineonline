@@ -15,16 +15,14 @@ body{
     margin-top:1%;
 }
 
-#menu{
-    float:left;
-    width:20%;
+#menu {
+    width:100%;
+    text-align: center !important;
 }
 
 #contenuto{
     padding-left: 2%;
     padding-right: 2%;
-    width:80%;
-    float:right;
 }
 
 h1 {
@@ -144,21 +142,10 @@ div#example_filter, div#turni_filter {
 }
 
 @media only screen and (max-width: 1024px) {
-     #menu {
-         width: 25% !important;
-     }
 
-    #contenuto {
-        width: 75% !important;
-    }
 }
 
 @media only screen and (max-width: 768px) {
-    #contenuto {
-        width: 65% !important;
-        padding: 0 !important;
-    }
-
     .inputTable {
         width: 100%;
         overflow: hidden;
@@ -168,10 +155,6 @@ div#example_filter, div#turni_filter {
 }
 
 @media only screen and (max-width: 414px) {
-    #menu {
-        width: 100% !important;
-        float: none !important;
-    }
 
     #contenuto {
         width: 100% !important;

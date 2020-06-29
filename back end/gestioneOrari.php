@@ -21,7 +21,7 @@
             $codiceStruttura= 'H001';
         ?>
         <h1>Inserisci orario settimanale dal <?php echo date("d-m-Y", strtotime($dataInizio))?> al <?php echo date("d-m-Y", strtotime($datafine))?></h1>
-        <form action="prenotazione_sala1.php" method="POST" >
+        <form action="creazioneTurni.php" method="POST" >
             <input type="date" name="dataInizio" hidden value="<?php echo $dataInizio?>"/>
             <input type="date" name="dataFine" hidden value="<?php echo $datafine?>"/>
             <table>

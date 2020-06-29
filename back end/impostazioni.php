@@ -3,11 +3,11 @@ include('header.html');
 ?>
 <h1>Impostazioni</h1>
 <?php include ('menu.html'); ?>
-<form name="gestioneOrari" action="prenotazione_sala1.php" method="post" class='setting'>
+<form name="gestioneOrari" action="creazioneTurni.php" method="post" class='setting'>
     <fieldset>
         <legend>Selezionare periodo</legend>
-        <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy"><br>
-        <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy"><br>
+        <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy" required><br>
+        <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy" required><br>
         <span>Fascia</span>
         <select name="identificatore">
             <option value="Colazione">Colazione</option>
@@ -79,6 +79,7 @@ include('header.html');
             <option value="23:00">23:00</option>
             <option value="23:15">23:15</option>
             <option value="23:30">23:30</option>
+            <option value="23:45">23:45</option>
         </select><br>
         <spa>Ora Fine</spa>
         <select name="oraFine">
@@ -145,6 +146,7 @@ include('header.html');
             <option value="23:00">23:00</option>
             <option value="23:15">23:15</option>
             <option value="23:30">23:30</option>
+            <option value="23:45">23:45</option>
         </select>
         &emsp;<br><br>
         <span>Numero tavoli in sala</span>&nbsp;
@@ -157,11 +159,10 @@ include('header.html');
             <option value="1:00">1:00</option>
             <option value="1:15">1:15</option>
             <option value="1:30">1:30</option>
+        </select> &emsp;
         <button type="submit" class="click" value="compila">Compila</button>
     </fieldset>
 </form>
-<!--<form action="calcola.php" method="POST">
-
-    </select><br><br>
-    <button type="submit" class="click" value="calcola">Calcola</button>
-</form>-->
+<?php
+    include ('footer.html');
+?>
