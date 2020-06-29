@@ -25,8 +25,8 @@ include_once('mysql-fix.php');
         <form name="gestioneOrari" action="prenotazione_sala1.php" method="post">
             <fieldset>
                 <legend>Selezionare periodo</legend>
-                <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy">
-                <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy">
+                <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy"><br>
+                <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy"><br>
                 <span>Fascia</span>
                 <select name="identificatore">
                     <option value="Colazione">Colazione</option>

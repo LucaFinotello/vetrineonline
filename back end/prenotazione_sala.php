@@ -186,6 +186,7 @@ include_once('mysql-fix.php');
             </select><br><br>
             <button type="submit" class="click" value="calcola">Calcola</button>
         </form>
+        <br>
     </div>
     <div id="contenuto">
             <?php
