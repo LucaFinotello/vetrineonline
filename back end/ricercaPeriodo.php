@@ -2,8 +2,8 @@
 <fieldset>
     <legend>Cerca periodo</legend>
     <form action="ricercaOrari.php" method="post">
-        Da: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
-        A: <input type="date" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
+        Da: <input type="date" class="inputBottom" name="dataInizio" value="<?php echo $_POST['dataInizio'] ?>" placeholder="gg/mm/aaaa">
+        A: <input type="date" class="inputBottom" name="dataFine" value="<?php echo $_POST['dataFine'] ?>" placeholder="gg/mm/aaaa">
         Etichetta: <select name="fascia">
         <option value="colazione">Colazione</option>
         <option value="pranzo">Pranzo</option>

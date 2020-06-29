@@ -37,7 +37,7 @@ include('header.html');
             }
             else
             {
-                include ('ricercaPeriodo.html');
+                include('ricercaPeriodo.php');
                 ?>
                 <table class="table-ext">
                     <thead>
@@ -150,8 +150,9 @@ include('header.html');
                         {
                             echo ("<tr>");
                             echo "<form action='modifica.php' method='POST'>";
+                            echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                             echo "<td>".date('d/m/Y', $riga["giorno"])."</td>";
-                            echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
+                            echo "<td>".$riga["turnoInizio"]." - ".$riga["turno"]."</td>";
                             echo "<td>".$riga["stanza"]."</td>";
                             echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
                             echo "</form>";

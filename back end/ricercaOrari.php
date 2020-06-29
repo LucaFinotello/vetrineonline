@@ -36,7 +36,7 @@ include ('header.html');
             }
             else
             {
-                include ('ricercaPeriodo.html');
+                include('ricercaPeriodo.php');
                 ?>
                 <table>
                 <thead>
@@ -57,7 +57,7 @@ include ('header.html');
                 $dataInizio = strtotime($_POST['dataInizio']);
                 $dataFine = strtotime($_POST['dataFine']);
                 $fascia = $_POST['fascia'];
-                $strsql = "select * from orari where BETWEEN $dataInizio AND $dataFine and codiceStruttura = '$codiceStruttura'";
+                $strsql = "select * from orari where giorno=$dataInizio and codiceStruttura = '$codiceStruttura'";
                 $risultato = mysqli_query($conn, $strsql);
                 if (! $risultato)
                 {

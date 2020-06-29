@@ -67,7 +67,7 @@ include ('header.html')
         }
         else
         {
-            include ('ricercaPeriodo.html');
+            include('ricercaPeriodo.php');
             ?>
         <table>
             <thead>

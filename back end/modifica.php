@@ -19,8 +19,8 @@ include_once('mysql-fix.php');
     <body>
     <h1>Inserisci Prenotazione</h1>
     <?php
-        $turno = $_POST["turno"];
-        $strsql = "select * from prenotazione where turno = substr('$turno', 9)";
+        $id = $_POST["id"];
+        $strsql = "select * from prenotazione where id = '$id'";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
           {

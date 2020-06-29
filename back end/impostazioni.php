@@ -81,7 +81,7 @@ include('header.html');
             <option value="23:30">23:30</option>
             <option value="23:45">23:45</option>
         </select><br>
-        <spa>Ora Fine</spa>
+        <span>Ora Fine</span>
         <select name="oraFine">
             <option value="5:00">5:00</option>
             <option value="5:30">5:30</option>
