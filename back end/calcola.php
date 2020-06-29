@@ -171,7 +171,7 @@ include_once('mysql-fix.php');
         </form>
 
         <form action="calcola.php" method="POST">
-            <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom" type="text" name="postiSala" value="">&emsp;
+            <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom inputNumber" type="number" name="postiSala" value="" step="any" required>&emsp;
             <span>Durata turno</span>&nbsp;
             <select name="durataTurno">
                 <option value="0:15">0:15</option>
@@ -279,7 +279,7 @@ include_once('mysql-fix.php');
             $oraInizio = $riga['oraInizio'];
             $oraFine = $riga['oraFine'];
 
-            $query_tabella = "SELECT * FROM orari";
+            $query_tabella = "SELECT * FROM orari where codiceStruttura = '$codiceStruttura'";
             $tabella = mysqli_query($conn, $query_tabella) or die(mysql_error());
             $row_tabella = mysqli_fetch_assoc($tabella);
             $totalRows_tabella = mysqli_num_rows($tabella);
@@ -296,11 +296,10 @@ include_once('mysql-fix.php');
         for ($i = 0; $i < $totalRows_tabella; $i++) {
                 $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
                 $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala',
-                codiceStruttura='$codiceStruttura'";
+            codiceStruttura='$codiceStruttura'";
                 $risultato = mysqli_query($conn, $strsql);
                 $oraInizio = $turno;
-                $giorno +=86400;
-                //echo $giorno;
+            $giorno +=86400;
         }
 
         if (! $risultato)

@@ -172,7 +172,8 @@ include_once('mysql-fix.php');
         </form>
 
         <form action="calcola.php" method="POST">
-            <span>Numero tavoli in sala</span>&nbsp;<input class="inputBottom" type="text" name="postiSala" value="">&emsp;
+            <span>Numero tavoli in sala</span>&nbsp;
+            <input class="inputBottom inputNumber" type="number" name="postiSala" value="" step="any" required>&emsp;
             <span>Durata turno</span>&nbsp;
             <select name="durataTurno">
                 <option value="0:15">0:15</option>
