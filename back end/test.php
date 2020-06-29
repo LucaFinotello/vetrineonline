@@ -195,8 +195,15 @@ include_once('mysql-fix.php');
             $postiSala = $_POST["disponibilita"];
             $num=count(explode(" ", $stanza));
             $disponibilita = ($postiSala - $num);
-            $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where turno = substr('$turno', 9)";
-            $risultato = mysqli_query($conn, $strsql);
+            if ($disponibilita>$postiSala) {
+                $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where turno = substr('$turno', 9)";
+                $risultato = mysqli_query($conn, $strsql);
+            }else {
+                echo ('Il numero dei tavoli occupati sono maggiori del numero dei tavoli disponibili puoi inserire '.$postiSala . ' tavoli.' .
+                    "<br><button><a style='text-decoration: none' href='prenotazione_sala.php'>Annulla</a></button>");
+                exit;
+            }
+
             if (!$risultato)
               {
                echo "Errore nel comando SQL" . "<br>";
@@ -237,7 +244,7 @@ include_once('mysql-fix.php');
         <table id="example" class="display">
             <thead>
             <tr>
-                <td>Giorno</td>
+                <td style="width: 245px">Giorno</td>
                 <td>Fascia</td>
                 <td>Ora Inizio</td>
                 <td>Ora Fine</td>
@@ -254,7 +261,7 @@ include_once('mysql-fix.php');
             {
                 echo ("<tr>");
                 echo "<form action='modificaOrari.php' method='post'>";
-                echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
+                echo "<td style='width: 200px'><input class='inputTable' class='Bordernone' name='giorno' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
                 echo "<td>".$riga['identificazione']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
