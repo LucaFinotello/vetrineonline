@@ -117,59 +117,12 @@ include('header.html');
                 }
                 else
                 {
-                    ?>
-                    <p></p><br>
-                    <fieldset>
-                        <legend>Cerca turno</legend>
-                        <form action="ricercaTurno.php" method="post">
-                            Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
-                            <!--Etichetta: <select name="fascia">
-                                <option value="colazione">Colazione</option>
-                                <option value="pranzo">Pranzo</option>
-                                <option value="cena">Cena</option>
-                            </select>-->
-                            &emsp;<button class="click" type="submit">Cerca</button>
-                        </form>
-                    </fieldset>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Giorno</th>
-                            <th>Turno</th>
-                            <th>Stanza</th>
-                            <th>Inserisci</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td colspan="4">
-                                <div class="divinterno">
-                                    <table class="table-int">
-                        <?php
-                        while ($riga)
-                        {
-                            echo ("<tr>");
-                            echo "<form action='modifica.php' method='POST'>";
-                            echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                            echo "<td>".date('d/m/Y', $riga["giorno"])."</td>";
-                            echo "<td>".$riga["turnoInizio"]." - ".$riga["turno"]."</td>";
-                            echo "<td>".$riga["stanza"]."</td>";
-                            echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
-                            echo "</form>";
-                            echo ("</tr>");
-                            $riga = mysqli_fetch_array($risultato);
-                        }
-                        ?>
-                                    </table>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <p></p><br>
-                <?php }
-                ?>
+                    include ('cercaTurno.html');
+                    include('turni.php');
+                }
+            ?>
     </div>
 </div>
-</body>
-</html>
+<?php
+    include ('footer.html');
+?>
