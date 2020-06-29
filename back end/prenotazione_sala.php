@@ -18,22 +18,7 @@ include('header.html');
             $riga = mysqli_fetch_array($risultato);
             if (! $riga)
             {
-                echo "<br><table>
-                    <thead>
-                    <tr>
-                        <td>Giorno</td>
-                        <td>Fascia</td>
-                        <td>Ora Inizio</td>
-                        <td>Ora Fine</td>
-                        <td>Azioni</td>
-                    </tr>
-                    </thead>
-                    <tbody >
-                        <tr>
-                            <td colspan='5'>Ops!! Nessun dato inserito</td>
-                        </tr>
-                    </tbody>
-                    </table>";
+                include ('tabellaVuotaOrari.html');
             }
             else
             {
@@ -42,7 +27,7 @@ include('header.html');
                 <table class="table-ext">
                     <thead>
                     <tr>
-                        <td>Giorno</td>
+                        <td >Giorno</td>
                         <td>Fascia</td>
                         <td>Ora Inizio</td>
                         <td>Ora Fine</td>
@@ -60,7 +45,7 @@ include('header.html');
                         echo "<tr>";
                         echo "<form action='modificaOrari.php' method='post'>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                        echo "<td><input class='inputTable' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
+                        echo "<td style='width: 200px!important;'><input class='inputTable' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
                         echo "<td>".$riga['identificazione']."</td>";
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";
@@ -96,24 +81,7 @@ include('header.html');
                 $riga = mysqli_fetch_array($risultato);
                 if (! $riga)
                 {
-                    echo "<p></p><br>
-                           <table>
-                        <thead>
-                        <tr>
-                            <td>Giorno</td>
-                            <td>Turno</td>
-                            <td>Stanza</td>
-                            <td>Inserisci</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                        <td colspan='4'>Ops!!! Nessun dato inserito</td>
-                        </tr>
-                        </tbody>
-                        </table>
-                        <p></p><br>
-                          ";
+                   include ('tabellaVuotaTurni.html');
                 }
                 else
                 {
