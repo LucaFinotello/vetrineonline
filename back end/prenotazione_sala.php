@@ -3,27 +3,12 @@ session_start();
 setlocale(LC_TIME, 'italian'); // it_IT
 include("db_con.php");
 include_once('mysql-fix.php');
+include('header.html');
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Vetrineonline</title>
-    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="js/prenotazione.js"></script>
-    <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
-    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
-</head>
-<body>
 <div id="main">
     <h1>Prenotazione Sala</h1>
-    <div id="menu">
+    <?php include ('menu.html')?>
+    <!--<div id="menu">
         <h1>Impostazioni</h1>
         <form name="gestioneOrari" action="prenotazione_sala1.php" method="post" class='setting'>
             <fieldset>
@@ -188,7 +173,7 @@ include_once('mysql-fix.php');
             <button type="submit" class="click" value="calcola">Calcola</button>
         </form>
         <br>
-    </div>
+    </div>-->
     <div id="contenuto">
             <?php
             $strsql = "select * from orari where codiceStruttura= '$codiceStruttura' order by giorno";
@@ -364,5 +349,6 @@ include_once('mysql-fix.php');
                 ?>
             </div>
     </div>
+</div>
 </body>
 </html>
