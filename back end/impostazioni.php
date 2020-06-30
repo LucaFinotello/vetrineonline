@@ -9,7 +9,7 @@ include('header.html');
         <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy" required><br>
         <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy" required><br>
         <span>Fascia</span>
-        <select name="identificatore">
+        <select name="fascia">
             <option value="Colazione">Colazione</option>
             <option value="Pranzo">Pranzo</option>
             <option value="Cena">Cena</option>
@@ -150,7 +150,7 @@ include('header.html');
         </select>
         &emsp;<br><br>
         <span>Numero tavoli in sala</span>&nbsp;
-        <input class="inputBottom inputNumber" type="number" name="postiSala" value="" step="any" required>&emsp;
+        <input class="inputBottom inputNumber" type="number" name="postiSala" value="" min=0 max=100 step="any" required>&emsp;
         <span>Durata turno</span>&nbsp;
         <select name="durataTurno" required>
             <option value="0:15">0:15</option>

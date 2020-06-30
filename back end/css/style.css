@@ -86,6 +86,7 @@ select {
 }
 
 input.inputPrenotazione {
+    background: transparent;
     text-align: center;
     border: none;
 }
@@ -139,6 +140,10 @@ div#example_filter, div#turni_filter {
 
 .inputNumber {
     max-width: 40px !important;
+}
+
+.elimina {
+    float: right;
 }
 
 @media only screen and (max-width: 1024px) {

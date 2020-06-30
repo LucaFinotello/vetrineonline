@@ -27,7 +27,7 @@ include('header.html');
                 <table class="table-ext">
                     <thead>
                     <tr>
-                        <td >Giorno</td>
+                        <td style="width: 245px">Giorno</td>
                         <td>Fascia</td>
                         <td>Ora Inizio</td>
                         <td>Ora Fine</td>
@@ -46,12 +46,12 @@ include('header.html');
                         echo "<form action='modificaOrari.php' method='post'>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                         echo "<td style='width: 200px!important;'><input class='inputTable' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
-                        echo "<td>".$riga['identificazione']."</td>";
+                        echo "<td>".$riga['fascia']."</td>";
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";
-                        echo "<td>
+                        echo "<td style='width:180px;'>
                                    <button type='submit' class='click'>Modifica</button></form>";
-                        echo "<form action='eliminaGiorno.php' method='post'>";
+                        echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                         echo "<button class='sumbit'>Elimina</button>
                               </form>

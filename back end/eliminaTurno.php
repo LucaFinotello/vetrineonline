@@ -11,7 +11,6 @@
 			alert("Stai tentando di eliminare un turno gia occupato!")
 			window.location= "prenotazione_sala.php"
 			</script>';
-        echo '';
     } else
     {
         $strsql = "select * from prenotazione where id = '$id'";

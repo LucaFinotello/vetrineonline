@@ -6,6 +6,7 @@ include ('header.html');
 ?>
  <div id="main">
         <h1>Prenotazione Sala</h1>
+     <?php include ('menu.html');?>
         <div id="contenuto">
             <?php
             $strsql = "select * from orari where codiceStruttura= '$codiceStruttura' order by giorno";;
@@ -42,7 +43,7 @@ include ('header.html');
                 $dataInizio = strtotime($_POST['dataInizio']);
                 $dataFine = strtotime($_POST['dataFine']);
                 $fascia = $_POST['fascia'];
-                $strsql = "select * from orari where giorno=$dataInizio and codiceStruttura = '$codiceStruttura'";
+                $strsql = "select * from orari where giorno=$dataInizio or fascia='$fascia' and codiceStruttura = '$codiceStruttura'";
                 $risultato = mysqli_query($conn, $strsql);
                 if (! $risultato)
                 {

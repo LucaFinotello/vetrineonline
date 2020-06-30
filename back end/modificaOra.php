@@ -139,58 +139,10 @@ include ('header.html')
         }
         else
         {
-        ?>
-        <p></p><br>
-            <fieldset>
-                <legend>Cerca turno</legend>
-                <form action="ricercaOrari.php" method="post">
-                    Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
-                    <!--Etichetta: <select name="fascia">
-                        <option value="colazione">Colazione</option>
-                        <option value="pranzo">Pranzo</option>
-                        <option value="cena">Cena</option>
-                    </select>-->
-                    &emsp;<button class="click" type="submit">Cerca</button>
-                    <button class="click">
-                        <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
-                    </button>
-                </form>
-            </fieldset>
-        <table>
-            <thead>
-            <tr>
-                <td>Giorno</td>
-                <td>Turno</td>
-                <td>Stanza</td>
-                <td>Inserisci</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td colspan="4">
-                    <div class="divinterno">
-                        <table class="table-int">
-            <?php
-            while ($riga)
-            {
-                echo ("<tr>");
-                echo "<form action='modifica.php' method='POST'>";
-                echo "<td>".date('d/m/Y',$riga["giorno"])."</td>";
-                echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'/></td>";
-                echo "<td>".$riga["stanza"]."</td>";
-                echo "<td> <button type='submit' class='click' value='inserisci'>Inserisci</button> </td>";
-                echo "</form>";
-                echo ("</tr>");
-                $riga = mysqli_fetch_array($risultato);
-            }
-            ?>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <?php }
+            include ('cercaTurno.html');
+            include ('turni.php');
+        }
+
             }
             include ('footer.html')
-        ?>
+?>

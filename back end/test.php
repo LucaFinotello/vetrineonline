@@ -293,6 +293,7 @@ include_once('mysql-fix.php');
                         <thead>
                         <tr>
                             <td>Giorno</td>
+                            <td>Fascia</td>
                             <td>Turno</td>
                             <td>Stanza</td>
                             <td>Inserisci</td>

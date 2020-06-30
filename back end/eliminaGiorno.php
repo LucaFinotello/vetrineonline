@@ -19,6 +19,13 @@
     }
     else
     {
+        $strsql = "select * from orari, prenotazione where id_orari = '$id'";
+        if ($id === '') {
+            echo '<script type="text/javascript">
+			alert("Stai tentando di eliminare un giorno con turni prenotati!")
+			window.location= "prenotazione_sala.php"
+			</script>';
+        }
         $id = $_POST["id"];
         $strsql = "delete from orari where id = '$id'";
         $risultato = mysqli_query($conn, $strsql);

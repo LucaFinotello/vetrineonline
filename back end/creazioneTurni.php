@@ -7,7 +7,7 @@
 ?>
     <div id="contenuto">
         <?php
-        $identificatore= $_POST ['identificatore'];
+        $fascia= $_POST ['fascia'];
         $oraInizio = $_POST['oraInizio'];
         $oraFine = $_POST['oraFine'];
         $dataInizio = strtotime($_POST["dataInizio"]);
@@ -21,43 +21,49 @@
         for ($i = $oggi; $i <= $dataTermine; $i=$i+86400) {
             $giorno=$i;
             $strsql = "insert into orari SET giorno='$giorno', oraInizio= '$oraInizio', oraFine= '$oraFine',
-                        identificazione= '$identificatore', codiceStruttura= '$codiceStruttura'";
+                        fascia= '$fascia', codiceStruttura= '$codiceStruttura'";
             $risultato = mysqli_query($conn, $strsql);
-        }
-
-        $query_tabella = "SELECT * FROM orari where codiceStruttura = '$codiceStruttura'";
-        $tabella = mysqli_query($conn, $query_tabella) or die(mysql_error());
-        $row_tabella = mysqli_fetch_assoc($tabella);
-        $totalRows_tabella = mysqli_num_rows($tabella);
-        //echo $totalRows_tabella;
-
-
-        //echo date('d/m/Y', $giorno);
-
-        $oraInizio = date("H:i", strtotime($oraInizio));
-        $oraFine = date("H:i", strtotime($oraFine));
-        $durataTurno = date("H:i", strtotime($durataTurno));
-        $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
-
-        for ($i = 0; $i < $totalRows_tabella; $i++) {
-            $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
-            $strsql1 = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', postiSala='$postiSala', disponibilita='$postiSala',
-            codiceStruttura='$codiceStruttura'";
-            $risultato1 = mysqli_query($conn, $strsql1);
-            $oraInizio = $turno;
-            $giorno +=86400;
         }
 
         if (!$risultato)
         {
+            include ('impostazioni.php');
             echo "Errore nel comando SQL" . "<br>";
         }
         else
         {
+            $giorno = $_POST['dataInizio'];
+            $giorno= strtotime($_POST['dataInizio']);
+
+            $oraInizio = date("H:i", strtotime($oraInizio));
+            $oraFine = date("H:i", strtotime($oraFine));
+            $durataTurno = date("H:i", strtotime($durataTurno));
+            $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
+
+            for ($i = $giorno; $i <= $dataTermine; $i=$i+86400) {
+                $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
+                $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', 
+                            fascia='$fascia', postiSala='$postiSala', disponibilita='$postiSala',
+                codiceStruttura='$codiceStruttura'";
+                $risultato = mysqli_query($conn, $strsql);
+                $oraInizio = $turno;
+                $giorno +=86400;
+            }
+
+        if (!$risultato)
+        {
             include ('impostazioni.php');
-            echo "inserimento avvenuto con successo";
+            echo "Errore query inserimento turni" . "<br>";
         }
+        else
+        {
+            include ('impostazioni.php');
+            echo "Inserimento avvenuto con successo" ."<br>";
+        }
+        }
+
         ?>
     </div>
-</body>
-</html>
+<?php
+    include ('footer.html');
+?>
