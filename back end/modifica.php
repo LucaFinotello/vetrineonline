@@ -5,6 +5,7 @@ include_once('mysql-fix.php');
 include ('header.html');
 ?>
     <h1>Inserisci Prenotazione</h1>
+<div id="contenuto">
     <?php
         $id = $_POST["id"];
         $strsql = "select * from prenotazione where id = '$id'";
@@ -40,5 +41,6 @@ include ('header.html');
     </form>
     <?php
 	    }
+    echo "</div>";
     include ('footer.html');
     ?>

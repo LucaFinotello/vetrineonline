@@ -5,6 +5,7 @@ include_once('mysql-fix.php');
 include ('header.html');
 ?>
     <h1>Prenotazione Sala</h1>
+<div id="contenuto">
     <?php include ('menu.html');
             $id= $_POST['id'];
             $giorno = $_POST["giorno"];
@@ -31,9 +32,6 @@ include ('header.html');
             if (!$risultato)
               {
                echo "Errore nel comando SQL" . "<br>";
-                  echo $giorno. "<br>" ;
-                  echo $turno. "<br>";
-                  echo $stanza. "<br>";
               } else {
         $strsql = "select * from orari where giorno!= '' ";
         $risultato = mysqli_query($conn, $strsql);
@@ -74,9 +72,14 @@ include ('header.html');
                 echo "<td>".$riga['fascia']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
-                echo "<td><button type='submit' class='click'>Modifica</button>";
-                echo "</form>";
-                echo ("</tr>");
+                echo "<td style='width:180px;'>
+                                   <button type='submit' class='click'>Modifica</button></form>";
+                echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
+                echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
+                echo "<button class='sumbit'>Elimina</button>
+                              </form>
+                              </td>";
+                echo "</tr>";
                 $riga = mysqli_fetch_array($risultato);
             }
             ?>
@@ -139,4 +142,5 @@ include ('header.html');
         include ('turni.php');
         }
             }
+            echo "</div>";
 include ('footer.html');?>
