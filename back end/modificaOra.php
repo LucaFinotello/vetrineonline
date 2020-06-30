@@ -55,7 +55,7 @@ include ('header.html')
                         <td>Fascia</td>
                         <td>Ora Inizio</td>
                         <td>Ora Fine</td>
-                        <td>Modifica</td>
+                        <td>Azioni</td>
                     </tr>
                     </thead>
                     <tbody >
@@ -76,7 +76,7 @@ include ('header.html')
                 <td>Fascia</td>
                 <td>Ora Inizio</td>
                 <td>Ora Fine</td>
-                <td>Modifica</td>
+                <td>Azioni</td>
             </tr>
             </thead>
             <tbody>

@@ -56,7 +56,7 @@ include_once('mysql-fix.php');
                     <th>Giorno</th>
                     <th>Turno</th>
                     <th>Stanza</th>
-                    <th>Modifica</th>
+                    <th>Azioni</th>
                 </tr>
                 <?php
                 while ($riga)

@@ -224,7 +224,7 @@ include_once('mysql-fix.php');
                     <td>Fascia</td>
                     <td>Ora Inizio</td>
                     <td>Ora Fine</td>
-                    <td>Modifica</td>
+                    <td>Azioni</td>
                 </tr>
                 </thead>
                 <tbody>
