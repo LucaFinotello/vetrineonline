@@ -2,21 +2,8 @@
 session_start();
 include("db_con.php");
 include_once('mysql-fix.php');
+include ('header.html');
 ?>
-<!DOCTYPE html>
-<html lang="it">
-    <head>
-    <meta charset="UTF-8">
-    <title>Vetrineonline</title>
-    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="js/prenotazione.js"></script>
-</head>
-    <body>
     <h1>Inserisci Prenotazione</h1>
     <?php
         $id = $_POST["id"];
@@ -36,10 +23,12 @@ include_once('mysql-fix.php');
     ?>
     <form action="test.php" method="POST" >
         <div class="prenotazione">
+            <input name="id" value="<?php echo $riga['id']?>" hidden/>
             Data: <input class="inputBottom" name="giorno" type="text" readonly value="<?php echo date('d/m/Y',$riga["giorno"])?>"><br>
             Turno: <input class="inputBottom" name="turno" type="text" readonly value="<?php echo $riga["turnoInizio"]?> - <?php echo $riga["turno"]?>"><br>
             Stanza: <input class="inputBottom" name="stanza" type="text" value="<?php echo $riga["stanza"]?>" maxlength="20"><br><br>
             <input class="inputBottom" name="disponibilita" type="text" value="<?php echo $riga["disponibilita"]?>" hidden>
+            <input class="inputBottom" name="postiSala" type="text" value="<?php echo $riga["postiSala"]?>" hidden>
             <p>
                 Numeri tavoli disponibili <?php echo $riga["disponibilita"]?> su <?php echo $riga["postiSala"]?>
             </p>
@@ -50,7 +39,6 @@ include_once('mysql-fix.php');
         </div>
     </form>
     <?php
-					}
-			?>
-    </body>
-</html>
+	    }
+    include ('footer.html');
+    ?>
