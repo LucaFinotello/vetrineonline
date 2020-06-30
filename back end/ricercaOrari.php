@@ -25,7 +25,7 @@ include ('header.html');
                 <table>
                 <thead>
                 <tr>
-                    <td style="width: 300px">Giorno</td>
+                    <td>Giorno</td>
                     <td>Fascia</td>
                     <td>Ora Inizio</td>
                     <td>Ora Fine</td>
@@ -58,7 +58,7 @@ include ('header.html');
                     {
                         echo ("<tr>");
                         echo "<form action='modificaOrari.php' method='post'>";
-                        echo "<td style='width: 200px!important;'><input class='inputTable' name='giorno' value='".date("d/m/Y",$riga['giorno'])."'/></td>";
+                        echo "<td><input class='inputTable' name='giorno' value='".date("d/m/Y",$riga['giorno'])."'/></td>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                         echo "<td>".$riga['fascia']."</td>";
                         echo "<td>".$riga['oraInizio']."</td>";

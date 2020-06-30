@@ -112,7 +112,12 @@ div#example_filter, div#turni_filter {
     color:#fff;
 }
 
+table td {
+    width: 20vw!important;
+}
+
 .table-ext tbody td {
+    width: 20vw !important;
     border-bottom:1px solid #ddd;
 }
 
@@ -128,6 +133,7 @@ div#example_filter, div#turni_filter {
 
 .table-int td {
     height:40px;
+    width: 20vw!important;
 }
 
 .setting{

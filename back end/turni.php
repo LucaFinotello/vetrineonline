@@ -1,11 +1,11 @@
 <table>
     <thead>
     <tr>
-        <th>Giorno</th>
-        <th>Fascia</th>
-        <th>Turno</th>
-        <th>Stanza</th>
-        <th>Azioni</th>
+        <td>Giorno</td>
+        <td>Fascia</td>
+        <td>Turno</td>
+        <td>Stanza</td>
+        <td>Azioni</td>
     </tr>
     </thead>
     <tbody>
