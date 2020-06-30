@@ -324,7 +324,7 @@ include_once('mysql-fix.php');
                             <td>Giorno</td>
                             <td>Turno</td>
                             <td>Stanza</td>
-                            <td>Inserisci</td>
+                            <td>Azioni</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -357,7 +357,7 @@ include_once('mysql-fix.php');
                         <td>Giorno</td>
                         <td>Turno</td>
                         <td>Stanza</td>
-                        <td>Inserisci</td>
+                        <td>Azioni</td>
                     </tr>
                     </thead>
                     <tbody>

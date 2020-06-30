@@ -6,10 +6,8 @@ include ('header.html');
 ?>
  <div id="main">
         <h1>Prenotazione Sala</h1>
-     <?php include ('menu.html');?>
-        <div id="contenuto">
-            <?php
-            $strsql = "select * from orari where codiceStruttura= '$codiceStruttura' order by giorno";;
+     <?php include ('menu.html');
+            $strsql = "select * from orari where codiceStruttura= '$codiceStruttura' order by giorno";
             $risultato = mysqli_query($conn, $strsql);
             if (! $risultato)
             {
@@ -27,7 +25,7 @@ include ('header.html');
                 <table>
                 <thead>
                 <tr>
-                    <td style="245 px;">Giorno</td>
+                    <td style="width: 300px">Giorno</td>
                     <td>Fascia</td>
                     <td>Ora Inizio</td>
                     <td>Ora Fine</td>
@@ -43,7 +41,7 @@ include ('header.html');
                 $dataInizio = strtotime($_POST['dataInizio']);
                 $dataFine = strtotime($_POST['dataFine']);
                 $fascia = $_POST['fascia'];
-                $strsql = "select * from orari where giorno=$dataInizio or fascia='$fascia' and codiceStruttura = '$codiceStruttura'";
+                $strsql = "select * from orari where giorno BETWEEN '$dataInizio' AND '$dataFine' and fascia='$fascia' and codiceStruttura = '$codiceStruttura'";
                 $risultato = mysqli_query($conn, $strsql);
                 if (! $risultato)
                 {
@@ -60,14 +58,19 @@ include ('header.html');
                     {
                         echo ("<tr>");
                         echo "<form action='modificaOrari.php' method='post'>";
-                        echo "<td style='200px;'><input class='inputTable' name='giorno' value='".date("d/m/Y",$riga['giorno'])."'/></td>";
+                        echo "<td style='width: 200px!important;'><input class='inputTable' name='giorno' value='".date("d/m/Y",$riga['giorno'])."'/></td>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                        echo "<td>".$riga['identificazione']."</td>";
+                        echo "<td>".$riga['fascia']."</td>";
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";
-                        echo "<td><button type='submit' class='click'>Modifica</button>";
-                        echo "</form>";
-                        echo ("</tr>");
+                        echo "<td style='width:180px;'>
+                                   <button type='submit' class='click'>Modifica</button></form>";
+                        echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
+                        echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
+                        echo "<button class='sumbit'>Elimina</button>
+                              </form>
+                              </td>";
+                        echo "</tr>";
                         $riga = mysqli_fetch_array($risultato);
                     }
                     ?>
@@ -101,7 +104,6 @@ include ('header.html');
             }
             ?>
         </div>
- </div>
 <?php
     include ('footer.html');
 ?>

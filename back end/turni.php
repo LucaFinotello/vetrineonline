@@ -5,7 +5,7 @@
         <th>Fascia</th>
         <th>Turno</th>
         <th>Stanza</th>
-        <th>Inserisci</th>
+        <th>Azioni</th>
     </tr>
     </thead>
     <tbody>
@@ -19,7 +19,7 @@
                         echo ("<tr>");
                         echo "<form action='modifica.php' method='POST'>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                        echo "<td>".date('d/m/Y', $riga["giorno"])."</td>";
+                        echo "<td >".date('d/m/Y', $riga["giorno"])."</td>";
                         echo "<td>".$riga['fascia']."</td>";
                         echo "<td>".$riga["turnoInizio"]." - ".$riga["turno"]."</td>";
                         echo "<td><input class='inputPrenotazione' name='stanza' value='".$riga["stanza"]."'/></td>";

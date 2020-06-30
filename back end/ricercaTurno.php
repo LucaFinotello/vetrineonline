@@ -29,7 +29,7 @@ include ('header.html');
                 <table>
                 <thead>
                 <tr>
-                    <td style="width: 245px">Giorno</td>
+                    <td style="width: 300px">Giorno</td>
                     <td>Fascia</td>
                     <td>Ora Inizio</td>
                     <td>Ora Fine</td>
@@ -107,7 +107,7 @@ include ('header.html');
                             <td>Fascia</td>
                             <td>Turno</td>
                             <td>Stanza</td>
-                            <td>Inserisci</td>
+                            <td>Azioni</td>
                         </tr>
                         </thead>
                         <tbody>

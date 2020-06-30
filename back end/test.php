@@ -244,7 +244,7 @@ include_once('mysql-fix.php');
         <table id="example" class="display">
             <thead>
             <tr>
-                <td style="width: 245px">Giorno</td>
+                <td style="width: 300px">Giorno</td>
                 <td>Fascia</td>
                 <td>Ora Inizio</td>
                 <td>Ora Fine</td>
@@ -296,7 +296,7 @@ include_once('mysql-fix.php');
                             <td>Fascia</td>
                             <td>Turno</td>
                             <td>Stanza</td>
-                            <td>Inserisci</td>
+                            <td>Azioni</td>
                         </tr>
                         </thead>
                         <tbody>
@@ -332,7 +332,7 @@ include_once('mysql-fix.php');
                 <td>Giorno</td>
                 <td>Turno</td>
                 <td>Stanza</td>
-                <td>Inserisci</td>
+                <td>Azioni</td>
             </tr>
             </thead>
             <tbody>

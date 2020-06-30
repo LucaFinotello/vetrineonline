@@ -27,7 +27,7 @@ include('header.html');
                 <table class="table-ext">
                     <thead>
                     <tr>
-                        <td style="width: 245px">Giorno</td>
+                        <td style="width: 300px">Giorno</td>
                         <td>Fascia</td>
                         <td>Ora Inizio</td>
                         <td>Ora Fine</td>
