@@ -51,7 +51,7 @@ include ('header.html');
                         echo "<td>".$riga['fascia']."</td>";
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";
-                        echo "<td style='width:180px;'>
+                        echo "<td>
                               <button type='submit' class='click' value='modifica'>Modifica</button></form>";
                         echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
