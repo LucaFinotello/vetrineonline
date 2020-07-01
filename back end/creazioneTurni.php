@@ -51,24 +51,23 @@
                  $giorno = $_POST['dataInizio'];
                  $giorno= strtotime($_POST['dataInizio']);
 
-                 $oraInizio = date("H:i", strtotime($oraInizio));
+                 $oraInizioA = date("H:i", strtotime($oraInizio));
                  $oraFine = date("H:i", strtotime($oraFine));
                  $durataTurno = date("H:i", strtotime($durataTurno));
                  $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
 
 
                 for ($i = $giorno; $i <= $dataTermine; $i=$i+86400) {
-                    echo $oraInizio;
-                    while($oraInizio<$oraFine) {
-                         $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
-                         $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizio', turno='$turno', 
+                    if($oraInizioA<$oraFine) {
+                         $turno = date("H:i", strtotime($oraInizioA) + strtotime($durataTurno) + 10800);
+                         $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizioA', turno='$turno', 
                             fascia='$fascia', postiSala='$postiSala', disponibilita='$postiSala',
                             codiceStruttura='$codiceStruttura', id_orari='$id'";
                          $risultato = mysqli_query($conn, $strsql);
-                         $oraInizio = $turno;
-                         $giorno;
+                         $oraInizioA = $turno;
+                    } else {
+                        $oraInizioA = date("H:i", strtotime($oraInizio));
                     }
-                    $giorno += 8600;
                  }
 
                  if (!$risultato)
