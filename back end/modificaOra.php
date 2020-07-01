@@ -4,22 +4,6 @@ include("db_con.php");
 include_once('mysql-fix.php');
 include ('header.html')
 ?>
-<!DOCTYPE html>
-<html lang="it">
-    <head>
-        <meta charset="UTF-8">
-        <title>Vetrineonline</title>
-        <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-        <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script type="text/javascript" src="js/prenotazione.js"></script>
-        <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
-        <script type="text/javascript" src="DataTables/datatables.min.js"></script>
-    </head>
-    <body>
     <div id="main">
         <h1>Prenotazione Sala</h1>
         <?php
@@ -32,14 +16,14 @@ include ('header.html')
             $fascia = $_POST["identificatore"];
             $oraInizio = $_POST["oraInizio"];
             $oraFine = $_POST["oraFine"];
-            $strsql = "update orari set identificazione='$fascia', oraInizio='$oraInizio', oraFine='$oraFine'  where id = '$id'";
+            $strsql = "update orari set fascia='$fascia', oraInizio='$oraInizio', oraFine='$oraFine' where id = '$id'";
             $risultato = mysqli_query($conn, $strsql);
             if (!$risultato)
               {
                echo "Errore nel comando SQL" . "<br>";
               } else {
 
-        $strsql = "select * from orari where codiceStruttura='H001'";
+        $strsql = "select * from orari where codiceStruttura='$codiceStruttura'";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
@@ -91,12 +75,17 @@ include ('header.html')
                 echo "<form action='modificaOrari.php' method='post'>";
                 echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
                 echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                echo "<td>".$riga['identificazione']."</td>";
+                echo "<td>".$riga['fascia']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
-                echo "<td><button type='submit' class='click'>Modifica</button>";
-                echo "</form>";
-                echo ("</tr>");
+                echo "<td>
+                                   <button type='submit' class='click'>Modifica</button></form>";
+                        echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
+                        echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
+                        echo "<button class='sumbit'>Elimina</button>
+                              </form>
+                              </td>";
+                        echo "</tr>";
                 $riga = mysqli_fetch_array($risultato);
             }
             ?>
