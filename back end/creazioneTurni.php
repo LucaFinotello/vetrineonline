@@ -45,11 +45,8 @@
             }
             else
             {
-
-                    echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-
-                    $riga = mysqli_fetch_array($risultato);
-
+                echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
+                $riga = mysqli_fetch_array($risultato);
                  $id = $riga['id'];
                  $giorno = $_POST['dataInizio'];
                  $giorno= strtotime($_POST['dataInizio']);
@@ -69,9 +66,7 @@
                          $oraInizio = $turno;
                          $giorno +=86400;
                      }
-
                  }
-
                  if (!$risultato)
                  {
                      include ('impostazioni.php');
@@ -79,15 +74,11 @@
                  }
                  else
                  {
-
                      include ('impostazioni.php');
                      echo "Inserimento avvenuto con successo" ."<br>";
                  }
-
-                }
-
+            }
         }
-
         ?>
     </div>
 <?php

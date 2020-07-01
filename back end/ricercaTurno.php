@@ -91,14 +91,16 @@ include ('header.html');
                     <fieldset>
                         <legend>Cerca turno</legend>
                         <form action="ricercaTurno.php" method="post">
-                            Giorno: <input type="date" class="inputBottom" name="data" value="<?php echo $_POST['giorno']?>" placeholder="gg/mm/aaaa">
+                            Giorno: <input type="date" class="inputBottom" name="data" value="<?php echo $_POST['data'] ?>" placeholder="gg/mm/aaaa">
                             Etichetta: <select name="fascia">
                                 <option value="colazione">Colazione</option>
                                 <option value="pranzo">Pranzo</option>
                                 <option value="cena">Cena</option>
                             </select>
                             &emsp;<button class="click" type="submit">Cerca</button>
+                            <button class="click"><a href="prenotazione_sala.php" style="text-decoration: none;">Anulla</a></button>
                         </form>
+
                     </fieldset>
                     <table>
                         <thead>
