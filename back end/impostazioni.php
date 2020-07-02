@@ -166,6 +166,7 @@ include('header.html');
 </form>
 <h1>Disposizione sala</h1>
 <form action="generaSala.php" method="post">
+    <span>Giorno</span><input type="date" name="giorno" format="dd-mm-yyyy" required>
     <span>Numero Posti tavolo</span>&emsp;<input class="inputBottom inputNumber" type="number" name="postiTavolo" min="1" max="30" value="" required/>
     <span>Numero Tavolo</span>&emsp;<input class="inputBottom inputNumber" type="number" name="numeroTavolo" min="1" max="30" value="" required/>
     <button type="submit" class="click">Aggiungi</button>

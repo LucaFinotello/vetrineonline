@@ -4,26 +4,21 @@ setlocale(LC_TIME, 'italian'); // it_IT
 include("db_con.php");
 include_once('mysql-fix.php');
 include ('header.html');?>
-<div id="main">
-        <h1>Prenotazione Sala</h1>
-        <?php
-            include ('menu.html');
-            ?>
-<div id='contenuto'>
-    <details>
-        <summary>
-            Cerca giorno
-        </summary>
-        <p>
+    <div id="main">
+    <h1>Prenotazione Sala</h1>
+<?php
+include ('menu.html');
+?>
+    <div id='contenuto'>
+    <fieldset>
+        <legend>Cerca giorno</legend>
         <form action="cercaGiorno.php" method="post">
             <input type="date" name="giorno" value="<?php $_POST['giorno']?>" placeholder="gg/mm/aaaa">
             <button type="submit" class="click">Cerca</button>
         </form>
-        </p>
-    </details>
+    </fieldset>
 <?php
-$giorno = date('m/d/Y');
-$giorno = strtotime($giorno);
+$giorno = strtotime($_POST['giorno']);
 echo  "<h1>".date('d/m/Y', $giorno). "</h1>";
 echo("<table>");
 
@@ -35,8 +30,8 @@ $results = mysqli_query($conn, $query) or die (mysqli_error());
 if (mysqli_num_rows($results) != 0) {
     while ($row = mysqli_fetch_array($results)) {
         $posto = $row['id'];
-        $numeroTavolo = $row['numeroTavolo'];
         $nome = $row['nome'];
+        $numeroTavolo = $row['numeroTavolo'];
         $posti = $row['postiTavolo'];
         $dispo = $row['disponibilita'];
         if ($numero_colonne <= 10) {
@@ -86,6 +81,6 @@ if (mysqli_num_rows($results) != 0) {
 
 echo("</table>");
 
- echo "</div></div>";
+echo "</div></div>";
 include ('footer.html');
 ?>

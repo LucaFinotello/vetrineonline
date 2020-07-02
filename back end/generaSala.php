@@ -7,10 +7,10 @@ include ('header.html');
 ?>
     <div id="contenuto">
         <?php
+        $giorno = strtotime($_POST ['giorno']);
         $postiTavolo= $_POST ['postiTavolo'];
         $numeroTavolo = $_POST['numeroTavolo'];
         $disponibilita = 1;
-        $giorno= '1593554400';
 
         $strsql = "insert into sala SET postiTavolo='$postiTavolo', numeroTavolo= '$numeroTavolo', giorno= '$giorno',
                 disponibilita= '$disponibilita', codiceStruttura= '$codiceStruttura'";
