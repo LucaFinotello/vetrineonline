@@ -50,7 +50,3 @@ else
 
 </body>
 </html>
-
-<script>
-
-</script>

@@ -55,8 +55,7 @@
                  $oraFine = date("H:i", strtotime($oraFine));
                  $durataTurno = date("H:i", strtotime($durataTurno));
                  $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
-
-
+                 
                 for ($i = $giorno; $i <= $dataTermine; $i=$i+86400) {
                     if($oraInizioA<$oraFine) {
                          $turno = date("H:i", strtotime($oraInizioA) + strtotime($durataTurno) + 10800);
@@ -66,6 +65,7 @@
                          $risultato = mysqli_query($conn, $strsql);
                          $oraInizioA = $turno;
                     } else {
+                        $giorno = $giorno+86400;
                         $oraInizioA = date("H:i", strtotime($oraInizio));
                     }
                  }
