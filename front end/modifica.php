@@ -2,20 +2,8 @@
 session_start();
 include("db_con.php");
 include_once('mysql-fix.php');
+include ('header.html');
 ?>
-<!DOCTYPE html>
-<html lang="it">
-    <head>
-    <meta charset="UTF-8">
-    <title>Vetrineonline</title>
-    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-    <body>
     <h1>Inserisci Prenotazione</h1>
     <?php
         $id = $_POST["id"];
