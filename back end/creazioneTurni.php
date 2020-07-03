@@ -94,6 +94,16 @@
             }
         }
         else {
+            echo "<script>
+                  var r = confirm(\"i dati verranno sovrascritti, vuoi continuare?\");
+                  if (r == true) {
+                  
+                  } else {
+                    location.href('prenoteazione_sala.php')
+                  }
+                }
+                </script>";
+
             for ($i = $oggi; $i <= $dataTermine; $i=$i+86400) {
             $giorno=$i;
             $strsql = "update orari SET oraInizio= '$oraInizio', oraFine= '$oraFine' where giorno = '$giorno'";
