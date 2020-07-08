@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{
+    session_start();
+}
 include("db_con.php");
 include_once('mysql-fix.php');
 include ('header.html');
@@ -86,22 +89,8 @@ include ('header.html');
                 }
                 else
                 {
+                    include ('cercaTurno.php');
                     ?>
-                    <p></p><br>
-                    <fieldset>
-                        <legend>Cerca turno</legend>
-                        <form action="ricercaTurno.php" method="post">
-                            Giorno: <input type="date" class="inputBottom" name="data" value="<?php echo $_POST['data'] ?>" placeholder="gg/mm/aaaa">
-                            Etichetta: <select name="fascia">
-                                <option value="colazione">Colazione</option>
-                                <option value="pranzo">Pranzo</option>
-                                <option value="cena">Cena</option>
-                            </select>
-                            &emsp;<button class="click" type="submit">Cerca</button>
-                            <button class="click"><a href="prenotazione_sala.php" style="text-decoration: none;">Anulla</a></button>
-                        </form>
-
-                    </fieldset>
                     <table>
                         <thead>
                         <tr>
@@ -119,8 +108,8 @@ include ('header.html');
                                     <table class="table-int">
                                         <?php
                                         $giorno= strtotime($_POST['data']);
-                                        $fascia= $_POST['fascia'];
-                    $strsql = "select * from prenotazione where giorno='$giorno' and fascia= '$fascia' and codiceStruttura= '$codiceStruttura'";
+                                        //$fascia= $_POST['fascia'];
+                    $strsql = "select * from prenotazione where giorno='$giorno' and codiceStruttura= '$codiceStruttura'";
                     $risultato = mysqli_query($conn, $strsql);
                     if (! $risultato)
                     {

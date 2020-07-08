@@ -1,6 +1,9 @@
 <?php
+if(!isset($_SESSION))
+{
     session_start();
-    setlocale(LC_TIME, 'italian'); // it_IT
+}
+setlocale(LC_TIME, 'italian'); // it_IT
     include("db_con.php");
     include_once('mysql-fix.php');
     include ('header.html');

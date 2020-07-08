@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{
+    session_start();
+}
 include("db_con.php");
 include_once('mysql-fix.php');
 include ('header.html');
@@ -40,8 +43,8 @@ include ('header.html');
                 <?php
                 $dataInizio = strtotime($_POST['dataInizio']);
                 $dataFine = strtotime($_POST['dataFine']);
-                $fascia = $_POST['fascia'];
-                $strsql = "select * from orari where giorno BETWEEN '$dataInizio' AND '$dataFine' and fascia='$fascia' and codiceStruttura = '$codiceStruttura'";
+                //$fascia = $_POST['fascia'];
+                $strsql = "select * from orari where giorno BETWEEN '$dataInizio' AND '$dataFine' and codiceStruttura = '$codiceStruttura'";
                 $risultato = mysqli_query($conn, $strsql);
                 if (! $risultato)
                 {

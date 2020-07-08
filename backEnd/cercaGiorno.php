@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{
+    session_start();
+}
 setlocale(LC_TIME, 'italian'); // it_IT
 include("db_con.php");
 include_once('mysql-fix.php');
@@ -24,7 +27,7 @@ echo("<table>");
 
 
 
-$query = "SELECT * FROM sala where giorno = '$giorno'";
+$query = "SELECT * FROM sala where giorno = '$giorno' where codiceStruttura= '$codiceStruttura'";
 $numero_colonne = 1;
 $results = mysqli_query($conn, $query) or die (mysqli_error());
 if (mysqli_num_rows($results) != 0) {
