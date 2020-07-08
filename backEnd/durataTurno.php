@@ -1,7 +1,9 @@
 <?php
-setlocale(LC_TIME, 'italian'); // it_IT
-$conn= mysqli_connect("localhost", "root", "", "vetrineonline");
-include_once('mysql-fix.php');
+if(!isset($_SESSION))
+{
+    session_start();
+}
+include ('db_con.php');
 $codiceStruttura = $_SESSION["codiceStruttura"];
     $strsql = "select * from durataTurno where codiceStruttura= '$codiceStruttura'";
     $risultato = mysqli_query($conn, $strsql);

@@ -1,6 +1,9 @@
 <?php
-setlocale(LC_TIME, 'italian'); // it_IT
-$conn= mysqli_connect("localhost", "root", "", "vetrineonline");
+if(!isset($_SESSION))
+{
+    session_start();
+}
+include ('db_con.php');
 include_once('mysql-fix.php');
 
     $strsql = "select * from time";

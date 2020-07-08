@@ -1,5 +1,9 @@
 <?php
-$conn= mysqli_connect("localhost", "root", "", "vetrineonline");
+if(!isset($_SESSION))
+{
+    session_start();
+}
+include ('db_con.php');
 $codiceStruttura = $_SESSION["codiceStruttura"];
     $strsql = "select * from postiSala where codiceStruttura= '$codiceStruttura'";
     $risultato = mysqli_query($conn, $strsql);
