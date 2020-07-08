@@ -28,10 +28,7 @@ include ('header.html');
             Turno: <input class="inputBottom" name="turno" type="text" readonly value="<?php echo $riga["turnoInizio"]?> - <?php echo $riga["turno"]?>"><br>
             Stanza: <input class="inputBottom" name="stanza" type="text" value="<?php echo substr($riga["stanza"], 2)?>"><br><br>
             <input class="inputBottom" name="disponibilita" type="text" value="<?php echo $riga["disponibilita"]?>" hidden>
-            <input class="inputBottom" name="id" type="text" value="<?php echo $riga["id"]?>">
-            <p>
-                Numeri tavoli disponibili <?php echo $riga["disponibilita"]?> su <?php echo $riga["postiSala"]?>
-            </p>
+            <input class="inputBottom" name="id" type="text" value="<?php echo $riga["id"]?>" hidden>
             <button type="submit" class="click" value="Invia" name="Invio">Prenota</button>
             <button type="reset" class="click">
                 <a href="index.php" style="color: #ffffff;text-decoration: none;">Annulla</a>

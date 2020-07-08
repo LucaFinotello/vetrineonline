@@ -1,6 +1,7 @@
 <?php
 $conn= mysqli_connect("localhost", "root", "", "vetrineonline");
-    $strsql = "select * from fascia";
+$codiceStruttura = $_SESSION["codiceStruttura"];
+    $strsql = "select * from fascia where codiceStruttura= '$codiceStruttura'";
     $risultato = mysqli_query($conn, $strsql);
     if (! $risultato)
     {
@@ -9,7 +10,8 @@ $conn= mysqli_connect("localhost", "root", "", "vetrineonline");
     $riga = mysqli_fetch_array($risultato);
     if (! $riga)
     {
-        echo "<select>
+        echo "<span>Etichetta: </span>
+              <select>
                 <option>Nessun valore</option>
               </select>";
     }

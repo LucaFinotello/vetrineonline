@@ -16,7 +16,7 @@ include ('header.html');?>
         </summary>
         <p>
         <form action="cercaGiorno.php" method="post">
-            <input type="date" name="giorno" value="<?php $_POST['giorno']?>" placeholder="gg/mm/aaaa">
+            <input type="date" id="datepickerA" name="giorno" value="<?php $_POST['giorno']?>" placeholder="gg/mm/aaaa">
             <button type="submit" class="click">Cerca</button>
         </form>
         </p>
@@ -29,7 +29,7 @@ echo("<table>");
 
 
 
-$query = "SELECT * FROM sala where giorno = '$giorno'";
+$query = "SELECT * FROM sala where giorno = '$giorno' and codiceStruttura = '$codiceStruttura'";
 $numero_colonne = 1;
 $results = mysqli_query($conn, $query) or die (mysqli_error());
 if (mysqli_num_rows($results) != 0) {
