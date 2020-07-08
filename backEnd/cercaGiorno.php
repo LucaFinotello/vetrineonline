@@ -25,11 +25,9 @@ $giorno = strtotime($_POST['giorno']);
 echo  "<h1>".date('d/m/Y', $giorno). "</h1>";
 echo("<table>");
 
-
-
-$query = "SELECT * FROM sala where giorno = '$giorno' where codiceStruttura= '$codiceStruttura'";
+$query = "SELECT * FROM sala where giorno = '$giorno' and codiceStruttura= '$codiceStruttura'";
 $numero_colonne = 1;
-$results = mysqli_query($conn, $query) or die (mysqli_error());
+$results = mysqli_query($conn, $query) or die (mysqli_error($conn));
 if (mysqli_num_rows($results) != 0) {
     while ($row = mysqli_fetch_array($results)) {
         $posto = $row['id'];
