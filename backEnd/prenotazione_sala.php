@@ -22,10 +22,7 @@ include('header.html');
             else
             {
                 include('ricercaPeriodo.php');
-                ?> <details>
-                        <summary>
-                            Tabella giorni
-                        </summary><p>
+                ?>
                 <table class="table-ext">
                     <thead>
                     <tr>
@@ -68,8 +65,6 @@ include('header.html');
                         </tr>
                     </tbody>
                 </table>
-                </p>
-                </details>
                 <?php
             }
             ?>

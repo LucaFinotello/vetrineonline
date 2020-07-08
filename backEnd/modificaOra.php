@@ -13,7 +13,7 @@ include ('header.html')
         <?php
             $id = $_POST["id"];
             $giorno = $_POST["giorno"];
-            $fascia = $_POST["identificatore"];
+            $fascia = $_POST["fascia"];
             $oraInizio = $_POST["oraInizio"];
             $oraFine = $_POST["oraFine"];
             $strsql = "update orari set fascia='$fascia', oraInizio='$oraInizio', oraFine='$oraFine' where id = '$id'";
