@@ -9,17 +9,34 @@ include ('header.html');
         <?php
         $postiSala= $_POST ['postiSala'];
 
-        $strsql = "insert into postiSala SET postiSala='$postiSala', codiceStruttura= '$codiceStruttura'";
+        $strsql = "select * from postiSala where codiceStruttura = '$codiceStruttura'";
         $risultato = mysqli_query($conn, $strsql);
-
-        if (!$risultato)
+        if (! $risultato)
         {
-            include ('impostazioni.php');
             echo "Errore nel comando SQL" . "<br>";
         }
-        else
-        {
-            header('location:impostazioni.php');
+        $riga = mysqli_fetch_array($risultato);
+        if (! $riga) {
+
+            $strsql = "insert into postiSala SET postiSala='$postiSala', codiceStruttura= '$codiceStruttura'";
+            $risultato = mysqli_query($conn, $strsql);
+
+            if (!$risultato) {
+                include('impostazioni.php');
+                echo "Errore nel comando SQL" . "<br>";
+            } else {
+                header('location:impostazioni.php');
+            }
+        } else {
+            $strsql = "update postiSala SET postiSala='$postiSala', codiceStruttura= '$codiceStruttura'";
+            $risultato = mysqli_query($conn, $strsql);
+
+            if (!$risultato) {
+                include('impostazioni.php');
+                echo "Errore nel comando SQL" . "<br>";
+            } else {
+                header('location:impostazioni.php');
+            }
         }
         ?>
     </div>
