@@ -3,11 +3,7 @@
     <legend>Cerca turno</legend>
     <form action="ricercaTurno.php" method="post">
         Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
-        Etichetta: <select name="fascia">
-            <option value="colazione">Colazione</option>
-            <option value="pranzo">Pranzo</option>
-            <option value="cena">Cena</option>
-        </select>
+        <?php include ('fascie.php');?>
         &emsp;<button class="click" type="submit">Cerca</button>
     </form>
 </fieldset>

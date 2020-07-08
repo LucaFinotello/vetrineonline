@@ -11,6 +11,7 @@ include('header.html');
         <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy" required><br>
         <?php
             include ('fascie.php');
+            echo "<br>";
             include ('orarioInizio.php');
             include ('orariofine.php');
         ?>

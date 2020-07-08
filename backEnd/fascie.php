@@ -1,9 +1,5 @@
 <?php
-session_start();
-setlocale(LC_TIME, 'italian'); // it_IT
-include("db_con.php");
-include_once('mysql-fix.php');
-
+$conn= mysqli_connect("localhost", "root", "", "vetrineonline");
     $strsql = "select * from fascia";
     $risultato = mysqli_query($conn, $strsql);
     if (! $risultato)
@@ -15,12 +11,12 @@ include_once('mysql-fix.php');
     {
         echo "<select>
                 <option>Nessun valore</option>
-              </select><br>";
+              </select>";
     }
     else
     {
 ?>
-    <span>Ora Inizio</span>
+    <span>Etichetta: </span>
     <select name="fascia">
         <?php
         while ($riga)
@@ -29,7 +25,7 @@ include_once('mysql-fix.php');
             $riga = mysqli_fetch_array($risultato);
         }
         ?>
-    </select><br>
+    </select>
 <?php
     }
 ?>

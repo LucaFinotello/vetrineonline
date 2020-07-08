@@ -1,6 +1,6 @@
 <?php
 setlocale(LC_TIME, 'italian'); // it_IT
-include("db_con.php");
+$conn= mysqli_connect("localhost", "root", "", "vetrineonline");
 include_once('mysql-fix.php');
 
     $strsql = "select * from durataTurno";

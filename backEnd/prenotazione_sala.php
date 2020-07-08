@@ -89,7 +89,7 @@ include('header.html');
                 }
                 else
                 {
-                    include ('cercaTurno.html');
+                    include('cercaTurno.php');
                     include('turni.php');
                 }
             ?>
