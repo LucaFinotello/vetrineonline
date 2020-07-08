@@ -6,6 +6,7 @@ include ('header.html');
 ?>
     <h1>Prenota il tuo turno</h1>
         <?php
+        $id = $_POST['id'];
         $giorno = $_POST["giorno"];
         $turno = $_POST["turno"];
         $stanza = $_POST["stanza"];
@@ -13,7 +14,7 @@ include ('header.html');
         $postiSala = $_POST["disponibilita"];
         $num=count(explode(" ", $stanza));
         $disponibilita = ($postiSala - $num);
-        $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where turno = substr('$turno', 9)";
+        $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where id = '$id'";
         $risultato = mysqli_query($conn, $strsql);
             if (!$risultato)
               {
@@ -36,31 +37,8 @@ include ('header.html');
         }
         else
         {
-            ?>
-            <table id="myTable">
-                <tr class="header">
-                    <th>Giorno</th>
-                    <th>Turno</th>
-                    <th>Stanza</th>
-                    <th>Azioni</th>
-                </tr>
-                <?php
-                while ($riga)
-                {
-                    echo ("<tr>");
-                    echo "<form action='modifica.php' method='POST'>";
-                    echo  "<input type='text' name='id' value='".$riga["id"]."' hidden/>";
-                    echo "<td>".date('d/m/Y', $riga["giorno"])."</td>";
-                    echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'/></td>";
-                    echo "<td>".$riga["stanza"]."</td>";
-                    echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
-                    echo "<form>";
-                    echo "<tr>";
-                    $riga = mysqli_fetch_array($risultato);
-                }
-                ?>
-            </table>
-        <?php }
+            header('location:index.php');
+             }
             }
         ?>
     </body>
