@@ -37,6 +37,9 @@ include('header.html');
                 <span>Titolo: </span><input type="text" name="fascia" value=""/>
                 <button type="submit" class="click">Inserisci</button>
             </form>
+            <form action="svuotaFascie.php" method="post">
+                <button type="submit" class="click">Svuota campo</button>
+            </form>
             <br>
         </div>
 
@@ -48,6 +51,9 @@ include('header.html');
                 <input class="inputBottom inputNumber" type="number" name="postiSala" value="" min=0 max=100 step="any" required>
                 <button type="submit" class="click">Inserisci</button>
             </form>
+            <form action="eliminaTavoli.php" method="post">
+                <button type="submit" class="click">Svuota campo</button>
+            </form>
         </div>
 
         <button class="accordion">Durata Turno</button>
@@ -56,6 +62,9 @@ include('header.html');
             <form action="insertDurata.php" method="post">
                 <span>Turno: </span><input type="text" name="turno" placeholder="00:00" value=""/>
                 <button type="submit" class="click">Inserisci</button>
+            </form>
+            <form action="eliminaDurata.php" method="post">
+                <button type="submit" class="click">Svuota campo</button>
             </form>
             <br>
         </div>

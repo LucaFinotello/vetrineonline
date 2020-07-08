@@ -10,9 +10,9 @@ include ('header.html');
 ?>
     <div id="contenuto">
         <?php
-        $fascia= $_POST ['fascia'];
+        $turno= $_POST ['turno'];
 
-        $strsql = "insert into fascia SET descrizione='$fascia', codiceStruttura= '$codiceStruttura'";
+        $strsql = "delete from postiSala where codiceStruttura= '$codiceStruttura'";
         $risultato = mysqli_query($conn, $strsql);
 
         if (!$risultato)
