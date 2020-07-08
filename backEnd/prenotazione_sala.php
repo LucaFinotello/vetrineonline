@@ -8,7 +8,6 @@ include('header.html');
 <div id="main">
     <h1>Prenotazione Sala</h1>
     <?php include ('menu.html');
-
             $strsql = "select * from orari where codiceStruttura= '$codiceStruttura' order by giorno";
             $risultato = mysqli_query($conn, $strsql);
             if (! $risultato)
