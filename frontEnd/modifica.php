@@ -43,12 +43,11 @@ include ('header.html');
                 <?php
             }
         } else {
-
-            //$giorno = $_POST['giorno'];
-            $id = $_POST["id"];
+            $giorno = $_POST['giorno'];
+            $turno = $_POST["turno"];
             echo("<table>");
 
-            $query = "SELECT * FROM sala where id = '$id'";
+            $query = "SELECT * FROM sala WHERE giorno = '$giorno' and turno = '$turno' and codiceStruttura = '$codiceStruttura'";
             $numero_colonne = 1;
             $results = mysqli_query($conn, $query) or die (mysqli_error($conn));
             if (mysqli_num_rows($results) != 0) {
