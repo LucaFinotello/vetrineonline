@@ -42,11 +42,13 @@ include ('menu.html')
                         $nome = $row['nome'];
                         $numeroTavolo = $row['numeroTavolo'];
                         $posti = $row['postiTavolo'];
+                        $fascia = $row['fascia'];
+                        $turno = $row['turno'];
                         $dispo = $row['disponibilita'];
                         if ($numero_colonne <= 10) {
                             $numero_colonne++;
                             if ($dispo == 1) {
-                                echo("<td class='postazioni_libere' >N Tavolo: $numeroTavolo <br> posti $posti 
+                                echo("<td class='postazioni_libere' >N Tavolo: $numeroTavolo <br> Posti: $posti Turno: $turno Fascia: $fascia 
                                             <form action='prenotaTavolo.php' method='post'>
                                                 <input name='id' value='$posto' hidden>
                                                 <input type='text' name='nome' required/>

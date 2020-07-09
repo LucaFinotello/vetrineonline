@@ -75,6 +75,10 @@ include('header.html');
             <span>Giorno</span><input id="datepicker" type="date" name="giorno" format="dd-mm-yyyy" required>
             <span>Numero Posti tavolo</span>&emsp;<input class="inputBottom inputNumber" type="number" name="postiTavolo" min="1" max="30" value="" required/>
             <span>Numero Tavolo</span>&emsp;<input class="inputBottom inputNumber" type="number" name="numeroTavolo" min="1" max="30" value="" required/>
+            <?php
+                include ('fascie.php');
+                include ('selectTurni.php');
+            ?>
             <button type="submit" class="click">Aggiungi</button>
         </form>
     </div>

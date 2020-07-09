@@ -10,10 +10,12 @@ include ('header.html');
         $giorno = strtotime($_POST ['giorno']);
         $postiTavolo= $_POST ['postiTavolo'];
         $numeroTavolo = $_POST['numeroTavolo'];
+        $fascia = $_POST['fascia'];
+        $turno = $_POST['turno'];
         $disponibilita = 1;
 
         $strsql = "insert into sala SET postiTavolo='$postiTavolo', numeroTavolo= '$numeroTavolo', giorno= '$giorno',
-                disponibilita= '$disponibilita', codiceStruttura= '$codiceStruttura'";
+                disponibilita= '$disponibilita', fascia= '$fascia', turno='$turno', codiceStruttura= '$codiceStruttura'";
         $risultato = mysqli_query($conn, $strsql);
 
 
