@@ -53,7 +53,7 @@ include ('header.html');
         </table>
     <?php }
 } else {
-        $strsql = "select * from sala where codiceStruttura= '$codiceStruttura'";
+        $strsql = "select * from sala where codiceStruttura= '$codiceStruttura' group by giorno, turno";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {
