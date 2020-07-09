@@ -33,7 +33,7 @@ include ('menu.html')
                 echo  "<h1>".date('d/m/Y', $giorno). "</h1>";
                 echo("<table>");
 
-                $query = "SELECT * FROM sala where giorno = $giorno ";
+                $query = "SELECT * FROM sala where giorno = '$giorno' and codiceStruttura= '$codiceStruttura'";
                 $numero_colonne = 1;
                 $results = mysqli_query($conn, $query) or die (mysqli_error());
                 if (mysqli_num_rows($results) != 0) {

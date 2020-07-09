@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{
+    session_start();
+}
 include("db_con.php");
 include_once('mysql-fix.php');
 include ('header.html');
@@ -33,8 +36,9 @@ include ('header.html');
             echo "<table><thead><tr><td>Giorno</td><td>Turno</td><td>Stanza</td><td>Inserisci</td></tr></thead><tbody>";
             echo "<tr>";
             echo "<form action='modifica.php' method='POST'>";
+            echo "<input value='id' name='id'/>";
             echo "<td>".$riga["giorno"]."</td>";
-            echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'></input></td>";
+            echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'/></td>";
             echo "<td>".$riga["stanza"]."</td>";
             echo "<td> <button type='submit' class='click'>Inserisci</button> </td>";
             echo "</form>";
@@ -47,19 +51,3 @@ include ('header.html');
 </div>
 </body>
 </html>
-<script>
-    const elementsturni = document.querySelector("#durataTurno");
-    const turniArray = [...elementsturni];
-
-    // Now you can use cool array prototypes
-    turniArray.forEach(element => {
-        console.log(element);
-    });
-
-    var array_turno= ['0:15','0:30','0:45','1:00','1:15','1:30'
-    ];
-    turni = document.getElementById('durataTurno');
-    for( turno in array_turno ) {
-        turni.add( new Option( array_turno[turno] ));
-    };
-</script>

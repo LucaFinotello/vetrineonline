@@ -1,5 +1,8 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+{
+    session_start();
+}
 include("db_con.php");
 include_once('mysql-fix.php');
 include ('header.html')
