@@ -72,7 +72,8 @@ include('header.html');
     <div class="layoutFull">
         <h1>Disposizione sala</h1>
         <form action="generaSala.php" method="post">
-            <span>Giorno</span><input id="datepicker" type="date" name="giorno" format="dd-mm-yyyy" required>
+            <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy" required>
+            <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy" required>
             <span>Numero Posti tavolo</span>&emsp;<input class="inputBottom inputNumber" type="number" name="postiTavolo" min="1" max="30" value="" required/>
             <span>Numero Tavolo</span>&emsp;<input class="inputBottom inputNumber" type="number" name="numeroTavolo" min="1" max="30" value="" required/>
             <?php

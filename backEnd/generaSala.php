@@ -7,17 +7,24 @@ include ('header.html');
 ?>
     <div id="contenuto">
         <?php
-        $giorno = strtotime($_POST ['giorno']);
+        //print_r($_POST);
+        $dataInizio = strtotime($_POST["dataInizio"]);
+        $datafine = strtotime($_POST["dataFine"]);
         $postiTavolo= $_POST ['postiTavolo'];
         $numeroTavolo = $_POST['numeroTavolo'];
         $fascia = $_POST['fascia'];
         $turno = $_POST['turno'];
         $disponibilita = 1;
 
-        $strsql = "insert into sala SET postiTavolo='$postiTavolo', numeroTavolo= '$numeroTavolo', giorno= '$giorno',
-                disponibilita= '$disponibilita', fascia= '$fascia', turno='$turno', codiceStruttura= '$codiceStruttura'";
-        $risultato = mysqli_query($conn, $strsql);
+        $oggi= strtotime($_POST['dataInizio']);
+        $dataTermine= strtotime($_POST['dataFine']);
 
+        for ($i = $oggi; $i <= $dataTermine; $i=$i+86400) {
+            $giorno=$i;
+            $strsql = "insert into sala SET postiTavolo='$postiTavolo', numeroTavolo= '$numeroTavolo', giorno= '$giorno',
+                disponibilita= '$disponibilita', fascia= '$fascia', turno='$turno', codiceStruttura= '$codiceStruttura'";
+            $risultato = mysqli_query($conn, $strsql);
+        }
 
         if (!$risultato)
         {
