@@ -33,9 +33,9 @@ include ('header.html');
             <p>
                 Numeri tavoli disponibili <?php echo $riga["disponibilita"]?> su <?php echo $riga["postiSala"]?>
             </p>
-            <button type="submit" class="click" value="Invia" name="Invio">Prenota</button>
+            <button type="submit" class="click" value="Invia" name="Invio"><i class="fa fa-check"></i></button>
             <button type="reset" class="click">
-                <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                <a href="prenotazione_sala.php"><i class="fa fa-times"></i></a>
             </button>
         </div>
     </form>

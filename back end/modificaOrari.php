@@ -161,9 +161,9 @@ else
                 <option value="23:15">23:15</option>
                 <option value="23:30">23:30</option>
             </select><br><br>
-            <button type="submit" class="click" value="Invia" name="Invio">Modifica</button>
+            <button type="submit" class="click" value="Invia" name="Invio"><i class="fa fa-pencil"></i></button>
             <button type="reset" class="click">
-                <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;"><i class="fa fa-times"></i></a>
             </button>
         </div>
     </form>
