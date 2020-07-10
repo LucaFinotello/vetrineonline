@@ -6,6 +6,7 @@ if(!isset($_SESSION))
 include("db_con.php");
 include_once('mysql-fix.php');
 include ('header.html');
+include ('menu.html');
 ?>
 <h1>Prenota il tuo turno</h1>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca per giorno...">
@@ -56,7 +57,6 @@ include ('header.html');
         function percentuale($tot,$num){
             return round($num/$tot*100) . '%';
         }
-        //$tot="SELECT * FROM sala WHERE giorno = '$giorno' and turno = '$turno' and codiceStruttura = '$codiceStruttura'";
         //$tot= count('$tot');
         $strsql = "select * from sala where codiceStruttura= '$codiceStruttura' group by giorno, turno";
         $risultato = mysqli_query($conn, $strsql);
@@ -77,7 +77,6 @@ include ('header.html');
                     <th>Giorno</th>
                     <th>Fascia</th>
                     <th>Turno</th>
-                    <th>Occupati</th>
                     <th>Azioni</th>
                 </tr>
                 <?php
@@ -90,7 +89,7 @@ include ('header.html');
                     echo "<input class='inputTable' type='text' name='giorno' readonly value='".$riga["giorno"]."'hidden/>";
                     echo "<td><input class='inputTable' type='text' name='fascia' readonly value='".$riga["fascia"]."'/></td>";
                     echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turno"]."'/></td>";
-                    echo "<td>".percentuale($riga['postiTavolo'],$riga['numeroTavolo'])."</td>";
+                    //echo "<td>".percentuale($riga['postiTavolo'],$riga['numeroTavolo'])."</td>";
                     echo "<td> <button type='submit' class='click'>Prenota</button> </td>";
                     echo "</form>";
                     echo ("</tr>");

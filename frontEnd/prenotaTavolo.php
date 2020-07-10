@@ -5,7 +5,8 @@ if(!isset($_SESSION))
 }
 include("db_con.php");
 include_once('mysql-fix.php');
-include ('header.html')
+include ('header.html');
+include ('menu.html');
 ?>
     <div id="main">
     <h1>Prenotazione Sala</h1>
