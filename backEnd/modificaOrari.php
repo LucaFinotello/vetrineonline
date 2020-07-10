@@ -27,7 +27,7 @@ else
             <input class="inputBottom" name="id" type="text" value="<?php echo $riga["id"]?>" hidden/>
             Data: <input class="inputBottom" name="giorno" type="text" value="<?php echo date('d/m/Y', $riga["giorno"])?>"/><br>
             <?php
-                include ('fascie.php');
+                include('fasce.php');
                 echo "<br>";
                 include ('orarioInizio.php');
                 include ('orariofine.php');

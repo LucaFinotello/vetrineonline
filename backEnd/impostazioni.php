@@ -18,7 +18,7 @@ include('header.html');
                 <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy" required><br>
                 <span>A</span><input type="date" id="datepickerA" name="dataFine" format="dd-mm-yyyy" required><br>
                 <?php
-                include ('fascie.php');
+                include('fasce.php');
                 echo "<br>";
                 include ('orarioInizio.php');
                 include ('orariofine.php');
@@ -83,7 +83,7 @@ include('header.html');
             <span>Numero Posti tavolo</span>&emsp;<input class="inputBottom inputNumber" type="number" name="postiTavolo" min="1" max="30" value="" required/>
             <span>Numero Tavolo</span>&emsp;<input class="inputBottom inputNumber" type="number" name="numeroTavolo" min="1" max="30" value="" required/>
             <?php
-                include ('fascie.php');
+                include('fasce.php');
                 include ('selectTurni.php');
             ?>
             <button type="submit" class="click">Aggiungi</button>
