@@ -26,8 +26,9 @@ include ('header.html');
         <div class="prenotazione">
             Data: <input class="inputBottom" name="giorno" type="text" value="<?php echo date('d/m/Y',$riga["giorno"])?>"><br>
             Turno: <input class="inputBottom" name="turno" type="text" readonly value="<?php echo $riga["turnoInizio"]?> - <?php echo $riga["turno"]?>"><br>
-            Stanza: <input class="inputBottom" name="stanza" type="text" value="<?php echo substr($riga["stanza"], 2)?>"><br><br>
+            Stanza: <input class="inputBottom" name="stanza" type="text" value="<?php echo $riga["stanza"]?>"><br><br>
             <input class="inputBottom" name="disponibilita" type="text" value="<?php echo $riga["disponibilita"]?>" hidden>
+            <input class="inputBottom" name="id" type="text" value="<?php echo $riga["id"]?>" hidden>
             <p>
                 Numeri tavoli disponibili <?php echo $riga["disponibilita"]?> su <?php echo $riga["postiSala"]?>
             </p>
