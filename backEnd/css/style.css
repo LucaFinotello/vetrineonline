@@ -152,6 +152,13 @@ table td {
     float: right;
 }
 
+.delete {
+    width: 24%;
+    float: left;
+    margin: 12px 1px;
+    font-size: 15px;
+}
+
 .layoutMiddle {
     width: 50%;
     float: left;
