@@ -8,7 +8,6 @@ setlocale(LC_TIME, 'italian'); // it_IT
 include("db_con.php");
 include_once('mysql-fix.php');
 
-
 $_SESSION["codiceStruttura"]=$_POST["codiceStruttura"];
 $query = mysqli_query( $conn, "SELECT * FROM codici WHERE codiceStruttura='".$_POST["codiceStruttura"]."'")
 or DIE('query non riuscita'.mysqli_error());
