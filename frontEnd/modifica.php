@@ -32,7 +32,7 @@ include ('header.html');
             <p>
                 Numeri tavoli disponibili <?php echo $riga["disponibilita"]?> su <?php echo $riga["postiSala"]?>
             </p>
-            <button type="submit" class="click" value="Invia" name="Invio">Prenota</button>
+            <button type="submit" class="click" value="Invia" name="Invio"><i class="fa fa-check"></i></button>
             <button type="reset" class="click">
                 <a href="index.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
             </button>
