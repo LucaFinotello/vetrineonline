@@ -55,10 +55,10 @@ include ('header.html');
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";
                         echo "<td>
-                              <button type='submit' class='click' value='modifica'>Modifica</button></form>";
+                              <button type='submit' class='click' value='modifica'><i class='fa fa-pencil'></i></button></form>";
                         echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                        echo "<button class='sumbit'>Elimina</button>
+                        echo "<button class='sumbit'><i class='fa fa-trash'></i></button>
                               </form>
                               </td>";
                         echo "</tr>";
@@ -126,15 +126,16 @@ include ('header.html');
                                     {
                                         echo ("<tr>");
                                         echo "<form action='modifica.php' method='POST'>";
+                                        echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                                         echo "<td>".date('d/m/Y', $riga["giorno"] )."</td>";
                                         echo "<td>".$riga['fascia']."</td>";
                                         echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                                         echo "<td>".$riga["stanza"]."</td>";
                                         echo "<td>
-                                                <button type='submit' class='click' value='inserisci'>Inserisci</button></form>";
+                                                <button type='submit' class='click' value='inserisci'><i class='fa fa-pencil'></i></button></form>";
                                         echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
                                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                                        echo "<button class='sumbit'>Elimina</button>
+                                        echo "<button class='sumbit'><i class='fa fa-trash'></i></button>
                               </form>
                               </td>";
                                         echo "</tr>";

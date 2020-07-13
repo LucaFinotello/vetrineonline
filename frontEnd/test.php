@@ -10,14 +10,15 @@ include ('menu.html');
 ?>
     <h1>Prenota il tuo turno</h1>
         <?php
-        $id = $_POST['id'];
+        $id= $_POST['id'];
         $giorno = $_POST["giorno"];
         $turno = $_POST["turno"];
         $stanza = $_POST["stanza"];
+        $stanzanew = $_POST["stanzanew"];
         $disponibilita= $_POST["disponibilita"];
         $postiSala = $_POST["disponibilita"];
-        $num=count(explode(" ", $stanza));
-        $disponibilita = ($postiSala - $num);
+        $disponibilita = ($postiSala - 1);
+        $stanza= $stanza.' '. $stanzanew;
         $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where id = '$id'";
         $risultato = mysqli_query($conn, $strsql);
             if (!$risultato)

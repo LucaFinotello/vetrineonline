@@ -23,12 +23,12 @@
                         echo "<td>".$riga['fascia']."</td>";
                         echo "<td>".$riga["turnoInizio"]." - ".$riga["turno"]."</td>";
                         echo "<td><input class='inputPrenotazione' name='stanza' value='".$riga["stanza"]."'/></td>";
-                        echo "<td> <button type='submit' class='click'>Inserisci</button> ";
+                        echo "<td> <button type='submit' class='click'><i class='fa fa-pencil'></i></button> ";
                         echo "</form>";
                         echo "<form action='eliminaTurno.php' method='post' class='elimina'>
                                <input class='inputTable' name='id' value='".$riga['id']."' hidden/>
                                <input class='inputTable' name='stanza' value='".$riga['stanza']."' hidden/>
-                                <button type='submit' class='click'>Elimina</button>
+                                <button type='submit' class='click'><i class='fa fa-trash'></i></button>
                                 </form></td>";
                         echo ("</tr>");
                         $riga = mysqli_fetch_array($risultato);
