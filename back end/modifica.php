@@ -22,8 +22,8 @@ include ('header.html');
     else
     {
     ?>
-    <form action="test.php" method="POST" >
-        <div class="prenotazione">
+    <div class="prenotazione">
+        <form action="test.php" method="POST" >
             <input name="id" value="<?php echo $riga['id']?>" hidden/>
             Data: <input class="inputBottom" name="giorno" type="text" readonly value="<?php echo date('d/m/Y',$riga["giorno"])?>"><br>
             Turno: <input class="inputBottom" name="turno" type="text" readonly value="<?php echo $riga["turnoInizio"]?> - <?php echo $riga["turno"]?>"><br>
@@ -34,11 +34,11 @@ include ('header.html');
                 Numeri tavoli disponibili <?php echo $riga["disponibilita"]?> su <?php echo $riga["postiSala"]?>
             </p>
             <button type="submit" class="click" value="Invia" name="Invio"><i class="fa fa-check"></i></button>
-            <button type="reset" class="click">
-                <a href="prenotazione_sala.php"><i class="fa fa-times"></i></a>
+            <button onClick="javascript:window.location.href = 'prenotazione_sala.php'">
+                <i class="fa fa-times"></i>
             </button>
-        </div>
-    </form>
+        </form>
+    </div>
     <?php
 	    }
     echo "</div>";

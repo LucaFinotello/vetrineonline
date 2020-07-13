@@ -136,10 +136,10 @@ include ('header.html');
                         <option value="cena">Cena</option>
                     </select>
                     &emsp;<button class="click" type="submit"><i class="fa fa-search"></i></button>
-                </form>
-                <button class="click">
-                        <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;"><i class="fa fa-times"></i></a>
+                    <button type="reset" onClick="javascript:window.location.href = 'prenotazione_sala.php'">
+                        <i class="fa fa-times"></i>
                     </button>
+                </form>
             </fieldset>
         <?php
         include ('turni.php');

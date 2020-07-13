@@ -10,9 +10,6 @@
         <option value="cena">Cena</option>
     </select>
         &emsp;<button class="click" type="submit"><i class="fa fa-search"></i></button>
-        <button class="click">
-            <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;"><i class="fa fa-times"></i></a>
-        </button>
     </form>
 </fieldset>
 <br>

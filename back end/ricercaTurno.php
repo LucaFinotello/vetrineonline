@@ -98,8 +98,10 @@ include ('header.html');
                                 <option value="cena">Cena</option>
                             </select>
                             &emsp;<button class="click" type="submit"><i class="fa fa-search"></i></button>
+                            <button onClick="javascript:window.location.href = 'prenotazione_sala.php'">
+                                <i class="fa fa-times"></i>
+                            </button>
                         </form>
-                        <button class="click"><a href="prenotazione_sala.php" style="text-decoration: none;"><i class="fa fa-times"></i></a></button>
                     </fieldset>
                     <table>
                         <thead>
@@ -136,15 +138,16 @@ include ('header.html');
                                     {
                                         echo ("<tr>");
                                         echo "<form action='modifica.php' method='POST'>";
+                                        echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                                         echo "<td>".date('d/m/Y', $riga["giorno"] )."</td>";
                                         echo "<td>".$riga['fascia']."</td>";
                                         echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                                         echo "<td>".$riga["stanza"]."</td>";
                                         echo "<td>
-                                                <button type='submit' class='click' value='inserisci'>Inserisci</button></form>";
+                                                <button type='submit' class='click' value='inserisci'><i class='fa fa-pencil'></i></button></form>";
                                         echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
                                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                                        echo "<button class='sumbit'>Elimina</button>
+                                        echo "<button class='sumbit'><i class='fa fa-trash'></i></button>
                               </form>
                               </td>";
                                         echo "</tr>";

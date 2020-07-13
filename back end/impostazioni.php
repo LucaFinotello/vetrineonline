@@ -160,7 +160,7 @@ include('header.html');
             <option value="1:15">1:15</option>
             <option value="1:30">1:30</option>
         </select> &emsp;
-        <button type="submit" class="click" value="compila">Compila</button>
+        <button type="submit" class="click" value="compila"><i class="fa fa-check"></i></button>
     </fieldset>
 </form>
 <?php
