@@ -72,6 +72,7 @@ include ('header.html');
                 echo ("<tr>");
                 echo "<form action='modificaOrari.php' method='post'>";
                 echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
+                echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                 echo "<td>".$riga['fascia']."</td>";
                 echo "<td>".$riga['oraInizio']."</td>";
                 echo "<td>".$riga['oraFine']."</td>";
