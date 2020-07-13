@@ -13,7 +13,6 @@ include ('header.html');
         $stanzanew = $_POST["stanzanew"];
         $disponibilita= $_POST["disponibilita"];
         $postiSala = $_POST["disponibilita"];
-        $num=count(explode(" ", $stanza));
         $disponibilita = ($postiSala - 1);
         $stanza= $stanza.' '. $stanzanew;
         $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where id = '$id'";
