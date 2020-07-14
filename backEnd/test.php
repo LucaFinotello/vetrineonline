@@ -15,9 +15,9 @@ include ('header.html');
             $postiSala = $_POST["postiSala"];
             $num=count(explode(" ", $stanza));
             if($num<$postiSala){
-                $disponibilita = ($postiSala - $num);
-            }else{
                 $disponibilita = ($postiSala + $num);
+            }else{
+                $disponibilita = ($postiSala - $num);
             }
 
             $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where id = '$id'";
