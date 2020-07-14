@@ -58,7 +58,7 @@ include ('menu.html');
             return round($num/$tot*100) . '%';
         }
         //$tot= count('$tot');
-        $strsql = "select * from sala where codiceStruttura= '$codiceStruttura' group by giorno, turno";
+        $strsql = "select * from sala where codiceStruttura= '$codiceStruttura'";
         $risultato = mysqli_query($conn, $strsql);
         if (! $risultato)
         {

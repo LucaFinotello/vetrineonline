@@ -32,7 +32,7 @@ else
                 include ('orarioInizio.php');
                 include ('orariofine.php');
             ?>
-            <button type="submit" class="click" value="Invia" name="Invio">Modifica</button>
+            <button type="submit" class="click" value="Invia" name="Invio"><i class="fa fa-pencil"></i></button>
             <button type="reset" class="click">
                 <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
             </button>
