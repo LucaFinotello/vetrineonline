@@ -146,17 +146,16 @@
                     $turno = date("H:i", strtotime($oraInizio) + strtotime($durataTurno) + 10800);
 
                     for ($i = $giorno; $i <= $dataTermine; $i = $i + 86400) {
-                        if ($oraInizioA < $oraFine) {
+                        while ($oraInizioA < $oraFine) {
                             $turno = date("H:i", strtotime($oraInizioA) + strtotime($durataTurno) + 10800);
                             $strsql = "insert into prenotazione set giorno='$giorno', turnoInizio='$oraInizioA', turno='$turno', 
                                             fascia='$fascia', postiSala='$postiSala', disponibilita='$postiSala',
                                             codiceStruttura='$codiceStruttura', id_orari='$id'";
                             $risultato = mysqli_query($conn, $strsql);
                             $oraInizioA = $turno;
-                        } else {
+                        }
                             $giorno = $giorno + 86400;
                             $oraInizioA = date("H:i", strtotime($oraInizio));
-                        }
                     }
 
                     if (!$risultato) {
