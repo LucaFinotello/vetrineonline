@@ -42,18 +42,15 @@ include('header.html');
                     while ($riga)
                     {
                         echo "<tr>";
-                        echo "<form action='modificaOrari.php' method='post'>";
+                        echo "<form action='eliminaGiorno.php' method='post'>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                         echo "<td><input class='inputTable' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
                         echo "<td>".$riga['fascia']."</td>";
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";
                         echo "<td>
-                                   <button type='submit' class='click'><i class='fa fa-pencil'></i></button></form>";
-                        echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
-                        echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                        echo "<button class='sumbit'><i class='fa fa-trash'></i></button>
-                              </form>
+                                   <button type='submit' class='click'><i class='fa fa-trash'></i></button></form>
+                                   <button onClick=\"javascript:window.location.href = 'impostazioni.php'\" type='submit' class='click'><i class='fa fa-pencil'></i></button>
                               </td>";
                         echo "</tr>";
                         $riga = mysqli_fetch_array($risultato);
