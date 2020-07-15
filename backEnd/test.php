@@ -7,144 +7,46 @@ include ('header.html');
     <h1>Prenotazione Sala</h1>
 <div id="contenuto">
     <?php include ('menu.html');
-            $id= $_POST['id'];
-            $giorno = $_POST["giorno"];
-            $turno = $_POST["turno"];
-            $stanza = $_POST["stanza"];
-            $disponibilita= $_POST["disponibilita"];
-            $postiSala = $_POST["postiSala"];
-            $num=count(explode(" ", $stanza));
-            if($num<$postiSala){
-                $disponibilita = ($postiSala + $num);
-            }else{
-                $disponibilita = ($postiSala - $num);
-            }
+        $id= $_POST['id'];
+        $giorno = $_POST["giorno"];
+        $turno = $_POST["turno"];
+        $stanza = $_POST["stanza"];
+        $disponibilita= $_POST["disponibilita"];
+        $postiSala = $_POST["postiSala"];
+        $num=count(explode(" ", $stanza));
+        if($num<$postiSala){
+            $disponibilita = ($postiSala + $num);
+        }else{
+            $disponibilita = ($postiSala - $num);
+        }
 
+        $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where id = '$id'";
+            $risultato = mysqli_query($conn, $strsql);
+
+        /*if ($postiSala<$disponibilita) {
             $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where id = '$id'";
-                $risultato = mysqli_query($conn, $strsql);
+            $risultato = mysqli_query($conn, $strsql);
+        }else {
+            echo ('Il numero dei tavoli occupati '.$num . 'Puoi inserire solo'.$postiSala. ' tavoli.' .
+                "<br><button><a style='text-decoration: none' href='prenotazione_sala.php'>Annulla</a></button>");
+            exit;
+        }*/
 
-            /*if ($postiSala<$disponibilita) {
-                $strsql = "update prenotazione set stanza='$stanza', disponibilita= '$disponibilita' where id = '$id'";
-                $risultato = mysqli_query($conn, $strsql);
-            }else {
-                echo ('Il numero dei tavoli occupati '.$num . 'Puoi inserire solo'.$postiSala. ' tavoli.' .
-                    "<br><button><a style='text-decoration: none' href='prenotazione_sala.php'>Annulla</a></button>");
-                exit;
-            }*/
-
-            if (!$risultato)
-              {
-               echo "Errore nel comando SQL" . "<br>";
-              } else {
-        $strsql = "select * from orari where giorno!= '' ";
-        $risultato = mysqli_query($conn, $strsql);
-        if (! $risultato)
-        {
-            echo "Errore nel comando SQL" . "<br>";
-        }
-        $riga = mysqli_fetch_array($risultato);
-        if (! $riga)
-        {
-            echo "Nessun orario inserito a database";
-        }
-        else
-        {
-            include ('ricercaPeriodo.php');
-            ?>
-        <table>
-            <thead>
-            <tr>
-                <td>Giorno</td>
-                <td>Fascia</td>
-                <td>Ora Inizio</td>
-                <td>Ora Fine</td>
-                <td>Azioni</td>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td colspan="5">
-                    <div class="divinterno">
-                        <table class="table-int">
-            <?php
-            while ($riga)
-            {
-                echo ("<tr>");
-                echo "<form action='modificaOrari.php' method='post'>";
-                echo "<td><input class='inputTable' class='Bordernone' name='giorno' value='".date('d/m/Y', $riga['giorno'])."'/></td>";
-                echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                echo "<td>".$riga['fascia']."</td>";
-                echo "<td>".$riga['oraInizio']."</td>";
-                echo "<td>".$riga['oraFine']."</td>";
-                echo "<td>
-                                   <button type='submit' class='click'><i class='fa fa-pencil'></i></button></form>";
-                echo "<form action='eliminaGiorno.php' method='post' class='elimina'>";
-                echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
-                echo "<button class='sumbit'><i class='fa fa-trash'></i></button>
-                              </form>
-                              </td>";
-                echo "</tr>";
-                $riga = mysqli_fetch_array($risultato);
+        if (!$risultato)
+          {
+           echo "Errore nel comando SQL" . "<br>";
+          } else {
+            $strsql = "select * from orari where giorno!= '' ";
+            $risultato = mysqli_query($conn, $strsql);
+            if (!$risultato) {
+                echo "Errore nel comando SQL" . "<br>";
             }
-            ?>
-                        </table>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <?php
-        }
-        $strsql = "select * from prenotazione ";
-        $risultato = mysqli_query($conn, $strsql);
-        if (! $risultato)
-        {
-            echo "Errore nel comando SQL" . "<br>";
-        }
-        $riga = mysqli_fetch_array($risultato);
-        if (! $riga)
-        {
-            echo "<p></p><br>
-                           <table id='turni' class='display'>
-                        <thead>
-                        <tr>
-                            <td>Giorno</td>
-                            <td>Fascia</td>
-                            <td>Turno</td>
-                            <td>Stanza</td>
-                            <td>Azioni</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                        <td colspan='4'>Ops!!! Nessun dato inserito</td>
-                        </tr>
-                        </tbody>
-                        </table>
-                        <p></p><br>";
-        }
-        else
-        {
-        ?>
-            <p></p><br>
-            <fieldset>
-                <legend>Cerca turno</legend>
-                <form action="ricercaturno.php" method="post">
-                    Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
-                    Etichetta: <select name="fascia">
-                        <option value="colazione">Colazione</option>
-                        <option value="pranzo">Pranzo</option>
-                        <option value="cena">Cena</option>
-                    </select>
-                    &emsp;<button class="click" type="submit"><i class="fa fa-search"></i></button>
-                    <button type="reset" onClick="javascript:window.location.href = 'prenotazione_sala.php'">
-                        <i class="fa fa-times"></i>
-                    </button>
-                </form>
-            </fieldset>
-        <?php
-        include ('turni.php');
-        }
+            $riga = mysqli_fetch_array($risultato);
+            if (!$riga) {
+                echo "Nessun orario inserito a database";
+            } else {
+                header('location:prenotazione_sala.php');
             }
-            echo "</div>";
-include ('footer.html');?>
+        }
+    ?>
+</div>

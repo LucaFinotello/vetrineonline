@@ -34,10 +34,10 @@ include ('header.html');
                 Numeri tavoli disponibili <?php echo $riga["disponibilita"]?> su <?php echo $riga["postiSala"]?>
             </p>
             <button type="submit" class="click" value="Invia" name="Invio"><i class="fa fa-check"></i></button>
-            <button onClick="javascript:window.location.href = 'prenotazione_sala.php'">
-                <i class="fa fa-times"></i>
-            </button>
         </form>
+        <button onClick="javascript:window.location.href = 'prenotazione_sala.php'">
+            <i class="fa fa-times"></i>
+        </button>
     </div>
     <?php
 	    }

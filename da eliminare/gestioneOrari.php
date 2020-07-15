@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
     <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../backEnd/css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="js/prenotazione.js"></script>
+    <script type="text/javascript" src="../backEnd/js/prenotazione.js"></script>
 </head>
     <body>
         <?php
@@ -21,7 +21,7 @@
             $codiceStruttura= 'H001';
         ?>
         <h1>Inserisci orario settimanale dal <?php echo date("d-m-Y", strtotime($dataInizio))?> al <?php echo date("d-m-Y", strtotime($datafine))?></h1>
-        <form action="creazioneTurni.php" method="POST" >
+        <form action="../backEnd/creazioneTurni.php" method="POST" >
             <input type="date" name="dataInizio" hidden value="<?php echo $dataInizio?>"/>
             <input type="date" name="dataFine" hidden value="<?php echo $datafine?>"/>
             <table>
@@ -187,7 +187,7 @@
             <p></p>
             <button type="submit" class="click" value="Salva">Salva</button>
             <button type="reset" class="click" value="Annulla">
-                <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                <a href="../backEnd/prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
             </button>
         </form>
     </body>

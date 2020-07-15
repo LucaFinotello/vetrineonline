@@ -2,7 +2,7 @@
 session_start();
 include("db_con.php");
 include_once('mysql-fix.php');
-include ('header.html')
+include('header.html')
 ?>
 <body>
 <h1>Modifica orario</h1>
@@ -22,8 +22,8 @@ if (! $riga)
 else
 {
     ?>
-    <form action="modificaOra.php" method="POST" >
-        <div class="prenotazione">
+    <div class="prenotazione">
+        <form action="modificaOra.php" method="POST" >
             <input class="inputBottom" name="id" type="text" value="<?php echo $riga["id"]?>" hidden/>
             Data: <input class="inputBottom" name="giorno" type="text" value="<?php echo date('d/m/Y', $riga["giorno"])?>"/><br>
             Fascia: <select name="identificatore">
@@ -162,12 +162,12 @@ else
                 <option value="23:30">23:30</option>
             </select><br><br>
             <button type="submit" class="click" value="Invia" name="Invio"><i class="fa fa-pencil"></i></button>
-            <button onClick="javascript:window.location.href = 'prenotazione_sala.php'">
-                <i class="fa fa-times"></i>
-            </button>
-        </div>
-    </form>
+        </form>
+        <button onClick="javascript:window.location.href = 'prenotazione_sala.php'">
+            <i class="fa fa-times"></i>
+        </button>
+    </div>
     <?php
 }
-include ('footer.html');
+include('footer.html');
 ?>

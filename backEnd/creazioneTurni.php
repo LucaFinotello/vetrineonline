@@ -94,7 +94,7 @@
             }
         }
         else {
-            echo "<script>
+            /*echo "<script>
                   var r = confirm(\"i dati verranno sovrascritti, vuoi continuare?\");
                   if (r == true) {
                   
@@ -102,7 +102,7 @@
                     location.href('prenoteazione_sala.php')
                   }
                 }
-                </script>";
+                </script>";*/
 
             for ($i = $oggi; $i <= $dataTermine; $i=$i+86400) {
             $giorno=$i;

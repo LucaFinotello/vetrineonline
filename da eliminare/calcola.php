@@ -11,10 +11,10 @@ include_once('mysql-fix.php');
     <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
     <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../backEnd/css/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script type="text/javascript" src="js/prenotazione.js"></script>
+    <script type="text/javascript" src="../backEnd/js/prenotazione.js"></script>
     <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
     <script type="text/javascript" src="DataTables/datatables.min.js"></script>
 </head>
@@ -22,7 +22,7 @@ include_once('mysql-fix.php');
 <div id="main">
     <h1>Prenotazione Sala</h1>
     <div id="menu">
-        <form name="gestioneOrari" action="creazioneTurni.php" method="post">
+        <form name="gestioneOrari" action="../backEnd/creazioneTurni.php" method="post">
             <fieldset>
                 <legend>Selezionare periodo</legend>
                 <span>Da</span><input type="date" id="datepicker" name="dataInizio" value="" format="dd-mm-yyyy"><br>
@@ -202,7 +202,7 @@ include_once('mysql-fix.php');
             ?>
             <fieldset>
                 <legend>Cerca periodo</legend>
-                <form action="ricercaOrari.php" method="post">
+                <form action="../backEnd/ricercaOrari.php" method="post">
                     Da: <input type="date" class="inputBottom" name="dataInizio" value="" placeholder="gg/mm/aaaa">
                     A: <input type="date" class="inputBottom" name="dataFine" value="" placeholder="gg/mm/aaaa">
                     Etichetta: <select name="fascia">
@@ -212,7 +212,7 @@ include_once('mysql-fix.php');
                     </select>
                     &emsp;<button class="click" type="submit">Cerca</button>
                     <button class="click">
-                        <a href="prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                        <a href="../backEnd/prenotazione_sala.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
                     </button>
                 </form>
             </fieldset>
@@ -341,7 +341,7 @@ include_once('mysql-fix.php');
                 <p></p>
                 <fieldset>
                     <legend>Cerca turno</legend>
-                    <form action="ricercaTurno.php" method="post">
+                    <form action="../backEnd/ricercaTurno.php" method="post">
                         Giorno: <input type="date" class="inputBottom" name="data" value="" placeholder="gg/mm/aaaa">
                         <!--Etichetta: <select name="fascia">
                             <option value="colazione">Colazione</option>
@@ -369,7 +369,7 @@ include_once('mysql-fix.php');
                     while ($riga)
                     {
                         echo ("<tr>");
-                        echo "<form action='modifica.php' method='POST'>";
+                        echo "<form action='../backEnd/modifica.php' method='POST'>";
                         echo "<td>".date('d/m/Y', $riga["giorno"])."</td>";
                         echo "<td><input class='inputTable' type='text' name='turno' readonly value='".$riga["turnoInizio"]." - ".$riga["turno"]."'/></td>";
                         echo "<td>".$riga["stanza"]."</td>";

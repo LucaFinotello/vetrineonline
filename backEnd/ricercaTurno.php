@@ -45,7 +45,7 @@ include ('header.html');
                     while ($riga)
                     {
                         echo ("<tr>");
-                        echo "<form action='modificaOrari.php' method='post'>";
+                        echo "<form action='../da%20eliminare/modificaOrari.php' method='post'>";
                         echo "<td ><input class='inputTable' name='giorno' value='".date("d/m/Y",$riga['giorno'])."'/></td>";
                         echo "<input class='inputTable' name='id' value='".$riga['id']."' hidden/>";
                         echo "<td>".$riga['fascia']."</td>";
