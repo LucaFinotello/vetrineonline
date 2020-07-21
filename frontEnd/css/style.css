@@ -123,3 +123,13 @@ td.postazioni_occupate{
     background-repeat:no-repeat;
     background-position:center center;
 }
+
+img {
+    width: 11vw;
+    padding: 1%;
+}
+
+#menu{
+    text-align: center;
+    margin-bottom: 2%;
+}

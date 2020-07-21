@@ -84,7 +84,7 @@ include('header.html');
                     echo "<td><img src='".$riga["immagine"]."' alt='".$riga["immagine"]."'></td>";
                     echo "<td>" . $riga['prodotto'] . "</td>";
                     echo "<td>" . $riga['allergeni'] . "</td>";
-                    echo "<td>" . number_format($riga['prezzo'], 2) . "</td>";
+                    echo "<td>" . number_format($riga['prezzo'], 2) . " &euro;</td>";
                     echo "<td>
                    <button type='submit' class='click'><i class='fa fa-trash'></i></button></form>
               </td>";

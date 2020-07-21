@@ -6,9 +6,11 @@ if(!isset($_SESSION))
 include("db_con.php");
 include_once('mysql-fix.php');
 include ('header.html');
-include ('menu.html');
 ?>
 <h1>Prenota il tuo turno</h1>
+<?php
+include ('menu.html');
+?>
 <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Cerca per giorno...">
 <?php
     if($codiceStruttura=='H001'){
