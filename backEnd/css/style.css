@@ -169,6 +169,11 @@ table td {
     display: flow-root;
 }
 
+img {
+    width: 10vw;
+    margin: 1%;
+}
+
 @media only screen and (max-width: 1024px) {
 
 }
