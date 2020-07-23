@@ -48,6 +48,7 @@ include ('menu.html');
                         <button type="reset" class="click">
                             <a href="index.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
                         </button>
+                        <button onclick ="creaPdf()" type = "button">Crea PDF</button>
                     </div>
                 </form>
                 <?php

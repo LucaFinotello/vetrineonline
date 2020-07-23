@@ -19,3 +19,26 @@ function myFunction() {
         }
     }
 }
+
+function creaPdf() {
+    var doc = new jsPDF();
+    var data = document.getElementById("data").value;
+    var fascia = document.getElementById("fascia").value;
+    var turno = document.getElementById("turno").value;
+    var stanza = document.getElementById("stanza").value;
+
+    var host = "VetrineOnline.com";
+
+    doc.setFontSize(35)
+    doc.text(60, 20, host);
+    doc.setFontSize(12)
+    doc.text(70, 40, 'Data: ' + data);
+    doc.text(70, 50, 'Fascia: ' + fascia);
+    doc.text(70, 60, 'Turno: ' + turno);
+    doc.text(70, 70, 'Stanza: ' + stanza);
+    doc.addPage();
+
+    // Save the PDF
+    doc.save('prenotazione.pdf');
+
+}
