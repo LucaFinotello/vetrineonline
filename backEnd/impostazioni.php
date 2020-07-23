@@ -89,7 +89,12 @@ include('header.html');
             <button type="submit" class="click">Aggiungi</button>
         </form>
     </div>
-
+    <div class="layoutFull">
+        <h1>Invia scontrino</h1>
+    <?php
+        include ('scontrino.php');
+    ?>
+    </div>
 </div>
 <?php
     include ('footer.html');

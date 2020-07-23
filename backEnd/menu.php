@@ -36,12 +36,12 @@ include('header.html');
                 <form action="createMenu.php" method="POST" enctype="multipart/form-data">
                     <td>
                         <select name="categoria">
-                            <option value="antipasti">Antipasti</option>
-                            <option value="primi">Primi</option>
-                            <option value="secondi">Secondi</option>
-                            <option value="contorni">Contorni</option>
-                            <option value="dolci">Dolci</option>
-                            <option value="bevande">Bevande</option>
+                            <option value="Antipasti">Antipasti</option>
+                            <option value="Primi">Primi</option>
+                            <option value="Secondi">Secondi</option>
+                            <option value="Contorni">Contorni</option>
+                            <option value="Dolci">Dolci</option>
+                            <option value="Bevande">Bevande</option>
                         </select>
                     </td>
                     <td>
@@ -97,7 +97,8 @@ include('header.html');
                     echo "<td>" . $riga['allergeni'] . "</td>";
                     echo "<td>" . number_format($riga['prezzo'], 2) . " &euro;</td>";
                     echo "<td>
-                   <button type='submit' class='click'><i class='fa fa-trash'></i></button></form>
+                   <button type='submit' class='click'><i class='fa fa-trash'></i></button>
+                   </form>
               </td>";
                     echo "</tr>";
                     $riga = mysqli_fetch_array($risultato);

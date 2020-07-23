@@ -259,3 +259,9 @@ td.postazioni_occupate{
 .active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
+
+.scontrino {
+    vertical-align: top;
+    width: 30vw;
+    height: 50vh;
+}
