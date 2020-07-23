@@ -81,8 +81,9 @@ if(is_uploaded_file($tmp) && check_ext($type) && $size <= $max_size) {
         $categoria= $_POST ['categoria'];
         $immagine = $name;
         $prodotto = $_POST['prodotto'];
-        $allergeni = $_POST['allergeni'];
+        $allergeni = implode(',', $_POST['check_list']);
         $prezzo = $_POST['prezzo'];
+
 
         $strsql = "insert into menu SET categoria='$categoria', immagine= '$immagine', prodotto= '$prodotto',
 allergeni= '$allergeni', prezzo= '$prezzo', codiceStruttura= '$codiceStruttura'";

@@ -51,7 +51,13 @@ include('header.html');
                         <input type="text" name="prodotto" class="inputBottom"/>
                     </td>
                     <td>
-                        <input type="text" name="allergeni" class="inputBottom"/>
+
+
+
+                                <input type="checkbox" name="check_list[]" value="Pomodoro"><label>Pomodoro</label><br/>
+                                <input type="checkbox" name="check_list[]" value="Mozzarella"><label>Mozzarella</label><br/>
+                                <input type="checkbox" name="check_list[]" value="Cipolla"><label>Cipolle</label><br/>
+
                     </td>
                     <td>
                         <input type="number" step='any' min='0' max="400" name="prezzo" class="inputBottom"/>
@@ -93,13 +99,21 @@ include('header.html');
                 }
             }
                 ?>
-
-
-
-
-
         </tbody>
     </table>
+
+    <script>
+        $(function() {
+
+            $('#chkveg').multiselect({
+                includeSelectAllOption: true
+            });
+
+            $('#btnget').click(function() {
+                alert($('#chkveg').val());
+            });
+        });
+    </script>
 </div>
 <?php
 include ('footer.html');
