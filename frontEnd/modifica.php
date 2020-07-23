@@ -30,9 +30,10 @@ include ('menu.html');
                 ?>
                 <form action="test.php" method="POST" >
                     <div class="prenotazione">
-                        Data: <input class="inputBottom" name="giorno" type="text" value="<?php echo date('d/m/Y',$riga["giorno"])?>"><br>
-                        Turno: <input class="inputBottom" name="turno" type="text" readonly value="<?php echo $riga["turnoInizio"]?> - <?php echo $riga["turno"]?>"><br>
-                        <input class="inputBottom" name="stanza" type="text" value="<?php echo $riga["stanza"]?>" hidden>
+                        Data: <input class="inputBottom" id="data" name="giorno" type="text" value="<?php echo date('d/m/Y',$riga["giorno"])?>"><br>
+                        Turno: <input class="inputBottom" id="turno" name="turno" type="text" readonly value="<?php echo $riga["turnoInizio"]?> - <?php echo $riga["turno"]?>"><br>
+                        <input class="inputBottom" id="stanza" name="stanza" type="text" value="<?php echo $riga["stanza"]?>" hidden>
+                        <input class="inputBottom" id="fascia" name="fascia" type="text" value="<?php echo $riga["fascia"]?>" hidden>
                         <?php if ($num <= $disponibilita){
                             echo "Stanza: <input class='inputBottom' name='stanzanew' type='text' value='''><br><br>";
                         } else {
