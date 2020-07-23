@@ -133,3 +133,9 @@ img {
     text-align: center;
     margin-bottom: 2%;
 }
+
+@media print {
+    #menu {display: none;}
+    #myInput {display: none;}
+    #stampa {display: none;}
+}

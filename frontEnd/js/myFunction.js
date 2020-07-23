@@ -42,3 +42,13 @@ function creaPdf() {
     doc.save('prenotazione.pdf');
 
 }
+
+
+function printpage(){
+    if (window.print){
+        window.print();
+    }
+    else{
+        alert('Funzione non supportata dal browser.');
+    }
+}

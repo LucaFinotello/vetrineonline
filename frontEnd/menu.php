@@ -30,6 +30,7 @@ include('header.html');
             </tr>
         </thead>
         <tbody>
+        <div id='stampa'>
         <?php
             $strsql = "select distinct * from menu where codiceStruttura= '$codiceStruttura' order by categoria";
             $risultato = mysqli_query($conn, $strsql);
@@ -46,18 +47,21 @@ include('header.html');
                 while ($riga) {
                     echo "<tr>";
                     echo "<input class='inputTable' name='id' value='" . $riga['id'] . "' hidden/>";
-                    echo "<td>". $riga['categoria'] ."</td>";
-                    echo "<td><img src='".$riga["immagine"]."' alt='".$riga["immagine"]."'></td>";
-                    echo "<td>" . $riga['prodotto'] . "</td>";
-                    echo "<td>" . $riga['allergeni'] . "</td>";
-                    echo "<td>" . number_format($riga['prezzo'], 2) . " &euro;</td>";
+                    echo "<td id='categoria'>". $riga['categoria'] ."</td>";
+                    echo "<td id='immagine'><img src='".$riga["immagine"]."' alt='".$riga["immagine"]."'></td>";
+                    echo "<td id='prodotto'>" . $riga['prodotto'] . "</td>";
+                    echo "<td id='allergeni'>" . $riga['allergeni'] . "</td>";
+                    echo "<td id='prezzo'>" . number_format($riga['prezzo'], 2) . " &euro;</td>";
                     echo "</tr>";
                     $riga = mysqli_fetch_array($risultato);
                 }
             }
                 ?>
+        </div>
         </tbody>
     </table>
+    <button id="stampa" onClick="printpage(); return false"><i class="fa fa-download"></i> Stampa</button>
+
 </div>
 
 <script>
