@@ -51,31 +51,29 @@ include('header.html');
                         <input type="text" name="prodotto" class="inputBottom"/>
                     </td>
                     <td>
-                        <input type="checkbox" name="check_list[]" value="Glutine"><label>Glutine</label>
-                        <input type="checkbox" name="check_list[]" value="Crostacei"><label>Crostacei</label><br>
-                        <input type="checkbox" name="check_list[]" value="Uova"><label>Uova</label>
-                        <input type="checkbox" name="check_list[]" value="Pesce"><label>Pesce</label><br>
-                        <input type="checkbox" name="check_list[]" value="Arachidi"><label>Arachidi</label>
-                        <input type="checkbox" name="check_list[]" value="Soia"><label>Soia</label><br>
-                        <input type="checkbox" name="check_list[]" value="Latte"><label>Latte</label>
-                        <input type="checkbox" name="check_list[]" value="Frutta a guscio"><label>Frutta a guscio</label><br>
-                        <input type="checkbox" name="check_list[]" value="Sedano"><label>Sedano</label>
-                        <input type="checkbox" name="check_list[]" value="Senape"><label>Senape</label><br>
-                        <input type="checkbox" name="check_list[]" value="Semi di sesamo"><label>Semi di sesamo</label>
-                        <input type="checkbox" name="check_list[]" value="Anidride solforosa"><label>Anidride solforosa</label><br>
-                        <input type="checkbox" name="check_list[]" value="Luppino"><label>Luppino</label>
-                        <input type="checkbox" name="check_list[]" value="Molluschi"><label>Molluschi</label>
+                        <input type="checkbox" name="check_list[]" value="Glutine"> <label>Glutine</label>
+                        <input type="checkbox" name="check_list[]" value="Crostacei"> <label>Crostacei</label><br>
+                        <input type="checkbox" name="check_list[]" value="Uova"> <label>Uova</label>
+                        <input type="checkbox" name="check_list[]" value="Pesce"> <label>Pesce</label><br>
+                        <input type="checkbox" name="check_list[]" value="Arachidi"> <label>Arachidi</label>
+                        <input type="checkbox" name="check_list[]" value="Soia"> <label>Soia</label><br>
+                        <input type="checkbox" name="check_list[]" value="Latte"> <label>Latte</label>
+                        <input type="checkbox" name="check_list[]" value="Frutta a guscio"> <label>Frutta a guscio</label><br>
+                        <input type="checkbox" name="check_list[]" value="Sedano"> <label>Sedano</label>
+                        <input type="checkbox" name="check_list[]" value="Senape"> <label>Senape</label><br>
+                        <input type="checkbox" name="check_list[]" value="Semi di sesamo"> <label>Semi di sesamo</label>
+                        <input type="checkbox" name="check_list[]" value="Anidride solforosa"> <label>Anidride solforosa</label><br>
+                        <input type="checkbox" name="check_list[]" value="Luppino"> <label>Luppino</label>
+                        <input type="checkbox" name="check_list[]" value="Molluschi"> <label>Molluschi</label>
                     </td>
                     <td>
-                        <input type="number" step='any' min='0' max="400" name="prezzo" class="inputBottom"/>
+                        <input type="number" step='any' min='0' max="400" name="prezzo" placeholder="0.00 &euro;" class="inputBottom"/>
                     </td>
                     <td>
                         <button type="submit" class="click"><i class="fa fa-check"></i></button>
                     </td>
                 </form>
             </tr>
-
-
             <?php
             $strsql = "select * from menu where codiceStruttura= '$codiceStruttura' order by categoria";
             $risultato = mysqli_query($conn, $strsql);

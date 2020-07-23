@@ -25,7 +25,7 @@ if(mysqli_num_rows($query)>0)
         <br>
         <form action="login1.php" method="POST">
             Codice struttura: <input name="codiceStruttura" type="text"/></span>
-            <button type="submit" title="login" value="Login" name="Login" class="click">Entra</button>
+            <button type="submit" title="login" value="Login" name="Login" class="click"><i class="fa fa-sign-in"></i> </button>
         </form>
     </div>
     <?php

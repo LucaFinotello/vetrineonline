@@ -81,7 +81,7 @@ if(is_uploaded_file($tmp) && check_ext($type) && $size <= $max_size) {
         $categoria= $_POST ['categoria'];
         $immagine = $name;
         $prodotto = $_POST['prodotto'];
-        $allergeni = implode(',', $_POST['check_list']);
+        $allergeni = implode(', ', $_POST['check_list']);
         $prezzo = $_POST['prezzo'];
 
 
