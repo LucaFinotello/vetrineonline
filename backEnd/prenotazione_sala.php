@@ -49,7 +49,7 @@ include('header.html');
                         echo "<td>".$riga['oraInizio']."</td>";
                         echo "<td>".$riga['oraFine']."</td>";
                         echo "<td>
-                                   <button type='submit' class='click'><i class='fa fa-trash'></i></button></form>
+                                   <button type='submit' class='click'><i class='fa fa-trash' onclick=\"return (confirm('stai eliminando ". date('d/m/Y', $riga['giorno'])."'))\"></i></button></form>
                                    <button onClick=\"javascript:window.location.href = 'impostazioni.php'\" type='submit' class='click'><i class='fa fa-pencil'></i></button>
                               </td>";
                         echo "</tr>";
