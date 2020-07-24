@@ -12,7 +12,7 @@ if(mysqli_num_rows($query)>0)
 {
     $row = mysqli_fetch_assoc($query);
     $_SESSION["logged"] =true;
-        header("location:index.php");
+        header("location:home");
         echo $riga["codiceStruttura"];
 }else{
     ?>

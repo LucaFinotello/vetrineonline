@@ -42,7 +42,7 @@ include ('menu.html');
         }
         else
         {
-            header('location:index.php');
+            header('location:home');
              }
             }
         ?>

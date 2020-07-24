@@ -46,7 +46,7 @@ include ('menu.html');
                         </p>
                         <button type="submit" class="click" value="Invia" name="Invio"><i class="fa fa-check"></i></button>
                         <button type="reset" class="click">
-                            <a href="index.php" style="color: #ffffff;text-decoration: none;">Annulla</a>
+                            <a href="home" style="color: #ffffff;text-decoration: none;">Annulla</a>
                         </button>
                         <button onclick ="creaPdf()" type = "button">Crea PDF</button>
                     </div>
@@ -114,7 +114,7 @@ include ('menu.html');
                 }
             }
             echo "</table>";
-            echo "<button><a href='index.php' style='text-decoration: none'>Annulla</a></button>";
+            echo "<button><a href='home' style='text-decoration: none'>Annulla</a></button>";
             echo "</div></div>";
         }
     ?>

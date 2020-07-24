@@ -22,7 +22,7 @@ include ('menu.html');
             {
                 echo "Errore nel comando SQL" . "<br>";
             } else {
-                header("location:index.php");
+                header("location:home");
             }
         ?>
     </div>
